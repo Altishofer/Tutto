@@ -1,6 +1,6 @@
 package Board;
 
-import States.Card;
+import Cards.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,6 @@
 import Board.Board;
-import States.Card;
-import States.RandomCardFactory;
+import Cards.Card;
+import Board.RandomCardFactory;
 
 import java.util.ArrayList;
 import java.util.Scanner;
