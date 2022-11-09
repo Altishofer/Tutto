@@ -1,5 +1,7 @@
 import Board.Board;
 import Board.Player;
+import States.Card;
+import States.RandomCardFactory;
 import Utils.Dice;
 
 import java.util.ArrayList;
@@ -21,13 +23,14 @@ public class Main {
         int countPoints = Integer.valueOf(numberOfPointsAnswer);
 
         Board board = new Board(countPoints, countPlayer);
+        RandomCardFactory randomCardFactory = new RandomCardFactory();
+
         while (!board.playerWon())
         {
-            board.nextPlayerMove();
+            Card card = randomCardFactory.getRandomCard();
+            board.nextPlayerMove(card);
         }
-
-
-        //Utils.Dice.rollDice(2);
-
+        board.displayChart();
+        Board.printDelimiter();
     }
 }

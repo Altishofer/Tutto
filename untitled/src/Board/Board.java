@@ -1,17 +1,16 @@
 package Board;
 
 import States.Bonus;
-import States.CardInterface;
+import States.Card;
+import States.RandomCardFactory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Board {
     private ArrayList<Player> aPlayers;
     private static Integer MAX_POINTS;
-
     private int currentPlayerIndex;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
@@ -29,6 +28,10 @@ public class Board {
     public boolean playerWon(){
         for (Player player : aPlayers){
             if (player.getPoints() >= MAX_POINTS){
+                Board.printDelimiter();
+                Board.printDelimiter();
+                System.out.println("THE WINNER IS -> " + player.getPlayerName().toUpperCase());
+                Board.printDelimiter();
                 return true;
             }
         }
@@ -45,34 +48,38 @@ public class Board {
         Collections.sort(aPlayers);
     }
 
-    public void nextPlayerMove(){
+    public void displayChart(){
+        Board.printDelimiter();
+        System.out.println("Player" + "\t\t" + "Points");
+        for (Player playerIter : aPlayers) {
+            System.out.println(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints());
+        }
+    }
+
+    public void nextPlayerMove(Card card){
         Player player = aPlayers.get(currentPlayerIndex);
-        currentPlayerIndex = (currentPlayerIndex + 1) % 3;
-        CardInterface bonus = new Bonus(player);
-
+        currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
         printNameDelimiter(player);
-
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Do you want to display the charts (D) or roll (R) the dice? ");
             String seeOrRoll = scanner.nextLine();
             if (seeOrRoll.equalsIgnoreCase("d")) {
-                Board.printDelimiter();
-                System.out.println("Player" + "\t\t\t" + "Points");
-                for (Player playerIter : aPlayers) {
-                    System.out.println(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints());
-                }
+                displayChart();
                 Board.printDelimiter();
             }
             if (seeOrRoll.equalsIgnoreCase("r")) {
-                player.addPoints(bonus.makeMove());
+                Board.printDelimiter();
+                System.out.println(player.getPlayerName().toUpperCase() + " has drawn a " + card.toString());
+                Board.printDelimiter();
+                player.addPoints(card.makeMove());
                 return;
             }
         }
     }
 
     private static void printNameDelimiter(Player player){
-        System.out.println("#################### current player: " + player.getPlayerName().toUpperCase() + " ####################");
+        System.out.println("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################");
     }
 
     public static void printDelimiter(){
