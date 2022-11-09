@@ -1,10 +1,6 @@
 package States;
 
 import Board.Board;
-import Board.Player;
-import Utils.Roll;
-
-import java.util.Scanner;
 
 public class Bonus extends Card {
     private static int BONUS_VALUE = 1;

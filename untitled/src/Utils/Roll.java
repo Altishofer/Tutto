@@ -2,8 +2,6 @@ package Utils;
 
 import java.util.ArrayList;
 
-
-
 public class Roll {
     private int points;
     private ArrayList<DiceValues> rolledDices;

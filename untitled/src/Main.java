@@ -1,11 +1,8 @@
 import Board.Board;
-import Board.Player;
 import States.Card;
 import States.RandomCardFactory;
-import Utils.Dice;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
