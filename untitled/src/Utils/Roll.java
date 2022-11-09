@@ -30,10 +30,10 @@ public class Roll {
         else {putAsideDicesStd();}
     }
 
-    public ArrayList<DiceValues> getRolledDices() {
-        ArrayList<DiceValues> copy = new ArrayList<>();
+    public ArrayList<Integer> getRolledDices() {
+        ArrayList<Integer> copy = new ArrayList<Integer>();
         for (DiceValues dice : rolledDices){
-            copy.add(dice);
+            copy.add(dice.getInteger());
         }
         return copy;
     }

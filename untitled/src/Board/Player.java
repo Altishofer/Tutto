@@ -1,7 +1,9 @@
 package Board;
 
 public class Player implements Comparable{
-    private static String PLAYER_NAME;
+
+
+    private String PLAYER_NAME; //static
     private int aPoints;
 
     public Player (String pName){
@@ -12,6 +14,15 @@ public class Player implements Comparable{
     public String getPlayerName(){return PLAYER_NAME;}
 
     public Character getPlayerInitial(){return PLAYER_NAME.charAt(0);}
+
+    public void addPoints(int pPoints){
+        aPoints += pPoints;
+        System.out.println(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + "points");
+    }
+
+    public int getPoints(){
+        return aPoints;
+    }
 
     @Override
     public int compareTo(Object other) {

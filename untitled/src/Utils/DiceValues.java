@@ -18,4 +18,8 @@ public enum DiceValues {
         String name = this.name();
         return name.toLowerCase();
     }
+
+    public int getInteger(){
+        return this.value;
+    }
 }

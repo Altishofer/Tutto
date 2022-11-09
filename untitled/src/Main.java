@@ -21,6 +21,10 @@ public class Main {
         int countPoints = Integer.valueOf(numberOfPointsAnswer);
 
         Board board = new Board(countPoints, countPlayer);
+        while (!board.playerWon())
+        {
+            board.nextPlayerMove();
+        }
 
 
         //Utils.Dice.rollDice(2);
