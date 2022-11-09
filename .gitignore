@@ -1,9 +1,9 @@
 # Ignore everything
-#*
+*
 
 # But not this directory/file/endings
-# !.gitignore
-# !Battleship/src/
-# !Battleship.class.jet
-# !*.iml
-# !modules.xml
+!.gitignore
+!Tutto/src/
+!Tutto.class.jet
+!*.iml
+!modules.xml
