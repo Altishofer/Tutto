@@ -3,10 +3,10 @@ package Utils;
 import java.util.ArrayList;
 
 public class Roll {
-    private int points;
-    private ArrayList<DiceValues> rolledDices;
-    private int[] frequencyOfValues;
-    private int dicesLeft;
+    protected int points;
+    protected ArrayList<DiceValues> rolledDices;
+    protected int[] frequencyOfValues;
+    protected int dicesLeft;
 
     public Roll(){
         points = 0;
@@ -25,7 +25,9 @@ public class Roll {
 
     public void putAside(){
         if (!isValid()){points = 0;}
-        else {putAsideDicesStd();}
+        else {
+            putAsideDices();
+        }
     }
 
     public ArrayList<Integer> getRolledDices() {
@@ -36,7 +38,7 @@ public class Roll {
         return copy;
     }
 
-    private int[] calculateFrequencies(){
+    protected int[] calculateFrequencies(){
         int[] cnt = new int[DiceValues.values().length];
         for(int i=0; i<cnt.length; i++){
             cnt[i] = 0;
@@ -59,20 +61,9 @@ public class Roll {
         return false;
     }
 
-    public boolean rollIsOver(){
-        return !isValid() || dicesLeft == 0;
-    }
+    public boolean isTutto(){return dicesLeft == 0;}
 
-    public boolean isTutto(){
-        for(int i=0; i<frequencyOfValues.length; i++) {
-            if (frequencyOfValues[i] != 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void putAsideDicesStd(){
+    public void putAsideDices(){
         for(int i=0; i<frequencyOfValues.length; i++){
             if (frequencyOfValues[i] >= 3){
                 if (i+1 == 1){

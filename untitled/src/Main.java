@@ -1,6 +1,6 @@
 import Board.Board;
 import Cards.Card;
-import Cards.RandomFlyWeightCardFactory;
+import Cards.RandomFlyWeightCard;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +20,7 @@ public class Main {
         int countPoints = Integer.valueOf(numberOfPointsAnswer);
 
         Board board = new Board(countPoints, countPlayer);
-        RandomFlyWeightCardFactory randomCardFactory = new RandomFlyWeightCardFactory();
+        RandomFlyWeightCard randomCardFactory = new RandomFlyWeightCard();
 
         while (!board.playerWon())
         {
