@@ -1,6 +1,7 @@
 package Board;
 
 import Cards.Card;
+import Cards.PlusMinus;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,6 +23,22 @@ public class Board {
     private void addPlayer(String pName){
         Player newPlayer = new Player(pName);
         aPlayers.add(newPlayer);
+    }
+
+    private ArrayList<Player> getBestPlayer(){
+        ArrayList<Player> bestPlayers = new ArrayList<>();
+        int maxPoints = aPlayers.get(currentPlayerIndex).getPoints() + 1;
+        for (Player player : aPlayers){
+            if (player.getPoints() >= maxPoints){
+                maxPoints = player.getPoints();
+            }
+        }
+        for (Player player : aPlayers){
+            if (player.getPoints() >= maxPoints){
+                bestPlayers.add(player);
+            }
+        }
+        return bestPlayers;
     }
 
     public boolean playerWon(){
@@ -71,7 +88,14 @@ public class Board {
                 Board.printDelimiter();
                 System.out.println(player.getPlayerName().toUpperCase() + " has drawn a " + card.toString());
                 Board.printDelimiter();
-                player.addPoints(card.makeMove());
+                int result = card.makeMove();
+                if (card.getClass() == PlusMinus.class){
+                    ArrayList<Player> bestPlayers = getBestPlayer();
+                    for (Player bestPlayer : bestPlayers){
+                        bestPlayer.addPoints(-1000);
+                    }
+                }
+                player.addPoints(result);
                 return;
             }
         }
