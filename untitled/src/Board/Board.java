@@ -5,6 +5,7 @@ import Cards.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Board {
     private ArrayList<Player> aPlayers;
@@ -83,4 +84,15 @@ public class Board {
     public static void printDelimiter(){
         System.out.println("-------------------------------------------------");
     }
+
+    protected static void printLineDelay(){
+        try
+        {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e)
+        {
+            System.out.println("Please do not interrupt!");
+        }
+    }
+
 }
