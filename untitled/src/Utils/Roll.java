@@ -18,6 +18,11 @@ public class Roll {
         return points;
     }
 
+    public void startOverRoll(){
+        dicesLeft = DiceValues.values().length;
+        rollDices();
+    }
+
     public void rollDices(){
         rolledDices = Dice.rollDice(dicesLeft);
         frequencyOfValues = calculateFrequencies();
