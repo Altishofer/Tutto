@@ -4,6 +4,7 @@
 # But not this directory/file/endings
 !.gitignore
 !Tutto/src/
+!Tutto/test/
 !Tutto.class.jet
 !*.iml
 !modules.xml
