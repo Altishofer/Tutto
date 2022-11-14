@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,15 +34,22 @@ class StubCardTest {
     }
 
     public class StubCard extends Card {
+        private int stops = 0;
 
-        StubRoll roll;
         public StubCard(){
             roll = new StubRoll();
-            roll.getStubNr();
+            ((StubRoll) roll).getStubNr();
         }
         public String toString(){return "StandardCard";}
-        public void setStubNr(DiceValues nr){roll.setStubNr(nr);}
-        public DiceValues getStubNr(){return roll.getStubNr();}
+        public void setStubNr(DiceValues nr){((StubRoll) roll).setStubNr(nr);}
+        public DiceValues getStubNr(){return ((StubRoll) roll).getStubNr();}
+        public boolean stopOrRoll() {
+            if (stops >= 1) {
+                return true;
+            }
+            stops++;
+            return false;
+        }
     }
 
     @Test
@@ -50,27 +58,20 @@ class StubCardTest {
     }
 
     @Test
-    void rollIsTutto() {
-        card.setStubNr(DiceValues.TWO);
-        InputStream sysInBackup = System.in;
-        ByteArrayInputStream in = new ByteArrayInputStream("R".getBytes());
-        System.setIn(in);
+    void rollIsTuttoTrue() {
         int result = card.rollIsTutto();
-        assertEquals(result, 0);
+        assertEquals(result, 200);
     }
-    /*
 
     @Test
     void rollNotValid() {
-    }
-
-    @Test
-    void stopOrRoll() {
+        assertEquals(card.rollNotValid(), 0);
     }
 
     @Test
     void makeMove() {
+        card.makeMove();
+
     }
 
-     */
 }

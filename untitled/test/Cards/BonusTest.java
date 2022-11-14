@@ -59,6 +59,16 @@ class BonusTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void stopOrRollTrue() {
+        InputStream sysInBackup = System.in;
+        ByteArrayInputStream in = new ByteArrayInputStream("E".getBytes());
+        System.setIn(in);
+        boolean out = card.stopOrRoll();
+        assertTrue(out);
+        System.setIn(sysInBackup);
+    }
 }
 
 
