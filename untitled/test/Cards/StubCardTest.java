@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StubCardTest {
     StubCard card = new StubCard();
-    public class StubRoll extends Roll{
+    public static class StubRoll extends Roll{
         private String command;
         public void setCommand(String pCommand){command = pCommand;}
         public String getCommand(){return command;}
@@ -57,16 +57,6 @@ class StubCardTest {
         }
     }
 
-    @Test
-    void rollIsTuttoTrue() {
-        int result = card.rollIsTutto();
-        assertEquals(result, 0);
-    }
-
-    @Test
-    void rollNotValid() {
-        assertEquals(card.rollNotValid(), 0);
-    }
 
     @Test
     void makeMoveTuttoOnesTwice() {
