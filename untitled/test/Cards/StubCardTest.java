@@ -20,7 +20,7 @@ class StubCardTest {
         public void rollDices(){
             rolledDices = new ArrayList<>(){};
             if (command == null || command == "invalid"){
-                List<DiceValues> invalid = Arrays.asList(DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR);
+                List<DiceValues> invalid = Arrays.asList(DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
                 for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
             }
             if (command == "validNotTutto"){
@@ -50,6 +50,8 @@ class StubCardTest {
         public String toString(){return "StandardCard";}
         public void setStubNr(String command){((StubRoll) roll).setCommand(command);}
         public String getStubNr(){return ((StubRoll) roll).getCommand();}
+
+        @Override
         public boolean stopOrRoll() {
             if (stops >= 1) { return true;}
             stops++;
@@ -76,6 +78,6 @@ class StubCardTest {
     void makeMoveValidNotTuttoTwice() {
         card.setStubNr("validNotTutto");
         int result = card.makeMove();
-        assertEquals(100, result);
+        assertEquals(400, result);
     }
 }

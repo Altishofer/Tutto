@@ -5,6 +5,8 @@ import Utils.Roll;
 
 public class PlusMinus extends Card {
 
+    //TODO: Cedi
+
     protected int rollIsTutto(){
         System.out.println("TUTTO!! -> you earned " + 1000 + " points ");
         Board.printDelimiter();

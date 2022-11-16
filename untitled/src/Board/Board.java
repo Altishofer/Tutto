@@ -101,7 +101,7 @@ public class Board {
         }
     }
 
-    private static void printNameDelimiter(Player player){
+    private static void printNameDelimiter(Player player) {
         System.out.println("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################");
     }
 
@@ -110,11 +110,9 @@ public class Board {
     }
 
     protected static void printLineDelay(){
-        try
-        {
+        try{
             TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             System.out.println("Please do not interrupt!");
         }
     }

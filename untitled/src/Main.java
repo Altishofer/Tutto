@@ -22,8 +22,7 @@ public class Main {
         Board board = new Board(countPoints, countPlayer);
         RandomFlyWeightCard randomCardFactory = new RandomFlyWeightCard();
 
-        while (!board.playerWon())
-        {
+        while (!board.playerWon()){
             Card card = randomCardFactory.getRandomCard();
             board.nextPlayerMove(card);
         }

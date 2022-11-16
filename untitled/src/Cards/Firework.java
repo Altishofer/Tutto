@@ -12,6 +12,7 @@ public class Firework extends Card {
 
     @Override
     protected int rollNotValid(){
+        //TODO: sleep a second after output (Cedi)
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("The combination is invalid but you get " + finalSum + " points ");
         Board.printDelimiter();

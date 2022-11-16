@@ -70,9 +70,3 @@ class BonusTest {
         System.setIn(sysInBackup);
     }
 }
-
-
-/*
-
-
- */

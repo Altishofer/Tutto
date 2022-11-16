@@ -18,6 +18,7 @@ public class RollStraight extends Roll {
     }
 
     public void putAsideDices(){
+
         for(int i=0; i<frequencyOfValues.length; i++){
             if (frequencyOfValues[i] != 0 && !asideDices[i]){
                 asideDices[i] = true;

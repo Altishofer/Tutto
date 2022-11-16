@@ -23,6 +23,7 @@ public abstract class Card {
     }
 
     protected int rollIsTutto(){
+        //TODO: anywhere in intermediate or roll.getPoints() seems to be a bug with keeping previous points (Pädi)
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
