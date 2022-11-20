@@ -21,7 +21,7 @@ public class Straight extends Card {
 
     @Override
     public int makeMove() {
-        roll = new RollStraight();
+        roll.startOverRoll();
         while (true){
             printRoll();
             if (!roll.isValid()){return rollNotValid();}
