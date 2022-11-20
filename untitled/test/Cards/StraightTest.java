@@ -28,6 +28,6 @@ class StraightTest {
     void rollIsValidNotTutto() {
         card.setStubNr("validNotTutto");
         int result = card.makeMove();
-        assertEquals(0, result);
+        assertEquals(4000, result);
     }
 }
