@@ -10,5 +10,6 @@ class RandomFlyWeightCardTest {
 
     @Test
     void getRandomCard() {
+
     }
 }
