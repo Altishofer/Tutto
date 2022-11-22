@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FireworkTest {
 
+    //TODO: CEDI
+
     Firework card = new Firework();
 
     @Test
@@ -15,10 +17,20 @@ class FireworkTest {
     }
 
     @Test
-    void rollNotValid() {
+    void testRollNotValid() {
+        int result = card.rollNotValid();
+        assertEquals(100,result);
     }
 
     @Test
-    void makeMove() {
+    void testMakeMoveNotValid() {
+        int result = card.makeMove();
+        assertEquals(100,result);
+    }
+
+    @Test
+    void testMakeMoveTutto() {
+        int result = card.makeMove();
+        assertEquals(100,result);
     }
 }

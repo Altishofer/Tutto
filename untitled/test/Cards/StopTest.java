@@ -9,7 +9,7 @@ class StopTest {
     Stop card = new Stop();
 
     @Test
-    void makeMove() {
+    void testMakeMove() {
         int result = card.makeMove();
         assertEquals(0, result);
     }
