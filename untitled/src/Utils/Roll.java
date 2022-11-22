@@ -32,9 +32,7 @@ public class Roll {
 
     public void putAside(){
         if (!isValid()){points = 0;}
-        else {
-            putAsideDices();
-        }
+        else {putAsideDices();}
     }
 
     public ArrayList<Integer> getRolledDices() {

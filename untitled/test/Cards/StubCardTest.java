@@ -12,53 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StubCardTest {
     StubCard card = new StubCard();
-    public static class StubRoll extends Roll{
-        private String command;
-        public void setCommand(String pCommand){command = pCommand;}
-        public String getCommand(){return command;}
-        @Override
-        public void rollDices(){
-            rolledDices = new ArrayList<>(){};
-            if (command == null || command == "invalid"){
-                List<DiceValues> invalid = Arrays.asList(DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-                for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
-            }
-            if (command == "validNotTutto"){
-                List<DiceValues> invalid = Arrays.asList(DiceValues.ONE, DiceValues.THREE, DiceValues.FOUR);
-                for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
-            }
-            if (command == "tuttoOnes"){
-                for (int i=0;i<dicesLeft;i++){rolledDices.add(DiceValues.ONE);}
-            }
-            frequencyOfValues = calculateFrequencies();
-        }
-
-        @Override
-        public void startOverRoll(){
-            dicesLeft = DiceValues.values().length;
-            points = 0;
-            this.rollDices();
-        }
-    }
-
-    public class StubCard extends Card {
-        private int stops = 0;
-        public StubCard(){
-            roll = new StubRoll();
-            ((StubRoll) roll).getCommand();
-        }
-        public String toString(){return "StandardCard";}
-        public void setStubNr(String command){((StubRoll) roll).setCommand(command);}
-        public String getStubNr(){return ((StubRoll) roll).getCommand();}
-
-        @Override
-        public boolean stopOrRoll() {
-            if (stops >= 1) { return true;}
-            stops++;
-            return false;
-        }
-    }
-
 
     @Test
     void makeMoveTuttoOnesTwice() {
