@@ -14,10 +14,7 @@ public enum DiceValues {
     }
 
     @Override
-    public String toString(){
-        String name = this.name();
-        return name.toLowerCase();
-    }
+    public String toString(){return this.name().toLowerCase();}
 
     public int getInteger(){
         return this.value;

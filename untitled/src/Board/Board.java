@@ -20,11 +20,6 @@ public class Board {
         setUpPlayers(pNumberOfPlayers);
     }
 
-    private void addPlayer(String pName){
-        Player newPlayer = new Player(pName);
-        aPlayers.add(newPlayer);
-    }
-
     private ArrayList<Player> getBestPlayer(){
         ArrayList<Player> bestPlayers = new ArrayList<>();
         int maxPoints = aPlayers.get(currentPlayerIndex).getPoints() + 1;
@@ -58,8 +53,7 @@ public class Board {
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
             System.out.print("Player " + i + " set your name: ");
-            String playerName = scanner.nextLine();
-            addPlayer(playerName);
+            aPlayers.add(new Player(scanner.nextLine()));
         }
         Collections.sort(aPlayers);
     }
@@ -86,7 +80,7 @@ public class Board {
             }
             if (seeOrRoll.equalsIgnoreCase("r")) {
                 Board.printDelimiter();
-                System.out.println(player.getPlayerName().toUpperCase() + " has drawn a " + card.toString());
+                System.out.println(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString());
                 Board.printDelimiter();
                 int result = card.makeMove();
                 if (card.getClass() == PlusMinus.class){
