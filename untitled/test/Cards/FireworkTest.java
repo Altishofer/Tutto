@@ -6,10 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FireworkTest {
 
-    //TODO:
+    Firework card = new Firework();
 
     @Test
     void testToString() {
+        String result = card.toString();
+        assertEquals("Firework-Card",result);
     }
 
     @Test
