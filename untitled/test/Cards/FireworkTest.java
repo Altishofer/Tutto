@@ -12,7 +12,6 @@ class FireworkTest {
 
 
     StubFirework card = new StubFirework();
-
     Class<Roll> roll = Roll.class;
     Roll Roll = new Roll();
 
