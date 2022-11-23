@@ -11,21 +11,21 @@ class StraightTest {
     @Test
     void rollIsTutto() {
         card.setStubNr("tutto");
-        int result = card.makeMove();
-        assertEquals(4000, result);
+        int result = card.makeMove().getFirst();
+        assertEquals(2000, result);
     }
 
     @Test
     void rollIsInvalid() {
         card.setStubNr("invalid");
-        int result = card.makeMove();
+        int result = card.makeMove().getFirst();
         assertEquals(0, result);
     }
 
     @Test
     void rollIsValidNotTutto() {
         card.setStubNr("validNotTutto");
-        int result = card.makeMove();
-        assertEquals(4000, result);
+        int result = card.makeMove().getFirst();
+        assertEquals(2000, result);
     }
 }

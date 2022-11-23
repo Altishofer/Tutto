@@ -60,7 +60,6 @@ public class Board {
     private void setUpPlayers(Integer numberOfPlayer){
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
-            for (Player player : aPlayers){System.out.println(player.getPlayerName());}
             System.out.print("Player " + i + " set your name: ");
             aPlayers.add(new Player(scanner.nextLine()));
         }
@@ -75,16 +74,22 @@ public class Board {
         }
     }
 
-    public boolean nextPlayerMove(int intermediatePoints){
+    public void nextPlayerMove(int intermediatePoints){
         Card card = rdmCardFactory.getRandomCard();
         Player player;
         if (intermediatePoints > 0){
-            player = aPlayers.get((currentPlayerIndex -1) % aPlayers.size());
+            if (currentPlayerIndex == 0){
+                player = aPlayers.get(aPlayers.size()-1);
+            }
+            else {
+                player = aPlayers.get(currentPlayerIndex -1);
+            }
         }
         else {
             player = aPlayers.get(currentPlayerIndex);
+            currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
         }
-        currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
+
         printNameDelimiter(player);
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -107,10 +112,12 @@ public class Board {
                     }
                 }
                 if (result.getSecond()){
-                    nextPlayerMove(intermediatePoints);
+                    printDelimiter();
+                    nextPlayerMove(result.getFirst());
+                    return;
                 }
                 player.addPoints(result.getFirst());
-
+                return;
             }
         }
     }

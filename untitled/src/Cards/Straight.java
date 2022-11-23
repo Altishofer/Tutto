@@ -1,17 +1,20 @@
 package Cards;
 
 import Board.Board;
-import Utils.Roll;
 import Utils.RollStraight;
 import Utils.Tuple;
 
 public class Straight extends Card {
 
+    public Straight(){
+        roll = new RollStraight();
+    }
+
     protected Tuple rollIsTutto(){
         System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
         Board.printDelimiter();
         intermediatePoints += 2000;
-        return new Tuple(intermediatePoints, stopOrRoll());
+        return new Tuple(intermediatePoints, !stopOrRoll());
     }
 
     @Override

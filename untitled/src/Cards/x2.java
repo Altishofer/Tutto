@@ -16,6 +16,6 @@ public class x2 extends Card {
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
         intermediatePoints = finalSum;
-        return new Tuple(finalSum, stopOrRoll());
+        return new Tuple(finalSum, !stopOrRoll());
     }
 }

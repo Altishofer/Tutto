@@ -33,7 +33,7 @@ public class CloverLeaf extends Card {
 
     @Override
     public Tuple makeMove() {
-        roll = new Roll();
+        roll.startOverRoll();
         while (true){
             printRoll();
             if (!roll.isValid()){return new Tuple(rollNotValid(), false);}

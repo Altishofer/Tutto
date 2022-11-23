@@ -34,8 +34,7 @@ public abstract class Card {
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
-        if (stopOrRoll()) { return new Tuple(finalSum, false);}
-        else {return new Tuple(finalSum, true);}
+        return new Tuple(finalSum, !stopOrRoll());
     }
 
     protected int rollNotValid(){

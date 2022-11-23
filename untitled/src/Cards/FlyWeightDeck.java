@@ -15,6 +15,7 @@ public class FlyWeightDeck {
         CardFlyWeightStore.add(new CloverLeaf());
         for (int i=0; i<5; i++){
             CardFlyWeightStore.add(new Straight());
+
             CardFlyWeightStore.add(new Firework());
             CardFlyWeightStore.add(new PlusMinus());
             CardFlyWeightStore.add(new x2());

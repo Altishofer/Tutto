@@ -6,14 +6,19 @@ import Utils.Tuple;
 
 public class PlusMinus extends Card {
 
-    protected Tuple rollIsTutto(){
-        System.out.println("TUTTO!! -> you earned " + 1000 + " points ");
-        Board.printDelimiter();
-        return new Tuple(1000, true);
-    }
-
     @Override
     public String toString(){
         return "Plus/Minus-Card";
+    }
+
+    public Tuple makeMove() {
+        roll.startOverRoll();
+        while (true){
+            printRoll();
+            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
+            roll.putAside();
+            if (roll.isTutto()){return rollIsTutto();}
+            else {roll.rollDices();}
+        }
     }
 }

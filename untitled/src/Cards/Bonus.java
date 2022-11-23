@@ -22,7 +22,6 @@ public class Bonus extends Card {
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
         intermediatePoints = finalSum;
-        if (stopOrRoll()) { return new Tuple(finalSum, false);}
-        else {return new Tuple(finalSum, true);}
+        return new Tuple(finalSum, !stopOrRoll());
     }
 }
