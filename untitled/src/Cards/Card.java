@@ -27,12 +27,12 @@ public abstract class Card {
     }
 
     protected int rollIsTutto(){
-        //TODO: anywhere in intermediate or roll.getPoints() seems to be a bug with keeping previous points (Pädi)
         sleeper.doSleep();
 
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
+
         if (stopOrRoll()) {
             intermediatePoints = finalSum;
             return finalSum;
@@ -52,10 +52,11 @@ public abstract class Card {
     protected boolean stopOrRoll(){
         Scanner scanner;
         while (true){
-            int sum = intermediatePoints + roll.getPoints();
-            System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
 
             sleeper.doSleep();
+
+            int sum = intermediatePoints + roll.getPoints();
+            System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
 
             scanner = new Scanner(System.in);
             String playOrStop = scanner.nextLine();
@@ -74,7 +75,7 @@ public abstract class Card {
             if (!roll.isValid()){return rollNotValid();}
             roll.putAside();
             if (roll.isTutto()){return rollIsTutto();}
-            if (stopOrRoll()){return roll.getPoints();}
+            if (stopOrRoll()){return roll.getPoints() + intermediatePoints;}
             else {roll.rollDices();}
         }
     }
