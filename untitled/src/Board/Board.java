@@ -60,6 +60,7 @@ public class Board {
     private void setUpPlayers(Integer numberOfPlayer){
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
+            for (Player player : aPlayers){System.out.println(player.getPlayerName());}
             System.out.print("Player " + i + " set your name: ");
             aPlayers.add(new Player(scanner.nextLine()));
         }
