@@ -10,8 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FireworkTest {
 
-    Firework card = new Firework();
+    StubFirework card = new StubFirework();
+
     Class<Roll> roll = Roll.class;
+    Roll Roll = new Roll();
+
     //Roll roll = card.getRoll();
 
     @Test
@@ -26,8 +29,9 @@ class FireworkTest {
         int inter = card.intermediatePoints;
 
         try{
-            Field rollPoints = roll.getDeclaredField("points");
-            int check = rollPoints.getInt(roll);
+            Field field = roll.getDeclaredField("points");
+            field.setAccessible(true);
+            int check = field.getInt(Roll);
             assertEquals(result,check+inter);
         } catch(ReflectiveOperationException e){
             e.printStackTrace();
@@ -35,23 +39,16 @@ class FireworkTest {
     }
 
     @Test
-    void testMakeMoveNotValid() {
-        boolean branchTutto = false;
-        boolean branchNotValid = false;
-
+    void testMakeMoveTutto() {
         int result = card.makeMove();
-        try{
-            Method isValid = roll.getDeclaredMethod("isValid");
-            boolean valid = (boolean)isValid.invoke(roll);
-            if(valid){
-                branchTutto = true;
-                assertEquals(card.rollIsTutto(),result);
-            }else{
-                branchNotValid = true;
-                assertEquals(card.rollNotValid(),result);
-            }
-        }catch(ReflectiveOperationException e){
-            e.printStackTrace();
-        }
+        int check = card.rollIsTutto();
+        assertEquals(check,result);
+    }
+
+    @Test
+    void testMakeMoveNotValid(){
+        int result = card.makeMove();
+        int check = card.rollNotValid();
+        assertEquals(check,result);
     }
 }
