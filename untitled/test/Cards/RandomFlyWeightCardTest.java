@@ -10,7 +10,7 @@ class RandomFlyWeightCardTest {
 
     @Test
     void getRandomCard() {
-        var card = new StubRandomFlyWeightCard();
+        var card = new FlyWeightDeck();
         card.getRandomCard();
     }
 }
