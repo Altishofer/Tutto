@@ -2,7 +2,7 @@ package Cards;
 
 import Board.Board;
 
-public class x2 extends Card {
+public class X2 extends Card {
 
     @Override
     public String toString(){
