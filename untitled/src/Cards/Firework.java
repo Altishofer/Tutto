@@ -18,6 +18,12 @@ public class Firework extends Card {
         return finalSum;
     }
 
+    // TODO: does it really make a copy, not reference
+    public Roll getRoll(){
+        Roll copy = roll;
+        return copy;
+    }
+
     @Override
     public int makeMove() {
         roll = new Roll();

@@ -1,14 +1,18 @@
 package Cards;
 
+import Utils.Roll;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FireworkTest {
 
-    //TODO: CEDI
-
     Firework card = new Firework();
+    Class<Roll> roll = Roll.class;
+    //Roll roll = card.getRoll();
 
     @Test
     void testToString() {
@@ -19,18 +23,35 @@ class FireworkTest {
     @Test
     void testRollNotValid() {
         int result = card.rollNotValid();
-        assertEquals(100,result);
+        int inter = card.intermediatePoints;
+
+        try{
+            Field rollPoints = roll.getDeclaredField("points");
+            int check = rollPoints.getInt(roll);
+            assertEquals(result,check+inter);
+        } catch(ReflectiveOperationException e){
+            e.printStackTrace();
+        }
     }
 
     @Test
     void testMakeMoveNotValid() {
-        int result = card.makeMove();
-        assertEquals(100,result);
-    }
+        boolean branchTutto = false;
+        boolean branchNotValid = false;
 
-    @Test
-    void testMakeMoveTutto() {
         int result = card.makeMove();
-        assertEquals(100,result);
+        try{
+            Method isValid = roll.getDeclaredMethod("isValid");
+            boolean valid = (boolean)isValid.invoke(roll);
+            if(valid){
+                branchTutto = true;
+                assertEquals(card.rollIsTutto(),result);
+            }else{
+                branchNotValid = true;
+                assertEquals(card.rollNotValid(),result);
+            }
+        }catch(ReflectiveOperationException e){
+            e.printStackTrace();
+        }
     }
 }
