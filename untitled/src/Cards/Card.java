@@ -12,7 +12,7 @@ public abstract class Card {
     protected Roll roll;
     protected InputOutputUtils sleeper;
 
-    public Card(){
+    protected Card(){
         sleeper = new InputOutputUtils();
         roll = new Roll();
     }
