@@ -17,12 +17,6 @@ class StraightTest {
         assertEquals(4000, result);
     }
 
-    //TODO: Check if correct amount of points is returned for Straight (Pädi)
-    /*@Test
-    void rollIsStraight() {
-
-    }*/
-
     @Test
     void rollIsInvalid() {
         card.setStubNr("invalid");
