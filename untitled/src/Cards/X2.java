@@ -2,21 +2,21 @@
 package Cards;
 
 import Board.Board;
+import Utils.Tuple;
 
 public class X2 extends Card {
 
     @Override
     public String toString(){
-        return "x2-Card";
+        return "X2-Card";
     }
 
     @Override
-    protected int rollIsTutto(){
+    protected Tuple rollIsTutto(){
         int finalSum = (intermediatePoints + roll.getPoints())*2;
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
         intermediatePoints = finalSum;
-        if (stopOrRoll()){return finalSum;}
-        else {return makeMove();}
+        return new Tuple(finalSum, !stopOrRoll());
     }
 }

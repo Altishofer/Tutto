@@ -4,7 +4,7 @@ public class Player implements Comparable{
 
     // TODO: adrian
 
-    private static String PLAYER_NAME;
+    private final String PLAYER_NAME;
     private int aPoints;
 
     public Player (String pName){

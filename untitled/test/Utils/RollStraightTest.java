@@ -13,12 +13,11 @@ class RollStraightTest {
 
     StubCardStraight.StubStraightRoll roll = new StubCardStraight.StubStraightRoll();
 
-
     @Test
     void testNotValid() {
         ((StubCardStraight.StubStraightRoll) roll).setCommand("invalid");
         roll.rollDices();
-
+        assertEquals(roll.getPoints(), 0);
     }
 
     @Test

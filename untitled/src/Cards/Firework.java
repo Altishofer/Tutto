@@ -2,6 +2,7 @@ package Cards;
 
 import Board.Board;
 import Utils.Roll;
+import Utils.Tuple;
 
 public class Firework extends Card {
 
@@ -25,11 +26,11 @@ public class Firework extends Card {
     }
 
     @Override
-    public int makeMove() {
+    public Tuple makeMove() {
         roll = new Roll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return rollNotValid();}
+            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
             roll.putAside();
             if (roll.isTutto()){return rollIsTutto();}
             roll.rollDices();
