@@ -1,6 +1,7 @@
 package Cards;
 
 import Board.Board;
+import Utils.InputOutputUtils;
 import Utils.Roll;
 
 import java.util.Scanner;
@@ -9,20 +10,26 @@ public abstract class Card {
 
     protected int intermediatePoints = 0;
     protected Roll roll;
+    protected InputOutputUtils sleeper;
 
-    public Card(){
+    protected Card(){
+        sleeper = new InputOutputUtils();
         roll = new Roll();
     }
 
     @Override
     public abstract String toString();
     protected void printRoll(){
+        sleeper.doSleep();
         String listString = String.join(", ", String.valueOf(roll.getRolledDices()));
         System.out.println("You have rolled the combination: " + listString);
         Board.printDelimiter();
     }
 
     protected int rollIsTutto(){
+        //TODO: anywhere in intermediate or roll.getPoints() seems to be a bug with keeping previous points (Pädi)
+        sleeper.doSleep();
+
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
@@ -36,6 +43,7 @@ public abstract class Card {
     }
 
     protected int rollNotValid(){
+        sleeper.doSleep();
         System.out.println("The combination is invalid and results in 0 points");
         Board.printDelimiter();
         return 0;
@@ -46,6 +54,9 @@ public abstract class Card {
         while (true){
             int sum = intermediatePoints + roll.getPoints();
             System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
+
+            sleeper.doSleep();
+
             scanner = new Scanner(System.in);
             String playOrStop = scanner.nextLine();
             Board.printDelimiter();
