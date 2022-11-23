@@ -2,11 +2,9 @@ package Cards;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FireworkTest {
 
-    //TODO: Adrian
+    //TODO: Cedric
 
     @Test
     void testToString() {

@@ -3,6 +3,8 @@ package Utils;
 import java.util.concurrent.TimeUnit;
 
 public class InputOutputUtils {
+
+    // TODO: pädi -> check user inputs mainly used by player
     private final int second;
 
     public InputOutputUtils(){second = 1;}

@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StraightTest {
 
-    //TODO: Pädi & Sandrin
-
     StubCardStraight card = new StubCardStraight();
 
     @Test

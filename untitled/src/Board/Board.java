@@ -9,6 +9,10 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Board {
+
+    // TODO: Cedi (1.prio), Pädi
+
+    // TODO: new card after tutto
     private ArrayList<Player> aPlayers;
     private static Integer MAX_POINTS;
     private int currentPlayerIndex;
@@ -102,13 +106,4 @@ public class Board {
     public static void printDelimiter(){
         System.out.println("-------------------------------------------------");
     }
-
-    protected static void printLineDelay(){
-        try{
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            System.out.println("Please do not interrupt!");
-        }
-    }
-
 }
