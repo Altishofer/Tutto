@@ -10,8 +10,7 @@ public class Roll {
 
     public Roll(){
         points = 0;
-        dicesLeft = DiceValues.values().length;
-
+        dicesLeft = 6;
         rollDices();
     }
 
