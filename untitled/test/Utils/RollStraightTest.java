@@ -11,8 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RollStraightTest {
 
-    //TODO: Pädi & Sandrin
-
     StubCardStraight.StubStraightRoll roll = new StubCardStraight.StubStraightRoll();
 
 

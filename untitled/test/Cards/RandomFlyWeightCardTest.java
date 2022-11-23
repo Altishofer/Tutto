@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RandomFlyWeightCardTest {
 
-    //TODO: Pädi
+    // TODO: Pädi, add asserts, create all cards and count them
 
     @Test
     void getRandomCard() {
