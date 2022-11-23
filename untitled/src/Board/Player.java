@@ -7,8 +7,11 @@ public class Player implements Comparable{
     private static String PLAYER_NAME;
     private int aPoints;
 
+    private int aIntermediatePoints;
+
     public Player (String pName){
         aPoints = 0;
+        aIntermediatePoints = 0;
         PLAYER_NAME = pName;
     }
 
@@ -23,6 +26,10 @@ public class Player implements Comparable{
 
     public int getPoints(){
         return aPoints;
+    }
+
+    public int getIntermediatePoints(){
+        return aIntermediatePoints;
     }
 
     @Override

@@ -2,6 +2,7 @@ package Cards;
 
 import Board.Board;
 import Utils.Roll;
+import Utils.Tuple;
 
 public class CloverLeaf extends Card {
     private boolean alreadyTutto;
@@ -16,11 +17,11 @@ public class CloverLeaf extends Card {
     }
 
     @Override
-    protected int rollIsTutto(){
+    protected Tuple rollIsTutto(){
         System.out.println("TUTTO!! -> you are one step closer to the WIN!");
         Board.printDelimiter();
         alreadyTutto = true;
-        return makeMove();
+        return new Tuple(makeMove().getFirst(), false);
     }
 
     @Override
@@ -31,14 +32,14 @@ public class CloverLeaf extends Card {
     }
 
     @Override
-    public int makeMove() {
+    public Tuple makeMove() {
         roll = new Roll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return rollNotValid();}
+            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
             roll.putAside();
             if (roll.isTutto()){
-                if (alreadyTutto){return Integer.MAX_VALUE;}
+                if (alreadyTutto){return new Tuple(Integer.MAX_VALUE, false);}
                 return rollIsTutto();
             }
             roll.rollDices();

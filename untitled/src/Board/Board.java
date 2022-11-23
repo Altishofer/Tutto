@@ -1,12 +1,13 @@
 package Board;
 
 import Cards.Card;
+import Cards.FlyWeightDeck;
 import Cards.PlusMinus;
+import Utils.Tuple;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Board {
 
@@ -17,11 +18,14 @@ public class Board {
     private static Integer MAX_POINTS;
     private int currentPlayerIndex;
 
+    private final FlyWeightDeck rdmCardFactory;
+
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
         currentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();
         setUpPlayers(pNumberOfPlayers);
+        rdmCardFactory = new FlyWeightDeck();
     }
 
     private ArrayList<Player> getBestPlayer(){
@@ -70,8 +74,15 @@ public class Board {
         }
     }
 
-    public void nextPlayerMove(Card card){
-        Player player = aPlayers.get(currentPlayerIndex);
+    public boolean nextPlayerMove(int intermediatePoints){
+        Card card = rdmCardFactory.getRandomCard();
+        Player player;
+        if (intermediatePoints > 0){
+            player = aPlayers.get((currentPlayerIndex -1) % aPlayers.size());
+        }
+        else {
+            player = aPlayers.get(currentPlayerIndex);
+        }
         currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
         printNameDelimiter(player);
         while (true) {
@@ -86,15 +97,19 @@ public class Board {
                 Board.printDelimiter();
                 System.out.println(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString());
                 Board.printDelimiter();
-                int result = card.makeMove();
-                if (card.getClass() == PlusMinus.class){
+                card.addIntermediatePoints(intermediatePoints);
+                Tuple result = card.makeMove();
+                if (card.getClass() == PlusMinus.class && result.getFirst() > 0){
                     ArrayList<Player> bestPlayers = getBestPlayer();
                     for (Player bestPlayer : bestPlayers){
                         bestPlayer.addPoints(-1000);
                     }
                 }
-                player.addPoints(result);
-                return;
+                if (result.getSecond()){
+                    nextPlayerMove(intermediatePoints);
+                }
+                player.addPoints(result.getFirst());
+
             }
         }
     }

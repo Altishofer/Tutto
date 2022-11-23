@@ -3,6 +3,7 @@ package Cards;
 import Board.Board;
 import Utils.InputOutputUtils;
 import Utils.Roll;
+import Utils.Tuple;
 
 import java.util.Scanner;
 
@@ -26,20 +27,15 @@ public abstract class Card {
         Board.printDelimiter();
     }
 
-    protected int rollIsTutto(){
-        sleeper.doSleep();
+    public void addIntermediatePoints(int pPoints){intermediatePoints += pPoints;}
 
+    protected Tuple rollIsTutto(){
+        sleeper.doSleep();
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
-
-        if (stopOrRoll()) {
-            intermediatePoints = finalSum;
-            return finalSum;
-        } else {
-            intermediatePoints = finalSum;
-            return makeMove();
-        }
+        if (stopOrRoll()) { return new Tuple(finalSum, false);}
+        else {return new Tuple(finalSum, true);}
     }
 
     protected int rollNotValid(){
@@ -52,30 +48,25 @@ public abstract class Card {
     protected boolean stopOrRoll(){
         Scanner scanner;
         while (true){
-
             sleeper.doSleep();
-
             int sum = intermediatePoints + roll.getPoints();
             System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
-
             scanner = new Scanner(System.in);
             String playOrStop = scanner.nextLine();
             Board.printDelimiter();
-            if (playOrStop.equalsIgnoreCase("e")){
-                return true;
-            }
+            if (playOrStop.equalsIgnoreCase("e")){return true;}
             if (playOrStop.equalsIgnoreCase("r")){return false;}
         }
     }
 
-    public int makeMove() {
+    public Tuple makeMove() {
         roll.startOverRoll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return rollNotValid();}
+            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
             roll.putAside();
             if (roll.isTutto()){return rollIsTutto();}
-            if (stopOrRoll()){return roll.getPoints() + intermediatePoints;}
+            if (stopOrRoll()){return new Tuple(roll.getPoints() + intermediatePoints, false);}
             else {roll.rollDices();}
         }
     }
