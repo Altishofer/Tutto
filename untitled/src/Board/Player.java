@@ -3,7 +3,7 @@ package Board;
 public class Player implements Comparable{
 
 
-    private String PLAYER_NAME; //static
+    private static String PLAYER_NAME;
     private int aPoints;
 
     public Player (String pName){
@@ -29,7 +29,6 @@ public class Player implements Comparable{
         if (other == null){return 0;}
         if (this.getClass() != other.getClass()){return 0;}
         Player otherPlayer = (Player) other;
-        if (this.getPlayerInitial() == otherPlayer.getPlayerInitial()){return 0;}
         if (this.getPlayerInitial() < otherPlayer.getPlayerInitial()){return -1;}
         if (this.getPlayerInitial() > otherPlayer.getPlayerInitial()){return 1;}
         return 0;
