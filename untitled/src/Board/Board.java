@@ -1,23 +1,31 @@
 package Board;
 
 import Cards.Card;
+import Cards.FlyWeightDeck;
 import Cards.PlusMinus;
+import Utils.Tuple;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Board {
+
+    // TODO: Cedi (1.prio), Pädi
+
+    // TODO: new card after tutto
     private ArrayList<Player> aPlayers;
     private static Integer MAX_POINTS;
     private int currentPlayerIndex;
+
+    private final FlyWeightDeck rdmCardFactory;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
         currentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();
         setUpPlayers(pNumberOfPlayers);
+        rdmCardFactory = new FlyWeightDeck();
     }
 
     private ArrayList<Player> getBestPlayer(){
@@ -66,9 +74,22 @@ public class Board {
         }
     }
 
-    public void nextPlayerMove(Card card){
-        Player player = aPlayers.get(currentPlayerIndex);
-        currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
+    public void nextPlayerMove(int intermediatePoints){
+        Card card = rdmCardFactory.getRandomCard();
+        Player player;
+        if (intermediatePoints > 0){
+            if (currentPlayerIndex == 0){
+                player = aPlayers.get(aPlayers.size()-1);
+            }
+            else {
+                player = aPlayers.get(currentPlayerIndex -1);
+            }
+        }
+        else {
+            player = aPlayers.get(currentPlayerIndex);
+            currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
+        }
+
         printNameDelimiter(player);
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -82,14 +103,20 @@ public class Board {
                 Board.printDelimiter();
                 System.out.println(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString());
                 Board.printDelimiter();
-                int result = card.makeMove();
-                if (card.getClass() == PlusMinus.class){
+                card.addIntermediatePoints(intermediatePoints);
+                Tuple result = card.makeMove();
+                if (card.getClass() == PlusMinus.class && result.getFirst() > 0){
                     ArrayList<Player> bestPlayers = getBestPlayer();
                     for (Player bestPlayer : bestPlayers){
                         bestPlayer.addPoints(-1000);
                     }
                 }
-                player.addPoints(result);
+                if (result.getSecond()){
+                    printDelimiter();
+                    nextPlayerMove(result.getFirst());
+                    return;
+                }
+                player.addPoints(result.getFirst());
                 return;
             }
         }
@@ -102,13 +129,4 @@ public class Board {
     public static void printDelimiter(){
         System.out.println("-------------------------------------------------");
     }
-
-    protected static void printLineDelay(){
-        try{
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            System.out.println("Please do not interrupt!");
-        }
-    }
-
 }

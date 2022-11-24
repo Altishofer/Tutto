@@ -6,13 +6,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StopTest {
 
-    //TODO: Cedi
+    Stop card = new Stop();
 
     @Test
-    void makeMove() {
+    void testMakeMove() {
+        int result = card.makeMove().getFirst();
+        assertEquals(0, result);
     }
 
     @Test
     void testToString() {
+        String result = card.toString();
+        assertEquals("Stop-Card", result);
     }
 }

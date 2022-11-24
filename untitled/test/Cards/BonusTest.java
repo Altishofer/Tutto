@@ -2,7 +2,6 @@ package Cards;
 
 import Utils.Roll;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -32,16 +31,16 @@ class BonusTest {
     }
 
     @Test
-    void makeMoveTuttoOnesTwice() {
+    void makeMoveTuttoOnesOnce() {
         ((StubCardBonus)card).setStubNr("tuttoOnes");
-        int result = card.makeMove();
-        assertEquals(4200, result);
+        int result = card.makeMove().getFirst();
+        assertEquals(2100, result);
     }
 
     @Test
     void makeMoveInvalid() {
         ((StubCardBonus)card).setStubNr("invalid");
-        int result = card.makeMove();
+        int result = card.makeMove().getFirst();
         assertEquals(0, result);
     }
 

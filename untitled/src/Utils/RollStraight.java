@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.ArrayList;
+
 public class RollStraight extends Roll {
 
     protected boolean[] asideDices;
@@ -8,6 +10,7 @@ public class RollStraight extends Roll {
         asideDices = new boolean[6];
     }
 
+    @Override
     public boolean isValid(){
         for(int i=0; i<frequencyOfValues.length; i++) {
             if (frequencyOfValues[i] != 0 && !asideDices[i]) {
@@ -17,6 +20,7 @@ public class RollStraight extends Roll {
         return false;
     }
 
+    @Override
     public void putAsideDices(){
         for(int i=0; i<frequencyOfValues.length; i++){
             if (frequencyOfValues[i] != 0 && !asideDices[i]){

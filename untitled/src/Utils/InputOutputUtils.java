@@ -3,9 +3,14 @@ package Utils;
 import java.util.concurrent.TimeUnit;
 
 public class InputOutputUtils {
-    private final int second;
 
-    public InputOutputUtils(){second = 1;}
+    // TODO: pädi -> check user inputs mainly used by player
+    private final int second;
+    
+    public InputOutputUtils(){
+        second = 1;
+    }
+
     public void doSleep(){
         try{
             TimeUnit.SECONDS.sleep(this.second);
