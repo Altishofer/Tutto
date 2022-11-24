@@ -13,7 +13,7 @@ class StopTest {
     void testMakeMove() {
          Tuple result = card.makeMove();
          Tuple check = new Tuple(0,false);
-        assertEquals(0, result);
+        assertEquals(check, result);
     }
 
     @Test
