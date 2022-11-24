@@ -10,7 +10,7 @@ class StopTest {
 
     @Test
     void testMakeMove() {
-        int result = card.makeMove();
+        int result = card.makeMove().getFirst();
         assertEquals(0, result);
     }
 
