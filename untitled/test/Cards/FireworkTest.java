@@ -1,6 +1,7 @@
 package Cards;
 
 import Utils.Roll;
+import Utils.Tuple;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -13,7 +14,9 @@ class FireworkTest {
 
     StubFirework card = new StubFirework();
     Class<Roll> roll = Roll.class;
+    Class<StubFirework> firework = StubFirework.class;
     Roll Roll = new Roll();
+    StubFirework Firework = new StubFirework();
 
     //TODO: Cedric
 
@@ -41,15 +44,18 @@ class FireworkTest {
 
     @Test
     void testMakeMoveTutto() {
-        int result = card.makeMove();
-        int check = card.rollIsTutto();
-        assertEquals(check,result);
+        Tuple result = card.makeMove();
+        Tuple check = card.rollIsTutto();
+        System.out.println(result);
+        System.out.println(check);
+        assertEquals(result,check);
+
     }
 
     @Test
-    void testMakeMoveNotValid(){
-        int result = card.makeMove();
+    void testMakeMoveNotValidStopOrRollFalse(){
+        Tuple result = card.makeMove();
         int check = card.rollNotValid();
-        assertEquals(check,result);
+        assertEquals(result, new Tuple(check,false));
     }
 }

@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Board {
+public class Board { //TODO: removed abstract
 
     // TODO: Cedi (1.prio), Pädi
 
     // TODO: new card after tutto
-    private ArrayList<Player> aPlayers;
-    private static Integer MAX_POINTS;
+    protected ArrayList<Player> aPlayers;
+    protected static Integer MAX_POINTS;
     private int currentPlayerIndex;
 
     private final FlyWeightDeck rdmCardFactory;
@@ -57,7 +57,7 @@ public class Board {
         return false;
     }
 
-    private void setUpPlayers(Integer numberOfPlayer){
+    protected void setUpPlayers(Integer numberOfPlayer){
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
             System.out.print("Player " + i + " set your name: ");

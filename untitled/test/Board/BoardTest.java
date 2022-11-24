@@ -5,14 +5,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
-    //TODO: noch nicht zugewiesen
+    //TODO: Pädi, Cedi
+
 
     @Test
-    void playerWon() {
+    void playerWonTrue() {
+        StubBoard board = new StubBoard(1000,1);
+        boolean result = board.playerWon();
+        assertTrue(result);
+    }
+
+    @Test
+    void playerWonFalse() {
+        StubBoard board = new StubBoard(2000,1);
+        boolean result = board.playerWon();
+        assertFalse(result);
     }
 
     @Test
     void displayChart() {
+
     }
 
     @Test

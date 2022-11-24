@@ -1,5 +1,6 @@
 package Cards;
 
+import Utils.Tuple;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +11,8 @@ class StopTest {
 
     @Test
     void testMakeMove() {
-        int result = card.makeMove();
+         Tuple result = card.makeMove();
+         Tuple check = new Tuple(0,false);
         assertEquals(0, result);
     }
 
