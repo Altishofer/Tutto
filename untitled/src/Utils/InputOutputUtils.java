@@ -18,4 +18,14 @@ public class InputOutputUtils {
             System.out.println("Please do not interrupt!");
         }
     }
+
+    public boolean checkNumeric(String input) {
+        if (input == null){return false;}
+        try {
+            int number = Integer.parseInt(input);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }
