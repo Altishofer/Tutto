@@ -12,14 +12,8 @@ public class Main {
         ArrayList<Integer> roll = new ArrayList<Integer>();
         boolean tutto = false;
 
-        System.out.print("How many players want to play? ");
-        String countPlayerAnswer = scanner.nextLine();
-        int countPlayer = Integer.valueOf(countPlayerAnswer);
-
-        System.out.print("How many points are necessary to win? ");
-        String numberOfPointsAnswer = scanner.nextLine();
-        int countPoints = Integer.valueOf(numberOfPointsAnswer);
-
+        int countPlayer = Utils.InputOutputUtils.getIntegerInput("How many players want to play? ");
+        int countPoints = Utils.InputOutputUtils.getIntegerInput("How many points are necessary to win? ");
         Board board = new Board(countPoints, countPlayer);
 
         while (!board.playerWon()){
