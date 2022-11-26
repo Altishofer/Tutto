@@ -74,6 +74,6 @@ class RandomFlyWeightCardTest {
 
     @Test
     void numberOfX2() {
-        assertEquals(5, getCardCount("x2-Card"));
+        assertEquals(5, getCardCount("X2-Card"));
     }
 }
