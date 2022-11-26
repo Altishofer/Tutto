@@ -1,6 +1,4 @@
 import Board.Board;
-import Cards.Card;
-import Cards.FlyWeightDeck;
 
 import java.util.ArrayList;
 import java.util.Scanner;
