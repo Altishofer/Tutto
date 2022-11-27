@@ -6,8 +6,17 @@ import Utils.Tuple;
 public class CloverLeaf extends Card {
     public boolean alreadyTutto;
 
-    public CloverLeaf() {
+    private static CloverLeaf INSTANCE;
+
+    private CloverLeaf() {
         alreadyTutto = false;
+    }
+
+    public static synchronized CloverLeaf getInstance(){
+        if (INSTANCE == null){
+            INSTANCE = new CloverLeaf();
+        }
+        return INSTANCE;
     }
 
     @Override

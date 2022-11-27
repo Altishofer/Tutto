@@ -17,12 +17,12 @@ public class Board { //TODO: removed abstract
     protected ArrayList<Player> aPlayers;
     protected static Integer MAX_POINTS;
     private int currentPlayerIndex;
-
     private final FlyWeightDeck rdmCardFactory;
+
 
     protected Scanner scanner;
 
-    public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
+    private Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
         currentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();
