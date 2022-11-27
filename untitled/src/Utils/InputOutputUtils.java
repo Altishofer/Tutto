@@ -30,7 +30,9 @@ public class InputOutputUtils {
             check = Utils.InputOutputUtils.checkNumeric(answer);
             if (check) {
                 int count = Integer.valueOf(answer);
-                return count;
+                if (count > 0) {
+                    return count;
+                }
             }
         }
     }
