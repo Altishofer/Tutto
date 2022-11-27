@@ -20,11 +20,14 @@ public class StubRoll extends Roll {
             for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
         }
         if (command == "validNotTutto"){
-            List<DiceValues> invalid = Arrays.asList(DiceValues.ONE, DiceValues.THREE, DiceValues.FOUR);
-            for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
+            List<DiceValues> invalid;
+            invalid = Arrays.asList(DiceValues.ONE, DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
+            for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%5));}
         }
-        if (command == "tuttoOnes"){
-            for (int i=0;i<dicesLeft;i++){rolledDices.add(DiceValues.ONE);}
+        if (command == "tuttoOnes") {
+            for (int i = 0; i < dicesLeft; i++) {
+                rolledDices.add(DiceValues.ONE);
+            }
         }
         frequencyOfValues = calculateFrequencies();
     }
