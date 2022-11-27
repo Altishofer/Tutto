@@ -104,7 +104,7 @@ public class Board { //TODO: removed abstract
             }
             if (seeOrRoll.equalsIgnoreCase("r")) {
                 Board.printDelimiter();
-                System.out.println(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString());
+                System.out.print(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString()+"\n");
                 Board.printDelimiter();
                 card.addIntermediatePoints(intermediatePoints);
                 Tuple result = card.makeMove();

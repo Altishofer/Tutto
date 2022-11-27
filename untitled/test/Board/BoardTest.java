@@ -75,11 +75,11 @@ class BoardTest {
                 "player1\t\t\t1500\n");
     }
 
-    //@Test
+    @Test
     void testNextPlayerMoveIntermediatePointsZero() {
         StubBoard board = new StubBoard(1000,1);
 
-        String input = "r" + "\nr" + "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr";
+        String input = "r";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
