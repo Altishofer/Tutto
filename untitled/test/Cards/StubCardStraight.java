@@ -17,17 +17,17 @@ public class StubCardStraight extends Straight{
             aAsideDices = new boolean[6];
             for (int i=0;i<6;i++){
                 aAsideDices[i]=false;}
-            rolledDices = new ArrayList<>(){};
+            aRolledDices = new ArrayList<>(){};
             if (command == null || command == "invalid"){
-                for (int i = 0; i< aDicesLeft; i++){rolledDices.add(DiceValues.ONE);}
+                for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(DiceValues.ONE);}
                 aAsideDices[0] = true;
             }
             if (command == "validNotTutto"){
-                for (int i = 0; i< aDicesLeft; i++){rolledDices.add(DiceValues.ONE);}
+                for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(DiceValues.ONE);}
                 aAsideDices[0] = false;
             }
             if (command == "tutto"){
-                for (int i = 0; i< aDicesLeft; i++){rolledDices.add(DiceValues.values()[i]);}
+                for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(DiceValues.values()[i]);}
             }
             aFrequencyOfValues = calculateFrequencies();
         }

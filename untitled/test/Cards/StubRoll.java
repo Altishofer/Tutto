@@ -14,19 +14,19 @@ public class StubRoll extends Roll {
     public String getCommand(){return command;}
     @Override
     public void rollDices(){
-        rolledDices = new ArrayList<>(){};
+        aRolledDices = new ArrayList<>(){};
         if (command == null || command == "invalid"){
             List<DiceValues> invalid = Arrays.asList(DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-            for (int i = 0; i< aDicesLeft; i++){rolledDices.add(invalid.get(i%3));}
+            for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(invalid.get(i%3));}
         }
         if (command == "validNotTutto"){
             List<DiceValues> invalid;
             invalid = Arrays.asList(DiceValues.ONE, DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-            for (int i = 0; i< aDicesLeft; i++){rolledDices.add(invalid.get(i%5));}
+            for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(invalid.get(i%5));}
         }
         if (command == "tuttoOnes") {
             for (int i = 0; i < aDicesLeft; i++) {
-                rolledDices.add(DiceValues.ONE);
+                aRolledDices.add(DiceValues.ONE);
             }
         }
         aFrequencyOfValues = calculateFrequencies();
