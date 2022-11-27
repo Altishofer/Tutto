@@ -110,7 +110,6 @@ public class Board { //TODO: removed abstract
         Collections.sort(aPlayers);
     }
 
-
     private static void printNameDelimiter(Player player) {
         System.out.print("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################\n");
     }

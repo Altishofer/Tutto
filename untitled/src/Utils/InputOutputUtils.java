@@ -6,15 +6,15 @@ import java.util.concurrent.TimeUnit;
 public class InputOutputUtils {
 
     // TODO: pädi -> check user inputs mainly used by player
-    private final int second;
+    private final int aSecond;
     
     public InputOutputUtils(){
-        second = 0;
+        aSecond = 0;
     }
 
     public void doSleep(){
         try{
-            TimeUnit.SECONDS.sleep(this.second);
+            TimeUnit.SECONDS.sleep(this.aSecond);
         }catch (InterruptedException e){
             System.out.println("Please do not interrupt!");
         }

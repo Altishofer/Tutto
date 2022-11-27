@@ -4,11 +4,11 @@ import Board.Board;
 import Utils.Tuple;
 
 public class SingletonCloverLeaf extends Card {
-    public boolean alreadyTutto;
+    public boolean aAlreadyTutto;
     protected static SingletonCloverLeaf INSTANCE;
 
     protected SingletonCloverLeaf() {
-        alreadyTutto = false;
+        aAlreadyTutto = false;
     }
 
     public static synchronized SingletonCloverLeaf getInstance(){
@@ -27,7 +27,7 @@ public class SingletonCloverLeaf extends Card {
     public Tuple rollIsTutto(){
         System.out.println("TUTTO!! -> you are one step closer to the WIN!");
         Board.printDelimiter();
-        alreadyTutto = true;
+        aAlreadyTutto = true;
         return new Tuple(makeMove().getFirst(), false);
     }
 
@@ -40,16 +40,16 @@ public class SingletonCloverLeaf extends Card {
 
     @Override
     public Tuple makeMove() {
-        roll.startOverRoll();
+        aRoll.startOverRoll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){
-                if (alreadyTutto){return new Tuple(Integer.MAX_VALUE, false);}
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){
+                if (aAlreadyTutto){return new Tuple(Integer.MAX_VALUE, false);}
                 return rollIsTutto();
             }
-            roll.rollDices();
+            aRoll.rollDices();
         }
     }
 }

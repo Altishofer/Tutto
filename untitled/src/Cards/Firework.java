@@ -12,22 +12,22 @@ public class Firework extends Card {
     }
 
     @Override
-    protected int rollNotValid(){
-        int finalSum = intermediatePoints + roll.getPoints();
-        System.out.println("The combination is invalid but you get " + finalSum + " points ");
-        Board.printDelimiter();
-        return finalSum;
+    public Tuple makeMove() {
+        aRoll = new Roll();
+        while (true){
+            printRoll();
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){return rollIsTutto();}
+            aRoll.rollDices();
+        }
     }
 
     @Override
-    public Tuple makeMove() {
-        roll = new Roll();
-        while (true){
-            printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){return rollIsTutto();}
-            roll.rollDices();
-        }
+    protected int rollNotValid(){
+        int finalSum = aIntermediatePoints + aRoll.getPoints();
+        System.out.println("The combination is invalid but you get " + finalSum + " points ");
+        Board.printDelimiter();
+        return finalSum;
     }
 }

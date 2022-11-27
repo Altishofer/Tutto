@@ -7,14 +7,7 @@ import Utils.Tuple;
 public class Straight extends Card {
 
     public Straight(){
-        roll = new RollStraight();
-    }
-
-    protected Tuple rollIsTutto(){
-        System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
-        Board.printDelimiter();
-        intermediatePoints += 2000;
-        return new Tuple(intermediatePoints, !stopOrRoll());
+        aRoll = new RollStraight();
     }
 
     @Override
@@ -23,13 +16,21 @@ public class Straight extends Card {
     }
 
     public Tuple makeMove() {
-        roll.startOverRoll();
+        aRoll.startOverRoll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){return rollIsTutto();}
-            else {roll.rollDices();}
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){return rollIsTutto();}
+            else {
+                aRoll.rollDices();}
         }
+    }
+
+    protected Tuple rollIsTutto(){
+        System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
+        Board.printDelimiter();
+        aIntermediatePoints += 2000;
+        return new Tuple(aIntermediatePoints, !stopOrRoll());
     }
 }

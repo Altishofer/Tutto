@@ -17,25 +17,25 @@ public class StubRoll extends Roll {
         rolledDices = new ArrayList<>(){};
         if (command == null || command == "invalid"){
             List<DiceValues> invalid = Arrays.asList(DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-            for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
+            for (int i = 0; i< aDicesLeft; i++){rolledDices.add(invalid.get(i%3));}
         }
         if (command == "validNotTutto"){
             List<DiceValues> invalid;
             invalid = Arrays.asList(DiceValues.ONE, DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-            for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%5));}
+            for (int i = 0; i< aDicesLeft; i++){rolledDices.add(invalid.get(i%5));}
         }
         if (command == "tuttoOnes") {
-            for (int i = 0; i < dicesLeft; i++) {
+            for (int i = 0; i < aDicesLeft; i++) {
                 rolledDices.add(DiceValues.ONE);
             }
         }
-        frequencyOfValues = calculateFrequencies();
+        aFrequencyOfValues = calculateFrequencies();
     }
 
     @Override
     public void startOverRoll(){
-        dicesLeft = DiceValues.values().length;
-        points = 0;
+        aDicesLeft = DiceValues.values().length;
+        aPoints = 0;
         this.rollDices();
     }
 }

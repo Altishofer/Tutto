@@ -13,8 +13,8 @@ public class StubCloverLeafOneTutto extends SingletonCloverLeaf {
     public Tuple rollIsTutto(){
         System.out.println("TUTTO!! -> you are one step closer to the WIN!");
         Board.printDelimiter();
-        alreadyTutto = true;
-        ((StubRoll) roll).setCommand("invalid");
+        aAlreadyTutto = true;
+        ((StubRoll) aRoll).setCommand("invalid");
         return new Tuple(makeMove().getFirst(), false);
     }
 }

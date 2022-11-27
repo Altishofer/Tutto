@@ -10,13 +10,14 @@ public class PlusMinus extends Card {
     }
 
     public Tuple makeMove() {
-        roll.startOverRoll();
+        aRoll.startOverRoll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){return rollIsTutto();}
-            else {roll.rollDices();}
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){return rollIsTutto();}
+            else {
+                aRoll.rollDices();}
         }
     }
 }

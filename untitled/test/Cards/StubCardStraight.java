@@ -14,36 +14,37 @@ public class StubCardStraight extends Straight{
         public String getCommand(){return command;}
         @Override
         public void rollDices(){
-            asideDices = new boolean[6];
-            for (int i=0;i<6;i++){asideDices[i]=false;}
+            aAsideDices = new boolean[6];
+            for (int i=0;i<6;i++){
+                aAsideDices[i]=false;}
             rolledDices = new ArrayList<>(){};
             if (command == null || command == "invalid"){
-                for (int i=0;i<dicesLeft;i++){rolledDices.add(DiceValues.ONE);}
-                asideDices[0] = true;
+                for (int i = 0; i< aDicesLeft; i++){rolledDices.add(DiceValues.ONE);}
+                aAsideDices[0] = true;
             }
             if (command == "validNotTutto"){
-                for (int i=0;i<dicesLeft;i++){rolledDices.add(DiceValues.ONE);}
-                asideDices[0] = false;
+                for (int i = 0; i< aDicesLeft; i++){rolledDices.add(DiceValues.ONE);}
+                aAsideDices[0] = false;
             }
             if (command == "tutto"){
-                for (int i=0;i<dicesLeft;i++){rolledDices.add(DiceValues.values()[i]);}
+                for (int i = 0; i< aDicesLeft; i++){rolledDices.add(DiceValues.values()[i]);}
             }
-            frequencyOfValues = calculateFrequencies();
+            aFrequencyOfValues = calculateFrequencies();
         }
 
         @Override
         public void startOverRoll(){
-            dicesLeft = DiceValues.values().length;
-            points = 0;
+            aDicesLeft = DiceValues.values().length;
+            aPoints = 0;
             this.rollDices();
         }
     }
 
     private int stops = 0;
     public StubCardStraight(){
-        roll = new StubStraightRoll();
+        aRoll = new StubStraightRoll();
     }
-    public void setStubNr(String command){((StubStraightRoll) roll).setCommand(command);}
+    public void setStubNr(String command){((StubStraightRoll) aRoll).setCommand(command);}
 
     @Override
     public boolean stopOrRoll() {

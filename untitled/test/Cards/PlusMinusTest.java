@@ -13,10 +13,10 @@ class PlusMinusTest{
         private int stops = 0;
         public StubCardPlusMinus() {
             super();
-            roll = new StubRoll();
+            aRoll = new StubRoll();
         }
 
-        public void setStubNr(String command){((StubRoll) roll).setCommand(command);}
+        public void setStubNr(String command){((StubRoll) aRoll).setCommand(command);}
 
         @Override
         public boolean stopOrRoll() {

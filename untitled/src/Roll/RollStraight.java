@@ -2,16 +2,16 @@ package Roll;
 
 public class RollStraight extends Roll {
 
-    protected boolean[] asideDices;
+    protected boolean[] aAsideDices;
 
     public RollStraight(){
-        asideDices = new boolean[6];
+        aAsideDices = new boolean[6];
     }
 
     @Override
     public boolean isValid(){
-        for(int i=0; i<frequencyOfValues.length; i++) {
-            if (frequencyOfValues[i] != 0 && !asideDices[i]) {
+        for(int i = 0; i< aFrequencyOfValues.length; i++) {
+            if (aFrequencyOfValues[i] != 0 && !aAsideDices[i]) {
                 return true;
             }
         }
@@ -20,10 +20,10 @@ public class RollStraight extends Roll {
 
     @Override
     public void putAsideDices(){
-        for(int i=0; i<frequencyOfValues.length; i++){
-            if (frequencyOfValues[i] != 0 && !asideDices[i]){
-                asideDices[i] = true;
-                dicesLeft--;
+        for(int i = 0; i< aFrequencyOfValues.length; i++){
+            if (aFrequencyOfValues[i] != 0 && !aAsideDices[i]){
+                aAsideDices[i] = true;
+                aDicesLeft--;
             }
         }
     }
