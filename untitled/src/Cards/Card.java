@@ -20,6 +20,7 @@ public abstract class Card {
 
     @Override
     public abstract String toString();
+
     protected void printRoll(){
         sleeper.doSleep();
         String listString = String.join(", ", String.valueOf(roll.getRolledDices()));

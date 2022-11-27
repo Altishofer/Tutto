@@ -5,15 +5,15 @@ import java.util.concurrent.TimeUnit;
 public class InputOutputUtils {
 
     // TODO: pädi -> check user inputs mainly used by player
-    private final int second;
+    private final int seconds;
     
     public InputOutputUtils(){
-        second = 1;
+        seconds = 1;
     }
 
     public void doSleep(){
         try{
-            TimeUnit.SECONDS.sleep(this.second);
+            TimeUnit.SECONDS.sleep(this.seconds);
         }catch (InterruptedException e){
             System.out.println("Please do not interrupt!");
         }
