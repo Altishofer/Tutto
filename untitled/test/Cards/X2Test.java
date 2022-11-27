@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class X2Test {
+    X2 aX2 = new X2();
+    //TODO: Adrian
 
     @Test
     void testToString() {
