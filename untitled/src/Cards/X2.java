@@ -7,9 +7,7 @@ import Utils.Tuple;
 public class X2 extends Card {
 
     @Override
-    public String toString(){
-        return "X2-Card";
-    }
+    public String toString(){ return "X2-Card"; }
 
     @Override
     protected Tuple rollIsTutto(){

@@ -49,4 +49,11 @@ class PlayerTest {
         Player other = new Player("A_PlayerName");
         assertEquals(1, mPlayer.compareTo(other));
     }
+
+    @Test
+    void compareTo_samePlayerInitial() {
+        Player mPlayer = new Player("PlayerName");
+        Player other = new Player("PlayerName");
+        assertEquals(0, mPlayer.compareTo(other));
+    }
 }
