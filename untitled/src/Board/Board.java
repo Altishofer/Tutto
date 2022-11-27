@@ -49,7 +49,7 @@ public class Board { //TODO: removed abstract
             if (player.getPoints() >= MAX_POINTS){
                 Board.printDelimiter();
                 Board.printDelimiter();
-                System.out.println("THE WINNER IS -> " + player.getPlayerName().toUpperCase());
+                System.out.print("THE WINNER IS -> " + player.getPlayerName().toUpperCase()+"\n");
                 Board.printDelimiter();
                 return true;
             }
@@ -68,9 +68,9 @@ public class Board { //TODO: removed abstract
 
     public void displayChart(){
         Board.printDelimiter();
-        System.out.println("Player" + "\t\t" + "Points");
+        System.out.print("Player" + "\t\t" + "Points\n");
         for (Player playerIter : aPlayers) {
-            System.out.println(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints());
+            System.out.print(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints()+"\n");
         }
     }
 
@@ -127,6 +127,6 @@ public class Board { //TODO: removed abstract
     }
 
     public static void printDelimiter(){
-        System.out.println("-------------------------------------------------");
+        System.out.print("-------------------------------------------------\n");
     }
 }

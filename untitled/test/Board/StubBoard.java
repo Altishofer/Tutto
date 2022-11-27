@@ -1,9 +1,17 @@
 package Board;
 
-public class StubBoard extends Board{
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
 
-    public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers) {
+public class StubBoard extends Board{
+    private Scanner scannerTest;
+    private PrintStream printStream;
+
+    public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream, PrintStream printStream) {
         super(pMaxPoints,pNumberOfPlayers);
+        this.scannerTest = new Scanner(inputStream);
+        this.printStream = printStream;
     }
 
     @Override
