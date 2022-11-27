@@ -1,7 +1,7 @@
 package Cards;
 
 import Board.Board;
-import Utils.Roll;
+import Roll.Roll;
 import Utils.Tuple;
 
 public class Firework extends Card {

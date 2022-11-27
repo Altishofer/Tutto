@@ -2,7 +2,7 @@ package Cards;
 
 import Board.Board;
 import Utils.InputOutputUtils;
-import Utils.Roll;
+import Roll.Roll;
 import Utils.Tuple;
 
 import java.util.Scanner;

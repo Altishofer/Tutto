@@ -18,7 +18,7 @@ public class Board { //TODO: removed abstract
     protected static Integer MAX_POINTS;
     private int currentPlayerIndex;
     protected FlyWeightDeck rdmCardFactory;
-    
+
     protected Scanner scanner;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){

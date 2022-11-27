@@ -3,10 +3,10 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class StubCloverLeafOneTutto extends CloverLeaf {
+public class StubCloverLeafOneTutto extends SingletonCloverLeaf {
 
     public StubCloverLeafOneTutto(){
-        INSTANCE = CloverLeaf.getInstance();
+        INSTANCE = SingletonCloverLeaf.getInstance();
     }
 
     @Override

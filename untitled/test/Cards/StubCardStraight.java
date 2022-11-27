@@ -1,7 +1,7 @@
 package Cards;
 
 import Utils.DiceValues;
-import Utils.RollStraight;
+import Roll.RollStraight;
 
 import java.util.ArrayList;
 

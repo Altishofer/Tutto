@@ -1,8 +1,11 @@
-package Utils;
+package Roll;
+
+import Utils.Dice;
+import Utils.DiceValues;
 
 import java.util.ArrayList;
 
-public class Roll {
+public class Roll{
     protected int points;
     protected ArrayList<DiceValues> rolledDices;
     protected int[] frequencyOfValues;

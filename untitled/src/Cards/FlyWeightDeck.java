@@ -4,32 +4,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FlyWeightDeck {
-    private ArrayList<Card> CardFlyWeightStore;
+    private ArrayList<Card> aCardFlyWeightStore;
 
     public FlyWeightDeck(){
         prepareCardsNew();
     }
 
     private void prepareCardsNew(){
-        CardFlyWeightStore = new ArrayList<Card>();
-        CardFlyWeightStore.add(CloverLeaf.getInstance());
+        aCardFlyWeightStore = new ArrayList<Card>();
+        aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
         for (int i=0; i<5; i++){
-            CardFlyWeightStore.add(new Straight());
-            CardFlyWeightStore.add(new Firework());
-            CardFlyWeightStore.add(new PlusMinus());
-            CardFlyWeightStore.add(new X2());
+            aCardFlyWeightStore.add(new Straight());
+            aCardFlyWeightStore.add(new Firework());
+            aCardFlyWeightStore.add(new PlusMinus());
+            aCardFlyWeightStore.add(new X2());
             for (int j=2; j<7; j++){
-                CardFlyWeightStore.add(new Bonus(j*100));
+                aCardFlyWeightStore.add(new Bonus(j*100));
             }
             for (int j=0; j<2; j++){
-                CardFlyWeightStore.add(new Stop());
+                aCardFlyWeightStore.add(new Stop());
             }
         }
-        Collections.shuffle(CardFlyWeightStore);
+        Collections.shuffle(aCardFlyWeightStore);
     }
 
     public Card getRandomCard(){
-        if (CardFlyWeightStore.isEmpty()){prepareCardsNew();}
-        return CardFlyWeightStore.remove(0);
+        if (aCardFlyWeightStore.isEmpty()){prepareCardsNew();}
+        return aCardFlyWeightStore.remove(0);
     }
 }

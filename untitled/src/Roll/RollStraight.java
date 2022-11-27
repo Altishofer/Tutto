@@ -1,4 +1,4 @@
-package Utils;
+package Roll;
 
 public class RollStraight extends Roll {
 

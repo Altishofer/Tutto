@@ -1,7 +1,7 @@
 package Cards;
 
 import Board.Board;
-import Utils.RollStraight;
+import Roll.RollStraight;
 import Utils.Tuple;
 
 public class Straight extends Card {

@@ -5,7 +5,6 @@ import Utils.Tuple;
 
 public class SingletonCloverLeaf extends Card {
     public boolean alreadyTutto;
-
     protected static SingletonCloverLeaf INSTANCE;
 
     protected SingletonCloverLeaf() {
