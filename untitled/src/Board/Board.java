@@ -18,7 +18,7 @@ public class Board { //TODO: removed abstract
     protected static Integer MAX_POINTS;
     private int currentPlayerIndex;
 
-    private final FlyWeightDeck rdmCardFactory;
+    protected FlyWeightDeck rdmCardFactory;
 
     protected Scanner scanner;
 
@@ -95,7 +95,6 @@ public class Board { //TODO: removed abstract
 
         printNameDelimiter(player);
         while (true) {
-
             System.out.print("Do you want to display the charts (D) or roll (R) the dice? ");
             String seeOrRoll = scanner.nextLine();
             if (seeOrRoll.equalsIgnoreCase("d")) {
@@ -126,7 +125,7 @@ public class Board { //TODO: removed abstract
     }
 
     private static void printNameDelimiter(Player player) {
-        System.out.println("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################");
+        System.out.print("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################\n");
     }
 
     public static void printDelimiter(){

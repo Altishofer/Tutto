@@ -6,6 +6,12 @@ import java.util.Scanner;
 
 public class StubBoard extends Board{
 
+    public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream) {
+        super(pMaxPoints,pNumberOfPlayers);
+        super.rdmCardFactory = new StubFlyWeightDeck();
+        super.scanner = new Scanner(inputStream);
+    }
+
     public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers) {
         super(pMaxPoints,pNumberOfPlayers);
     }
