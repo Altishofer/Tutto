@@ -4,7 +4,7 @@ import Board.Board;
 import Utils.Roll;
 import Utils.Tuple;
 
-public class Firework extends Card {
+public class Firework extends AbstractCard {
 
     @Override
     public String toString(){

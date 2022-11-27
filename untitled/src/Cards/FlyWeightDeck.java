@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FlyWeightDeck {
-    private ArrayList<Card> CardFlyWeightStore;
+    private ArrayList<AbstractCard> CardFlyWeightStore;
 
     public FlyWeightDeck(){
         prepareCardsNew();
     }
 
     private void prepareCardsNew(){
-        CardFlyWeightStore = new ArrayList<Card>();
+        CardFlyWeightStore = new ArrayList<AbstractCard>();
         CardFlyWeightStore.add(CloverLeaf.getInstance());
         for (int i=0; i<5; i++){
             CardFlyWeightStore.add(new Straight());
@@ -28,7 +28,7 @@ public class FlyWeightDeck {
         Collections.shuffle(CardFlyWeightStore);
     }
 
-    public Card getRandomCard(){
+    public AbstractCard getRandomCard(){
         if (CardFlyWeightStore.isEmpty()){prepareCardsNew();}
         return CardFlyWeightStore.remove(0);
     }

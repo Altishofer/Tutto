@@ -3,7 +3,7 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class CloverLeaf extends Card {
+public class CloverLeaf extends AbstractCard {
     public boolean alreadyTutto;
 
     protected static CloverLeaf INSTANCE;

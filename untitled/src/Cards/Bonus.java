@@ -3,7 +3,7 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class Bonus extends Card {
+public class Bonus extends AbstractCard {
     private final int BONUS_VALUE;
 
     public Bonus(Integer bonus){

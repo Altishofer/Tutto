@@ -2,7 +2,7 @@ package Cards;
 
 import Utils.Tuple;
 
-public class PlusMinus extends Card {
+public class PlusMinus extends AbstractCard {
 
     @Override
     public String toString(){

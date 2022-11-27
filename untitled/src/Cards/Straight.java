@@ -4,7 +4,7 @@ import Board.Board;
 import Utils.RollStraight;
 import Utils.Tuple;
 
-public class Straight extends Card {
+public class Straight extends AbstractCard {
 
     public Straight(){
         roll = new RollStraight();

@@ -1,13 +1,13 @@
 package Board;
 
-import Cards.Card;
+import Cards.AbstractCard;
 import Cards.FlyWeightDeck;
 import Cards.Stop;
 
 public class StubFlyWeightDeck extends FlyWeightDeck{
 
     @Override
-    public Card getRandomCard(){
+    public AbstractCard getRandomCard(){
         return new Stop();
     }
 }

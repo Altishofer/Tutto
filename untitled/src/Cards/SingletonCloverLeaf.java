@@ -3,7 +3,7 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class SingletonCloverLeaf extends Card {
+public class SingletonCloverLeaf extends AbstractCard {
     public boolean alreadyTutto;
 
     protected static SingletonCloverLeaf INSTANCE;

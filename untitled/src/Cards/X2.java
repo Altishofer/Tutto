@@ -4,7 +4,7 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class X2 extends Card {
+public class X2 extends AbstractCard {
 
     @Override
     public String toString(){ return "X2-Card"; }

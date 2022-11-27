@@ -10,7 +10,7 @@ class FlyWeightCardTest {
 
     private int getCardCount(String type) {
         FlyWeightDeck cardFactory = new FlyWeightDeck();
-        Card card;
+        AbstractCard card;
         int res = 0;
 
         for (int i = 0; i < 56; i++) {

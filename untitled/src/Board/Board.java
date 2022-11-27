@@ -1,6 +1,6 @@
 package Board;
 
-import Cards.Card;
+import Cards.AbstractCard;
 import Cards.FlyWeightDeck;
 import Cards.PlusMinus;
 import Utils.Tuple;
@@ -77,7 +77,7 @@ public class Board { //TODO: removed abstract
     }
 
     public void nextPlayerMove(int intermediatePoints){
-        Card card = rdmCardFactory.getRandomCard();
+        AbstractCard card = rdmCardFactory.getRandomCard();
         Player player;
         if (intermediatePoints > 0){
             if (currentPlayerIndex == 0){

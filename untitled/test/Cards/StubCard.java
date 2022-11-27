@@ -1,6 +1,6 @@
 package Cards;
 
-public class StubCard extends Card{
+public class StubCard extends AbstractCard {
     private int stops = 0;
     public StubCard(){
         roll = new StubRoll();

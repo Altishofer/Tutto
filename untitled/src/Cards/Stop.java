@@ -2,7 +2,7 @@ package Cards;
 
 import Utils.Tuple;
 
-public class Stop extends Card {
+public class Stop extends AbstractCard {
 
     @Override
     public Tuple makeMove() {return new Tuple(0, false);}
