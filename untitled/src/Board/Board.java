@@ -17,9 +17,8 @@ public class Board { //TODO: removed abstract
     protected ArrayList<Player> aPlayers;
     protected static Integer MAX_POINTS;
     private int currentPlayerIndex;
-    private final FlyWeightDeck rdmCardFactory;
-
-
+    protected FlyWeightDeck rdmCardFactory;
+    
     protected Scanner scanner;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
@@ -95,7 +94,6 @@ public class Board { //TODO: removed abstract
 
         printNameDelimiter(player);
         while (true) {
-
             System.out.print("Do you want to display the charts (D) or roll (R) the dice? ");
             String seeOrRoll = scanner.nextLine();
             if (seeOrRoll.equalsIgnoreCase("d")) {
@@ -104,7 +102,7 @@ public class Board { //TODO: removed abstract
             }
             if (seeOrRoll.equalsIgnoreCase("r")) {
                 Board.printDelimiter();
-                System.out.println(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString());
+                System.out.print(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString()+"\n");
                 Board.printDelimiter();
                 card.addIntermediatePoints(intermediatePoints);
                 Tuple result = card.makeMove();
@@ -126,7 +124,7 @@ public class Board { //TODO: removed abstract
     }
 
     private static void printNameDelimiter(Player player) {
-        System.out.println("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################");
+        System.out.print("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################\n");
     }
 
     public static void printDelimiter(){

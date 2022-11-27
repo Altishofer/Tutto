@@ -57,11 +57,12 @@ class BoardTest {
 
     @Test
     void testPlayerWonPrint(){
-        StubBoard board = new StubBoard(2000,1);
+        StubBoard board = new StubBoard(1000,1);
         board.playerWon();
-        assertEquals(outContent.toString(),"-------------------------------------------------\n"+
-                "-------------------------------------------------\n"+
-                "THE WINNER IS -> PLAYER1\n"+
+        assertEquals(outContent.toString(),"PLAYER1 -> you currently have a score of 1500 points\n" +
+                "-------------------------------------------------\n" +
+                "-------------------------------------------------\n" +
+                "THE WINNER IS -> PLAYER1\n" +
                 "-------------------------------------------------\n");
     }
 
@@ -75,19 +76,81 @@ class BoardTest {
                 "player1\t\t\t1500\n");
     }
 
-    //@Test
+    @Test
     void testNextPlayerMoveIntermediatePointsZero() {
-        StubBoard board = new StubBoard(1000,1);
 
-        String input = "r" + "\nr" + "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        String input = "r\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
+        StubBoard board = new StubBoard(1000,1, inputStream);
+
         board.nextPlayerMove(0);
 
-        String expected = "Do you want to display the charts (D) or roll (R) the dice? PLAYER1 -> you have drawn a \n#################### current player: PLAYER1####################";
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 1500 points\n";
+
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    void testNextPlayerMoveIntermediateDisplay() {
+
+
+        String input = "d\nr\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        StubBoard board = new StubBoard(1000,1, inputStream);
+
+        board.nextPlayerMove(0);
+
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "Player\t\tPoints\n" +
+                "player1\t\t\t1500\n" +
+                "-------------------------------------------------\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 1500 points\n";
+
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    void testNextPlayerMoveIntermediatePoints() {
+
+
+        String input = "r\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        StubBoard board = new StubBoard(5000,1, inputStream);
+
+        board.nextPlayerMove(500);
+
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 1500 points\n";
 
         assertEquals(expected, outContent.toString());
     }

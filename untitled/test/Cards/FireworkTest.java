@@ -51,6 +51,6 @@ class FireworkTest {
     void testMakeMoveNotValid(){
         Tuple result = card.makeMove();
         int check = card.rollNotValid();
-        assertEquals(result, new Tuple(check,false));
+        assertEquals(new Tuple(check,false),result);
     }
 }
