@@ -8,24 +8,6 @@ class X2Test {
     X2 aX2 = new X2();
     //TODO: Adrian
 
-<<<<<<< HEAD
-    @Test
-    void testToString() {
-        //assertEquals("x2-Card", aX2.toString());
-    }
-
-    @Test
-    void rollIsTutto() {
-        for (int i = 0; i < 20; i++){
-            X2 x2_temp = new X2();
-            // not yet correct
-            //assertTrue(x2_temp.rollIsTutto() == (x2_temp.intermediatePoints + x2_temp.roll.getPoints()) * 2
-                            // || x2_temp.rollIsTutto() == 0
-                            // || x2_temp.rollIsTutto() > (x2_temp.intermediatePoints + x2_temp.roll.getPoints()) * 2);
-        }
-=======
-    X2 aX2 = new X2();
-
     @Test
     void testToString() { assertEquals("X2-Card", aX2.toString()); }
 
@@ -63,6 +45,5 @@ class X2Test {
         ((StubRoll) mX2.roll).putAside();
         assertTrue(((X2) mX2).rollIsTutto().getFirst() > 0);
         assertTrue(((X2) mX2).rollIsTutto().getSecond() == true);
->>>>>>> adi
     }
 }
