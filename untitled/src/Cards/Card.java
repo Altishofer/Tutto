@@ -10,7 +10,7 @@ import java.util.Scanner;
 public abstract class Card {
 
     protected int intermediatePoints = 0;
-    protected Roll roll;
+    public Roll roll;
     protected InputOutputUtils sleeper;
 
     protected Card(){

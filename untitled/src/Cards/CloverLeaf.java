@@ -4,7 +4,7 @@ import Board.Board;
 import Utils.Tuple;
 
 public class CloverLeaf extends Card {
-    private boolean alreadyTutto;
+    public boolean alreadyTutto;
 
     public CloverLeaf() {
         alreadyTutto = false;
@@ -16,7 +16,7 @@ public class CloverLeaf extends Card {
     }
 
     @Override
-    protected Tuple rollIsTutto(){
+    public Tuple rollIsTutto(){
         System.out.println("TUTTO!! -> you are one step closer to the WIN!");
         Board.printDelimiter();
         alreadyTutto = true;
@@ -24,8 +24,8 @@ public class CloverLeaf extends Card {
     }
 
     @Override
-    protected int rollNotValid(){
-        System.out.println("No had no luck, the Cloverleaf is gone");
+    public int rollNotValid(){
+        System.out.println("You had no luck, the Cloverleaf is gone");
         Board.printDelimiter();
         return 0;
     }
