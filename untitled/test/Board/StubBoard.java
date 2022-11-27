@@ -10,7 +10,7 @@ public class StubBoard extends Board{
 
     public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream, PrintStream printStream) {
         super(pMaxPoints,pNumberOfPlayers);
-        this.scannerTest = new Scanner(inputStream);
+        super.scanner = new Scanner(inputStream);
         this.printStream = printStream;
     }
 
