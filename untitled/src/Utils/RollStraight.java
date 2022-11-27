@@ -1,7 +1,5 @@
 package Utils;
 
-import java.util.ArrayList;
-
 public class RollStraight extends Roll {
 
     protected boolean[] asideDices;

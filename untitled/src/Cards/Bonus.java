@@ -1,7 +1,6 @@
 package Cards;
 
 import Board.Board;
-import Utils.RollStraight;
 import Utils.Tuple;
 
 public class Bonus extends Card {

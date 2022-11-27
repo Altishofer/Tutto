@@ -21,7 +21,7 @@ class StubCardTest {
         assertEquals(0, result);
     }
 
-    @Test
+    @Test // doesn't work yet
     void makeMoveValidNotTuttoTwice() {
         card.setStubNr("validNotTutto");
         int result = card.makeMove().getFirst();
