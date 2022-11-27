@@ -14,25 +14,24 @@ public class Board { //TODO: removed abstract
     // TODO: Cedi (1.prio), Pädi
 
     // TODO: new card after tutto
+    private int aCurrentPlayerIndex;
     protected ArrayList<Player> aPlayers;
     protected static Integer MAX_POINTS;
-    private int currentPlayerIndex;
-    protected FlyWeightDeck rdmCardFactory;
-    
-    protected Scanner scanner;
+    protected FlyWeightDeck aRandomCardFactory;
+    protected Scanner aScanner;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
-        currentPlayerIndex = 0;
+        aCurrentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();
         setUpPlayers(pNumberOfPlayers);
-        rdmCardFactory = new FlyWeightDeck();
-        scanner = new Scanner(System.in);
+        aRandomCardFactory = new FlyWeightDeck();
+        aScanner = new Scanner(System.in);
     }
 
     private ArrayList<Player> getBestPlayer(){
         ArrayList<Player> bestPlayers = new ArrayList<>();
-        int maxPoints = aPlayers.get(currentPlayerIndex).getPoints() + 1;
+        int maxPoints = aPlayers.get(aCurrentPlayerIndex).getPoints() + 1;
         for (Player player : aPlayers){
             if (player.getPoints() >= maxPoints){
                 maxPoints = player.getPoints();
@@ -77,25 +76,25 @@ public class Board { //TODO: removed abstract
     }
 
     public void nextPlayerMove(int intermediatePoints){
-        Card card = rdmCardFactory.getRandomCard();
+        Card card = aRandomCardFactory.getRandomCard();
         Player player;
         if (intermediatePoints > 0){
-            if (currentPlayerIndex == 0){
+            if (aCurrentPlayerIndex == 0){
                 player = aPlayers.get(aPlayers.size()-1);
             }
             else {
-                player = aPlayers.get(currentPlayerIndex -1);
+                player = aPlayers.get(aCurrentPlayerIndex -1);
             }
         }
         else {
-            player = aPlayers.get(currentPlayerIndex);
-            currentPlayerIndex = (currentPlayerIndex + 1) % aPlayers.size();
+            player = aPlayers.get(aCurrentPlayerIndex);
+            aCurrentPlayerIndex = (aCurrentPlayerIndex + 1) % aPlayers.size();
         }
 
         printNameDelimiter(player);
         while (true) {
             System.out.print("Do you want to display the charts (D) or roll (R) the dice? ");
-            String seeOrRoll = scanner.nextLine();
+            String seeOrRoll = aScanner.nextLine();
             if (seeOrRoll.equalsIgnoreCase("d")) {
                 displayChart();
                 Board.printDelimiter();
