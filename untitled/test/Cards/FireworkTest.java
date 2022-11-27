@@ -39,18 +39,18 @@ class FireworkTest {
     }
     //TODO: very hard
     //@Test
-    //void testMakeMoveTutto() {
-      //Tuple result = card.makeMove();
-        //Tuple check = card.rollIsTutto();
-        //System.out.println(result);
-        //System.out.println(check);
-        //assertEquals(result,check);
-    //}
+    void testMakeMoveTutto() {
+        Tuple result = card.makeMove();
+        Tuple check = card.rollIsTutto();
+        System.out.println(result);
+        System.out.println(check);
+        assertEquals(result,check);
+    }
 
     @Test
     void testMakeMoveNotValid(){
         Tuple result = card.makeMove();
         int check = card.rollNotValid();
-        assertEquals(new Tuple(check,false),result);
+        assertEquals(check,result.getFirst());
     }
 }
