@@ -9,16 +9,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Board {
+public class Board { //TODO: removed abstract
 
     // TODO: Cedi (1.prio), Pädi
 
     // TODO: new card after tutto
-    private ArrayList<Player> aPlayers;
-    private static Integer MAX_POINTS;
+    protected ArrayList<Player> aPlayers;
+    protected static Integer MAX_POINTS;
     private int currentPlayerIndex;
-
-    private final FlyWeightDeck rdmCardFactory;
+    protected FlyWeightDeck rdmCardFactory;
+    
+    protected Scanner scanner;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
@@ -26,6 +27,7 @@ public class Board {
         aPlayers = new ArrayList<Player>();
         setUpPlayers(pNumberOfPlayers);
         rdmCardFactory = new FlyWeightDeck();
+        scanner = new Scanner(System.in);
     }
 
     private ArrayList<Player> getBestPlayer(){
@@ -49,7 +51,7 @@ public class Board {
             if (player.getPoints() >= MAX_POINTS){
                 Board.printDelimiter();
                 Board.printDelimiter();
-                System.out.println("THE WINNER IS -> " + player.getPlayerName().toUpperCase());
+                System.out.print("THE WINNER IS -> " + player.getPlayerName().toUpperCase()+"\n");
                 Board.printDelimiter();
                 return true;
             }
@@ -57,7 +59,7 @@ public class Board {
         return false;
     }
 
-    private void setUpPlayers(Integer numberOfPlayer){
+    protected void setUpPlayers(Integer numberOfPlayer){
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
             System.out.print("Player " + i + " set your name: ");
@@ -68,9 +70,9 @@ public class Board {
 
     public void displayChart(){
         Board.printDelimiter();
-        System.out.println("Player" + "\t\t" + "Points");
+        System.out.print("Player" + "\t\t" + "Points\n");
         for (Player playerIter : aPlayers) {
-            System.out.println(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints());
+            System.out.print(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints()+"\n");
         }
     }
 
@@ -92,7 +94,6 @@ public class Board {
 
         printNameDelimiter(player);
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             System.out.print("Do you want to display the charts (D) or roll (R) the dice? ");
             String seeOrRoll = scanner.nextLine();
             if (seeOrRoll.equalsIgnoreCase("d")) {
@@ -101,7 +102,7 @@ public class Board {
             }
             if (seeOrRoll.equalsIgnoreCase("r")) {
                 Board.printDelimiter();
-                System.out.println(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString());
+                System.out.print(player.getPlayerName().toUpperCase() + " -> you have drawn a " + card.toString()+"\n");
                 Board.printDelimiter();
                 card.addIntermediatePoints(intermediatePoints);
                 Tuple result = card.makeMove();
@@ -123,10 +124,10 @@ public class Board {
     }
 
     private static void printNameDelimiter(Player player) {
-        System.out.println("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################");
+        System.out.print("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################\n");
     }
 
     public static void printDelimiter(){
-        System.out.println("-------------------------------------------------");
+        System.out.print("-------------------------------------------------\n");
     }
 }

@@ -4,7 +4,7 @@ import Board.Board;
 import Utils.Tuple;
 
 public class Bonus extends Card {
-    private static int BONUS_VALUE;
+    private final int BONUS_VALUE;
 
     public Bonus(Integer bonus){
         BONUS_VALUE = bonus;

@@ -18,7 +18,7 @@ public class Player implements Comparable{
 
     public void addPoints(int pPoints){
         aPoints += pPoints;
-        System.out.println(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + " points");
+        System.out.print(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + " points\n");
     }
 
     public int getPoints(){
