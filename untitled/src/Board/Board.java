@@ -22,7 +22,7 @@ public class Board { //TODO: removed abstract
 
     protected Scanner scanner;
 
-    private Board(Integer pMaxPoints, Integer pNumberOfPlayers){
+    public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
         currentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();

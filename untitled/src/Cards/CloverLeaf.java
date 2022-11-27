@@ -6,9 +6,9 @@ import Utils.Tuple;
 public class CloverLeaf extends Card {
     public boolean alreadyTutto;
 
-    private static CloverLeaf INSTANCE;
+    protected static CloverLeaf INSTANCE;
 
-    private CloverLeaf() {
+    protected CloverLeaf() {
         alreadyTutto = false;
     }
 
