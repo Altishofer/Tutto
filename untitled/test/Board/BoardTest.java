@@ -34,13 +34,6 @@ class BoardTest {
         System.setErr(originalErr);
     }
 
-    // TODO: to reach enought coverage test also private
-    @Test
-    void testGetBestPlayer(){
-        StubBoard board = new StubBoard(1000,1);
-
-    }
-
     @Test
     void testPlayerWonTrue() {
         StubBoard board = new StubBoard(1000,1);
@@ -78,8 +71,6 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediatePointsZero() {
-
-
         String input = "r\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
@@ -103,8 +94,6 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediateDisplay() {
-
-
         String input = "d\nr\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
@@ -132,8 +121,6 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediatePoints() {
-
-
         String input = "r\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
@@ -143,6 +130,30 @@ class BoardTest {
         StubBoard board = new StubBoard(5000,1, inputStream);
 
         board.nextPlayerMove(500);
+
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 1500 points\n";
+
+        assertEquals(expected, outContent.toString());
+    }
+
+    //@Test
+    void testNextPlayerMovePlusMinus() {
+        String input = "r\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        StubBoard board = new StubBoard(5000,1, inputStream);
+        board.setCommand("plusminus");
+
+        board.nextPlayerMove(0);
 
         String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
                 "\n" +

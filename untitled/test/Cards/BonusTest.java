@@ -20,7 +20,6 @@ class BonusTest {
         }
 
         public void setStubNr(String command){((StubRoll) roll).setCommand(command);}
-        public String getStubNr(){return ((StubRoll) roll).getCommand();}
 
         @Override
         public boolean stopOrRoll() {
@@ -43,6 +42,4 @@ class BonusTest {
         int result = card.makeMove().getFirst();
         assertEquals(0, result);
     }
-
-
 }
