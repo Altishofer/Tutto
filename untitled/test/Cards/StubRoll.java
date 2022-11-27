@@ -1,6 +1,6 @@
 package Cards;
 
-import Utils.DiceValues;
+import Dice.DiceValues;
 import Roll.Roll;
 
 import java.util.ArrayList;

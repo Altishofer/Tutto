@@ -1,4 +1,4 @@
-package Utils;
+package Dice;
 
 public enum DiceValues {
     SIX(6),

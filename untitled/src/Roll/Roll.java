@@ -1,7 +1,7 @@
 package Roll;
 
-import Utils.Dice;
-import Utils.DiceValues;
+import Dice.Dice;
+import Dice.DiceValues;
 
 import java.util.ArrayList;
 
