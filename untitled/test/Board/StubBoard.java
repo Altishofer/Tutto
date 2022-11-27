@@ -7,7 +7,6 @@ public class StubBoard extends Board{
 
     private String command;
 
-
     public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream) {
         super(pMaxPoints,pNumberOfPlayers);
         super.aRandomCardFactory = new StubFlyWeightDeck();
