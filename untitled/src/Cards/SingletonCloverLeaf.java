@@ -3,18 +3,18 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class CloverLeaf extends Card {
+public class SingletonCloverLeaf extends Card {
     public boolean alreadyTutto;
 
-    protected static CloverLeaf INSTANCE;
+    protected static SingletonCloverLeaf INSTANCE;
 
-    protected CloverLeaf() {
+    protected SingletonCloverLeaf() {
         alreadyTutto = false;
     }
 
-    public static synchronized CloverLeaf getInstance(){
+    public static synchronized SingletonCloverLeaf getInstance(){
         if (INSTANCE == null){
-            INSTANCE = new CloverLeaf();
+            INSTANCE = new SingletonCloverLeaf();
         }
         return INSTANCE;
     }
