@@ -3,6 +3,7 @@ package Cards;
 import Board.Board;
 import Utils.InputOutputUtils;
 import Utils.Roll;
+import Utils.Tuple;
 
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public abstract class Card {
     protected Roll roll;
     protected InputOutputUtils sleeper;
 
-    public Card(){
+    protected Card(){
         sleeper = new InputOutputUtils();
         roll = new Roll();
     }
@@ -26,15 +27,14 @@ public abstract class Card {
         Board.printDelimiter();
     }
 
-    protected int rollIsTutto(){
-        //TODO: anywhere in intermediate or roll.getPoints() seems to be a bug with keeping previous points (Pädi)
+    public void addIntermediatePoints(int pPoints){intermediatePoints += pPoints;}
+
+    protected Tuple rollIsTutto(){
         sleeper.doSleep();
         int finalSum = intermediatePoints + roll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
-        intermediatePoints = finalSum;
-        if (stopOrRoll()){return finalSum;}
-        else {return makeMove();}
+        return new Tuple(finalSum, !stopOrRoll());
     }
 
     protected int rollNotValid(){
@@ -48,25 +48,24 @@ public abstract class Card {
         Scanner scanner;
         while (true){
             sleeper.doSleep();
-            System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + roll.getPoints() +" points? ");
+            int sum = intermediatePoints + roll.getPoints();
+            System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
             scanner = new Scanner(System.in);
             String playOrStop = scanner.nextLine();
             Board.printDelimiter();
-            if (playOrStop.equalsIgnoreCase("e")){
-                return true;
-            }
+            if (playOrStop.equalsIgnoreCase("e")){return true;}
             if (playOrStop.equalsIgnoreCase("r")){return false;}
         }
     }
 
-    public int makeMove() {
+    public Tuple makeMove() {
         roll.startOverRoll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return rollNotValid();}
+            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
             roll.putAside();
             if (roll.isTutto()){return rollIsTutto();}
-            if (stopOrRoll()){return roll.getPoints();}
+            if (stopOrRoll()){return new Tuple(roll.getPoints() + intermediatePoints, false);}
             else {roll.rollDices();}
         }
     }

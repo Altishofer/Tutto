@@ -11,16 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RollStraightTest {
 
-    //TODO: Pädi & Sandrin
-
     StubCardStraight.StubStraightRoll roll = new StubCardStraight.StubStraightRoll();
-
 
     @Test
     void testNotValid() {
         ((StubCardStraight.StubStraightRoll) roll).setCommand("invalid");
         roll.rollDices();
-
+        assertEquals(roll.getPoints(), 0);
     }
 
     @Test

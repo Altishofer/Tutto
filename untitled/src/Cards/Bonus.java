@@ -2,9 +2,10 @@ package Cards;
 
 import Board.Board;
 import Utils.RollStraight;
+import Utils.Tuple;
 
 public class Bonus extends Card {
-    private static int BONUS_VALUE;
+    private final int BONUS_VALUE;
 
     public Bonus(Integer bonus){
         BONUS_VALUE = bonus;
@@ -12,16 +13,15 @@ public class Bonus extends Card {
 
     @Override
     public String toString(){
-        return "Bonus-Card";
+        return String.valueOf(BONUS_VALUE) + " Points Bonus Card";
     }
 
     @Override
-    protected int rollIsTutto(){
+    protected Tuple rollIsTutto(){
         int finalSum = intermediatePoints + roll.getPoints() + BONUS_VALUE;
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
         intermediatePoints = finalSum;
-        if (stopOrRoll()){return finalSum;}
-        else {return makeMove();}
+        return new Tuple(finalSum, !stopOrRoll());
     }
 }

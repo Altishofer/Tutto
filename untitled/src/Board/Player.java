@@ -2,8 +2,9 @@ package Board;
 
 public class Player implements Comparable{
 
+    // TODO: adrian
 
-    private String PLAYER_NAME; //static
+    private final String PLAYER_NAME;
     private int aPoints;
 
     public Player (String pName){
@@ -17,7 +18,7 @@ public class Player implements Comparable{
 
     public void addPoints(int pPoints){
         aPoints += pPoints;
-        System.out.println(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + " points");
+        System.out.print(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + " points\n");
     }
 
     public int getPoints(){
@@ -29,7 +30,6 @@ public class Player implements Comparable{
         if (other == null){return 0;}
         if (this.getClass() != other.getClass()){return 0;}
         Player otherPlayer = (Player) other;
-        if (this.getPlayerInitial() == otherPlayer.getPlayerInitial()){return 0;}
         if (this.getPlayerInitial() < otherPlayer.getPlayerInitial()){return -1;}
         if (this.getPlayerInitial() > otherPlayer.getPlayerInitial()){return 1;}
         return 0;

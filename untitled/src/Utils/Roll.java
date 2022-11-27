@@ -10,7 +10,7 @@ public class Roll {
 
     public Roll(){
         points = 0;
-        dicesLeft = DiceValues.values().length;
+        dicesLeft = 6;
         rollDices();
     }
 
@@ -70,14 +70,15 @@ public class Roll {
     public void putAsideDices(){
         for(int i=0; i<frequencyOfValues.length; i++){
             if (frequencyOfValues[i] >= 3){
+                // We assume we can take out 3 OR 6, but not 4 or 5 dices of a value
                 if (i+1 == 1){
-                    points += 1000 * frequencyOfValues[i]/3;
+                    points += (frequencyOfValues[i]/3) * 1000;
                 }
                 else {
-                    points += (i+1) * 100;
+                    points += (frequencyOfValues[i]/3) * (i+1) * 100;
                 }
-                dicesLeft -= frequencyOfValues[i];
-                frequencyOfValues[i] -= 3*frequencyOfValues[i]/3;
+                dicesLeft -= (frequencyOfValues[i]/3) * 3;
+                frequencyOfValues[i] -= (frequencyOfValues[i]/3) * 3;
             }
         }
         dicesLeft -= frequencyOfValues[4];
@@ -89,3 +90,10 @@ public class Roll {
         frequencyOfValues[0] = 0;
     }
 }
+
+
+
+
+
+
+
