@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,27 +36,27 @@ class BoardTest {
     // TODO: to reach enought coverage test also private
     @Test
     void testGetBestPlayer(){
-        StubBoard board = new StubBoard(1000,1,null,null);
+        StubBoard board = new StubBoard(1000,1);
 
     }
 
     @Test
     void testPlayerWonTrue() {
-        StubBoard board = new StubBoard(1000,1,null,null);
+        StubBoard board = new StubBoard(1000,1);
         boolean result = board.playerWon();
         assertTrue(result);
     }
 
     @Test
     void testPlayerWonFalse() {
-        StubBoard board = new StubBoard(2000,1,null,null);
+        StubBoard board = new StubBoard(2000,1);
         boolean result = board.playerWon();
         assertFalse(result);
     }
 
     @Test
     void testPlayerWonPrint(){
-        StubBoard board = new StubBoard(2000,1,null,null);
+        StubBoard board = new StubBoard(2000,1);
         board.playerWon();
         assertEquals(outContent.toString(),"-------------------------------------------------\n"+
                 "-------------------------------------------------\n"+
@@ -65,7 +66,7 @@ class BoardTest {
 
     @Test
     void testDisplayChart() {
-        StubBoard board = new StubBoard(1000,1,null,null);
+        StubBoard board = new StubBoard(1000,1);
         board.displayChart();
         assertEquals(outContent.toString(),"PLAYER1 -> you currently have a score of 1500 points\n" +
                 "-------------------------------------------------\n"+
@@ -75,17 +76,19 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediatePointsZero() {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("d\n".getBytes());
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(byteArrayOutputStream);
+        StubBoard board = new StubBoard(1000,1);
 
-        StubBoard board = new StubBoard(1000,1,inputStream, ps);
+        String input = "r" + "\nr" + "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr"+ "\nr";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
         board.nextPlayerMove(0);
 
-        String outputText = byteArrayOutputStream.toString();
-        String key = "output:";
-        String output = outputText.substring(outputText.indexOf(key) + key.length()).trim();
-        assertEquals(output, "7");
+        String expected = "Do you want to display the charts (D) or roll (R) the dice? PLAYER1 -> you have drawn a \n#################### current player: PLAYER1####################";
+
+        assertEquals(expected, outContent.toString());
     }
 
     @Test

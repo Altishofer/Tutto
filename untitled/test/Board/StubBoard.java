@@ -5,13 +5,9 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class StubBoard extends Board{
-    private Scanner scannerTest;
-    private PrintStream printStream;
 
-    public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream, PrintStream printStream) {
+    public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers) {
         super(pMaxPoints,pNumberOfPlayers);
-        this.scannerTest = new Scanner(inputStream);
-        this.printStream = printStream;
     }
 
     @Override
