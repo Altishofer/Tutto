@@ -54,7 +54,15 @@ class CloverLeafTest {
         mCloverLeaf.roll = new StubRoll();
         mCloverLeaf.alreadyTutto = true;
         ((StubRoll) mCloverLeaf.roll).setCommand("invalid");
-        assertNotEquals(Integer.MAX_VALUE, mCloverLeaf.makeMove().getFirst());
+        assertEquals(0, mCloverLeaf.makeMove().getFirst());
+    }
+
+    @Test
+    void makeMove_tuttoThenInvalid() {
+        StubCloverLeafOneTutto mCloverLeaf = new StubCloverLeafOneTutto();
+        mCloverLeaf.roll = new StubRoll();
+        ((StubRoll) mCloverLeaf.roll).setCommand("tuttoOnes");
+        assertEquals(0, mCloverLeaf.makeMove().getFirst());
     }
 
     @Test
