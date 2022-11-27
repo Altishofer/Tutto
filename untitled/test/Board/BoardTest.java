@@ -76,6 +76,7 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediatePointsZero() {
+        String input = "d\nr\nr";
         ByteArrayInputStream inputStream = new ByteArrayInputStream("d\n".getBytes());
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(byteArrayOutputStream);
