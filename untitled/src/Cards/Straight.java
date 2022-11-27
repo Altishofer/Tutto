@@ -10,6 +10,7 @@ public class Straight extends Card {
         roll = new RollStraight();
     }
 
+    @Override
     protected Tuple rollIsTutto(){
         System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
         Board.printDelimiter();
@@ -22,6 +23,7 @@ public class Straight extends Card {
         return "Straight-Card";
     }
 
+    @Override
     public Tuple makeMove() {
         roll.startOverRoll();
         while (true){

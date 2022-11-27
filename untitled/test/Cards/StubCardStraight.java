@@ -28,7 +28,7 @@ public class StubCardStraight extends Straight{
             if (command == "tutto"){
                 for (int i=0;i<dicesLeft;i++){rolledDices.add(DiceValues.values()[i]);}
             }
-            frequencyOfValues = calculateFrequencies();
+            rollFreq = calcFreq();
         }
 
         @Override

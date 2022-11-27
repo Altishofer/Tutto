@@ -1,14 +1,19 @@
 package Roll;
 
+import Board.Board;
 import Dice.Dice;
 import Dice.DiceValues;
+import Utils.InputOutputUtils;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Roll{
     protected int points;
     protected ArrayList<DiceValues> rolledDices;
-    protected int[] frequencyOfValues;
+    protected int[] rollFreq;
+    protected int[] userFreq;
+
     protected int dicesLeft;
 
     public Roll(){
@@ -21,6 +26,30 @@ public class Roll{
         return points;
     }
 
+    public void whichToPutAside(){
+        Scanner scanner = new Scanner(System.in);
+        boolean valid = true;
+        boolean allZero = true;
+        while (true) {
+            calcFreq();
+            System.out.println("Which dice-values do you want to put aside (comma separated): ");
+            Board.printDelimiter();
+            String answer = scanner.nextLine();
+            userFreq = InputOutputUtils.cleanUpUserInput(answer);
+            for (int i=0; i<userFreq.length; i++){
+                if (userFreq[i] != 0){allZero = false;}
+                if (userFreq[i] <= rollFreq[i]){
+                    rollFreq[i] -= userFreq[i];
+                }
+                else {valid = false;}
+            }
+            if (valid & !allZero){return;}
+            System.out.println("The given input is not valid for the current roll");
+            Board.printDelimiter();
+            calcFreq();
+        }
+    }
+
     public void startOverRoll(){
         dicesLeft = DiceValues.values().length;
         points = 0;
@@ -29,12 +58,15 @@ public class Roll{
 
     public void rollDices(){
         rolledDices = Dice.rollDice(dicesLeft);
-        frequencyOfValues = calculateFrequencies();
+        rollFreq = calcFreq();
     }
 
     public void putAside(){
         if (!isValid()){points = 0;}
-        else {putAsideDices();}
+        else {
+            whichToPutAside();
+            putAsideDice();
+        }
     }
 
     public ArrayList<Integer> getRolledDices() {
@@ -45,8 +77,8 @@ public class Roll{
         return copy;
     }
 
-    protected int[] calculateFrequencies(){
-        int[] cnt = new int[DiceValues.values().length];
+    protected int[] calcFreq(){
+        int[] cnt = new int[6];
         for(int i=0; i<cnt.length; i++){
             cnt[i] = 0;
         }
@@ -57,11 +89,11 @@ public class Roll{
     }
 
     public boolean isValid(){
-        for(int i=0; i<frequencyOfValues.length; i++) {
-            if (frequencyOfValues[i] >= 3) {
+        for(int i = 0; i< rollFreq.length; i++) {
+            if (rollFreq[i] >= 3) {
                 return true;
             }
-            if (frequencyOfValues[4] != 0 || frequencyOfValues[0] != 0) {
+            if (rollFreq[4] != 0 || rollFreq[0] != 0) {
                 return true;
             }
         }
@@ -70,27 +102,27 @@ public class Roll{
 
     public boolean isTutto(){return dicesLeft == 0;}
 
-    public void putAsideDices(){
-        for(int i=0; i<frequencyOfValues.length; i++){
-            if (frequencyOfValues[i] >= 3){
+    public void putAsideDice(){
+        for(int i = 0; i< userFreq.length; i++){
+            if (userFreq[i] >= 3){
                 // We assume we can take out 3 OR 6, but not 4 or 5 dices of a value
                 if (i+1 == 1){
-                    points += (frequencyOfValues[i]/3) * 1000;
+                    points += (userFreq[i]/3) * 1000;
                 }
                 else {
-                    points += (frequencyOfValues[i]/3) * (i+1) * 100;
+                    points += (userFreq[i]/3) * (i+1) * 100;
                 }
-                dicesLeft -= (frequencyOfValues[i]/3) * 3;
-                frequencyOfValues[i] -= (frequencyOfValues[i]/3) * 3;
+                dicesLeft -= (userFreq[i]/3) * 3;
+                userFreq[i] -= (userFreq[i]/3) * 3;
             }
         }
-        dicesLeft -= frequencyOfValues[4];
-        points += frequencyOfValues[4] * 50;
-        frequencyOfValues[4] = 0;
+        dicesLeft -= userFreq[4];
+        points += userFreq[4] * 50;
+        userFreq[4] = 0;
 
-        dicesLeft -= frequencyOfValues[0];
-        points += frequencyOfValues[0] * 100;
-        frequencyOfValues[0] = 0;
+        dicesLeft -= userFreq[0];
+        points += userFreq[0] * 100;
+        userFreq[0] = 0;
     }
 }
 

@@ -10,8 +10,8 @@ public class RollStraight extends Roll {
 
     @Override
     public boolean isValid(){
-        for(int i=0; i<frequencyOfValues.length; i++) {
-            if (frequencyOfValues[i] != 0 && !asideDices[i]) {
+        for(int i = 0; i< rollFreq.length; i++) {
+            if (rollFreq[i] != 0 && !asideDices[i]) {
                 return true;
             }
         }
@@ -19,9 +19,9 @@ public class RollStraight extends Roll {
     }
 
     @Override
-    public void putAsideDices(){
-        for(int i=0; i<frequencyOfValues.length; i++){
-            if (frequencyOfValues[i] != 0 && !asideDices[i]){
+    public void putAsideDice(){
+        for(int i = 0; i< rollFreq.length; i++){
+            if (rollFreq[i] != 0 && !asideDices[i]){
                 asideDices[i] = true;
                 dicesLeft--;
             }

@@ -19,16 +19,4 @@ class RollStraightTest {
         roll.rollDices();
         assertEquals(roll.getPoints(), 0);
     }
-
-    @Test
-    void putAsideDices() {
-    }
-
-    @Test
-    void isValid() {
-    }
-
-    @Test
-    void testPutAsideDices() {
-    }
 }

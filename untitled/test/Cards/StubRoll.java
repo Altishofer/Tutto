@@ -29,7 +29,13 @@ public class StubRoll extends Roll {
                 rolledDices.add(DiceValues.ONE);
             }
         }
-        frequencyOfValues = calculateFrequencies();
+        rollFreq = calcFreq();
+    }
+
+    @Override
+    public void whichToPutAside(){
+        userFreq = new int[6];
+        for(int i=0; i<userFreq.length; i++){userFreq[i] = rollFreq[i];}
     }
 
     @Override
