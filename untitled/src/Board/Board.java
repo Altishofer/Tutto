@@ -20,12 +20,15 @@ public class Board { //TODO: removed abstract
 
     private final FlyWeightDeck rdmCardFactory;
 
+    protected Scanner scanner;
+
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
         MAX_POINTS = pMaxPoints;
         currentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();
         setUpPlayers(pNumberOfPlayers);
         rdmCardFactory = new FlyWeightDeck();
+        scanner = new Scanner(System.in);
     }
 
     private ArrayList<Player> getBestPlayer(){
@@ -92,7 +95,7 @@ public class Board { //TODO: removed abstract
 
         printNameDelimiter(player);
         while (true) {
-            Scanner scanner = new Scanner(System.in);
+
             System.out.print("Do you want to display the charts (D) or roll (R) the dice? ");
             String seeOrRoll = scanner.nextLine();
             if (seeOrRoll.equalsIgnoreCase("d")) {
