@@ -27,9 +27,11 @@ public class Roll{
 
     public void whichToPutAside(){
         Scanner scanner = new Scanner(System.in);
-        boolean valid = true;
-        boolean allZero = true;
+        boolean valid;
+        boolean allZero;
         while (true) {
+            valid = true;
+            allZero = true;
             calculateFrequencies();
             System.out.print("Which dice-values do you want to put aside (comma separated): ");
             String answer = scanner.nextLine();
@@ -37,10 +39,10 @@ public class Roll{
             userFreq = InputOutputUtils.cleanUpUserInput(answer);
             for (int i=0; i<userFreq.length; i++){
                 if (userFreq[i] != 0){allZero = false;}
-                if (userFreq[i] <= aFrequencyOfValues[i]){
-                    aFrequencyOfValues[i] -= userFreq[i];
+                if (userFreq[i] > aFrequencyOfValues[i]){valid = false;}
+                if (i==1 || i==2 || i==3 || i==5){
+                    if (userFreq[i]!=0 && userFreq[i] != 3 && userFreq[i] != 6){valid = false;}
                 }
-                else {valid = false;}
             }
             if (valid & !allZero){return;}
             System.out.println("The given input is not valid for the current roll");
