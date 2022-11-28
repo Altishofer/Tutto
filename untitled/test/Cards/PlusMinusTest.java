@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlusMinusTest{
 
-    PlusMinus card = new PlusMinusTest.StubCardPlusMinus();
+    PlusMinus card = new StubCardPlusMinus();
 
     public static class StubCardPlusMinus extends PlusMinus{
 
