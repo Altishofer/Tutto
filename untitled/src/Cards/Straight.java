@@ -11,10 +11,19 @@ public class Straight extends Card {
     }
 
     @Override
+    protected Tuple rollIsTutto(){
+        System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
+        Board.printDelimiter();
+        aIntermediatePoints += 2000;
+        return new Tuple(aIntermediatePoints, !stopOrRoll());
+    }
+
+    @Override
     public String toString(){
         return "Straight-Card";
     }
 
+    @Override
     public Tuple makeMove() {
         aRoll.startOverRoll();
         while (true){
@@ -25,12 +34,5 @@ public class Straight extends Card {
             else {
                 aRoll.rollDices();}
         }
-    }
-
-    protected Tuple rollIsTutto(){
-        System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
-        Board.printDelimiter();
-        aIntermediatePoints += 2000;
-        return new Tuple(aIntermediatePoints, !stopOrRoll());
     }
 }

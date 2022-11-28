@@ -33,6 +33,13 @@ public class StubRoll extends Roll {
     }
 
     @Override
+    public void whichToPutAside(){
+        userFreq = new int[6];
+        for(int i=0; i<userFreq.length; i++){userFreq[i] = aFrequencyOfValues[i];}
+        aFrequencyOfValues = calculateFrequencies();
+    }
+
+    @Override
     public void startOverRoll(){
         aDicesLeft = DiceValues.values().length;
         aPoints = 0;

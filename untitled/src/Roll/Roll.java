@@ -1,15 +1,19 @@
 package Roll;
 
+import Board.Board;
 import Dice.Dice;
 import Dice.DiceValues;
+import Utils.InputOutputUtils;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Roll{
     protected int aPoints;
     protected ArrayList<DiceValues> aRolledDices;
     protected int[] aFrequencyOfValues;
     protected int aDicesLeft;
+    protected int[] userFreq;
 
     public Roll(){
         aPoints = 0;
@@ -19,6 +23,31 @@ public class Roll{
 
     public int getPoints(){
         return aPoints;
+    }
+
+    public void whichToPutAside(){
+        Scanner scanner = new Scanner(System.in);
+        boolean valid;
+        boolean allZero;
+        while (true) {
+            valid = true;
+            allZero = true;
+            calculateFrequencies();
+            System.out.print("Which dice-values do you want to put aside (comma separated): ");
+            String answer = scanner.nextLine();
+            Board.printDelimiter();
+            userFreq = InputOutputUtils.cleanUpUserInput(answer);
+            for (int i=0; i<userFreq.length; i++){
+                if (userFreq[i] != 0){allZero = false;}
+                if (userFreq[i] > aFrequencyOfValues[i]){valid = false;}
+                if (i==1 || i==2 || i==3 || i==5){
+                    if (userFreq[i]!=0 && userFreq[i] != 3 && userFreq[i] != 6){valid = false;}
+                }
+            }
+            if (valid & !allZero){return;}
+            System.out.println("The given input is not valid for the current roll");
+            Board.printDelimiter();
+        }
     }
 
     public void startOverRoll(){
@@ -33,9 +62,13 @@ public class Roll{
     }
 
     public void putAside(){
-        if (!isValid()){
-            aPoints = 0;}
-        else {putAsideDices();}
+        if (!isValid()){aPoints = 0;}
+        else {
+            whichToPutAside();
+            putAsideDice();
+        }
+        aRolledDices = Dice.rollDice(aDicesLeft);
+        aFrequencyOfValues = calculateFrequencies();
     }
 
     public ArrayList<Integer> getRolledDices() {
@@ -45,6 +78,19 @@ public class Roll{
         }
         return copy;
     }
+
+    protected int[] calculateFrequencies(){
+        int[] cnt = new int[DiceValues.values().length];
+        for(int i=0; i<cnt.length; i++){
+            cnt[i] = 0;
+        }
+        for (DiceValues dice : aRolledDices){
+            cnt[dice.aValue - 1]++;
+        }
+        return cnt;
+    }
+
+    public boolean isTutto(){return aDicesLeft == 0;}
 
     public boolean isValid(){
         for(int i = 0; i< aFrequencyOfValues.length; i++) {
@@ -58,40 +104,27 @@ public class Roll{
         return false;
     }
 
-    public boolean isTutto(){return aDicesLeft == 0;}
-
-    public void putAsideDices(){
-        for(int i = 0; i< aFrequencyOfValues.length; i++){
-            if (aFrequencyOfValues[i] >= 3){
+    public void putAsideDice(){
+        for(int i = 0; i< userFreq.length; i++){
+            if (userFreq[i] >= 3){
                 // We assume we can take out 3 OR 6, but not 4 or 5 dices of a value
                 if (i+1 == 1){
-                    aPoints += (aFrequencyOfValues[i]/3) * 1000;
+                    aPoints += (userFreq[i]/3) * 1000;
                 }
                 else {
-                    aPoints += (aFrequencyOfValues[i]/3) * (i+1) * 100;
+                    aPoints += (userFreq[i]/3) * (i+1) * 100;
                 }
-                aDicesLeft -= (aFrequencyOfValues[i]/3) * 3;
-                aFrequencyOfValues[i] -= (aFrequencyOfValues[i]/3) * 3;
+                aDicesLeft -= (userFreq[i]/3) * 3;
+                userFreq[i] -= (userFreq[i]/3) * 3;
             }
         }
-        aDicesLeft -= aFrequencyOfValues[4];
-        aPoints += aFrequencyOfValues[4] * 50;
-        aFrequencyOfValues[4] = 0;
+        aDicesLeft -= userFreq[4];
+        aPoints += userFreq[4] * 50;
+        userFreq[4] = 0;
 
-        aDicesLeft -= aFrequencyOfValues[0];
-        aPoints += aFrequencyOfValues[0] * 100;
-        aFrequencyOfValues[0] = 0;
-    }
-
-    protected int[] calculateFrequencies(){
-        int[] cnt = new int[DiceValues.values().length];
-        for(int i=0; i<cnt.length; i++){
-            cnt[i] = 0;
-        }
-        for (DiceValues dice : aRolledDices){
-            cnt[dice.aValue - 1]++;
-        }
-        return cnt;
+        aDicesLeft -= userFreq[0];
+        aPoints += userFreq[0] * 100;
+        userFreq[0] = 0;
     }
 }
 

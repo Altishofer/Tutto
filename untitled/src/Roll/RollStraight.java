@@ -19,9 +19,9 @@ public class RollStraight extends Roll {
     }
 
     @Override
-    public void putAsideDices(){
+    public void putAsideDice(){
         for(int i = 0; i< aFrequencyOfValues.length; i++){
-            if (aFrequencyOfValues[i] != 0 && !aAsideDices[i]){
+            if (aFrequencyOfValues[i] != 0 && !aAsideDices[i]) {
                 aAsideDices[i] = true;
                 aDicesLeft--;
             }

@@ -11,7 +11,6 @@ public class StubCardStraight extends Straight{
 
         private String command;
         public void setCommand(String pCommand){command = pCommand;}
-        public String getCommand(){return command;}
         @Override
         public void rollDices(){
             aAsideDices = new boolean[6];
@@ -29,6 +28,13 @@ public class StubCardStraight extends Straight{
             if (command == "tutto"){
                 for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(DiceValues.values()[i]);}
             }
+            aFrequencyOfValues = calculateFrequencies();
+        }
+
+        @Override
+        public void whichToPutAside(){
+            userFreq = new int[6];
+            for(int i=0; i<userFreq.length; i++){userFreq[i] = aFrequencyOfValues[i];}
             aFrequencyOfValues = calculateFrequencies();
         }
 
