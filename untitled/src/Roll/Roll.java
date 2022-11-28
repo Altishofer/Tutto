@@ -32,9 +32,9 @@ public class Roll{
         boolean allZero = true;
         while (true) {
             calcFreq();
-            System.out.println("Which dice-values do you want to put aside (comma separated): ");
-            Board.printDelimiter();
+            System.out.print("Which dice-values do you want to put aside (comma separated): ");
             String answer = scanner.nextLine();
+            Board.printDelimiter();
             userFreq = InputOutputUtils.cleanUpUserInput(answer);
             for (int i=0; i<userFreq.length; i++){
                 if (userFreq[i] != 0){allZero = false;}
