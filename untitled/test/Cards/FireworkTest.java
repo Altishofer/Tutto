@@ -25,10 +25,10 @@ class FireworkTest {
     @Test
     void testRollNotValid() {
         int result = card.rollNotValid();
-        int inter = card.intermediatePoints;
+        int inter = card.aIntermediatePoints;
 
         try{
-            Field field = roll.getDeclaredField("points");
+            Field field = roll.getDeclaredField("aPoints");
             field.setAccessible(true);
             int check = field.getInt(Roll);
             assertEquals(result,check+inter);

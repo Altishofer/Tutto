@@ -9,36 +9,44 @@ import java.util.Scanner;
 
 public abstract class Card {
 
-    public int intermediatePoints = 0;
-    public Roll roll;
-    protected InputOutputUtils sleeper;
+    public int aIntermediatePoints = 0;
+    public Roll aRoll;
+    protected InputOutputUtils aSleeper;
 
     protected Card(){
-        sleeper = new InputOutputUtils();
-        roll = new Roll();
+        aSleeper = new InputOutputUtils();
+        aRoll = new Roll();
     }
 
     @Override
     public abstract String toString();
-    protected void printRoll(){
-        sleeper.doSleep();
-        String listString = String.join(", ", String.valueOf(roll.getRolledDices()));
-        System.out.println("You have rolled the combination: " + listString);
-        Board.printDelimiter();
+
+    public void addIntermediatePoints(int pPoints){
+        aIntermediatePoints += pPoints;}
+
+    public Tuple makeMove() {
+        aRoll.startOverRoll();
+        while (true){
+            printRoll();
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){return rollIsTutto();}
+            if (stopOrRoll()){return new Tuple(aRoll.getPoints() + aIntermediatePoints, false);}
+            else {
+                aRoll.rollDices();}
+        }
     }
 
-    public void addIntermediatePoints(int pPoints){intermediatePoints += pPoints;}
-
     protected Tuple rollIsTutto(){
-        sleeper.doSleep();
-        int finalSum = intermediatePoints + roll.getPoints();
+        aSleeper.doSleep();
+        int finalSum = aIntermediatePoints + aRoll.getPoints();
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
         return new Tuple(finalSum, !stopOrRoll());
     }
 
     protected int rollNotValid(){
-        sleeper.doSleep();
+        aSleeper.doSleep();
         System.out.println("The combination is invalid and results in 0 points");
         Board.printDelimiter();
         return 0;
@@ -47,8 +55,8 @@ public abstract class Card {
     protected boolean stopOrRoll(){
         Scanner scanner;
         while (true){
-            sleeper.doSleep();
-            int sum = intermediatePoints + roll.getPoints();
+            aSleeper.doSleep();
+            int sum = aIntermediatePoints + aRoll.getPoints();
             System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
             scanner = new Scanner(System.in);
             String playOrStop = scanner.nextLine();
@@ -58,15 +66,10 @@ public abstract class Card {
         }
     }
 
-    public Tuple makeMove() {
-        roll.startOverRoll();
-        while (true){
-            printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){return rollIsTutto();}
-            if (stopOrRoll()){return new Tuple(roll.getPoints() + intermediatePoints, false);}
-            else {roll.rollDices();}
-        }
+    protected void printRoll(){
+        aSleeper.doSleep();
+        String listString = String.join(", ", String.valueOf(aRoll.getRolledDices()));
+        System.out.println("You have rolled the combination: " + listString);
+        Board.printDelimiter();
     }
 }

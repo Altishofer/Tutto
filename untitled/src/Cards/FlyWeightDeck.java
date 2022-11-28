@@ -10,6 +10,11 @@ public class FlyWeightDeck {
         prepareCardsNew();
     }
 
+    public Card getRandomCard(){
+        if (aCardFlyWeightStore.isEmpty()){prepareCardsNew();}
+        return aCardFlyWeightStore.remove(0);
+    }
+
     private void prepareCardsNew(){
         aCardFlyWeightStore = new ArrayList<Card>();
         aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
@@ -26,10 +31,5 @@ public class FlyWeightDeck {
             }
         }
         Collections.shuffle(aCardFlyWeightStore);
-    }
-
-    public Card getRandomCard(){
-        if (aCardFlyWeightStore.isEmpty()){prepareCardsNew();}
-        return aCardFlyWeightStore.remove(0);
     }
 }

@@ -29,22 +29,6 @@ public class Board { //TODO: removed abstract
         aScanner = new Scanner(System.in);
     }
 
-    private ArrayList<Player> getBestPlayer(){
-        ArrayList<Player> bestPlayers = new ArrayList<>();
-        int maxPoints = aPlayers.get(aCurrentPlayerIndex).getPoints() + 1;
-        for (Player player : aPlayers){
-            if (player.getPoints() >= maxPoints){
-                maxPoints = player.getPoints();
-            }
-        }
-        for (Player player : aPlayers){
-            if (player.getPoints() >= maxPoints){
-                bestPlayers.add(player);
-            }
-        }
-        return bestPlayers;
-    }
-
     public boolean playerWon(){
         for (Player player : aPlayers){
             if (player.getPoints() >= MAX_POINTS){
@@ -58,13 +42,8 @@ public class Board { //TODO: removed abstract
         return false;
     }
 
-    protected void setUpPlayers(Integer numberOfPlayer){
-        Scanner scanner = new Scanner(System.in);
-        for (int i=0; i<numberOfPlayer; i++){
-            System.out.print("Player " + i + " set your name: ");
-            aPlayers.add(new Player(scanner.nextLine()));
-        }
-        Collections.sort(aPlayers);
+    public static void printDelimiter(){
+        System.out.print("-------------------------------------------------\n");
     }
 
     public void displayChart(){
@@ -122,11 +101,32 @@ public class Board { //TODO: removed abstract
         }
     }
 
+    protected void setUpPlayers(Integer numberOfPlayer){
+        Scanner scanner = new Scanner(System.in);
+        for (int i=0; i<numberOfPlayer; i++){
+            System.out.print("Player " + i + " set your name: ");
+            aPlayers.add(new Player(scanner.nextLine()));
+        }
+        Collections.sort(aPlayers);
+    }
+
     private static void printNameDelimiter(Player player) {
         System.out.print("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################\n");
     }
 
-    public static void printDelimiter(){
-        System.out.print("-------------------------------------------------\n");
+    private ArrayList<Player> getBestPlayer(){
+        ArrayList<Player> bestPlayers = new ArrayList<>();
+        int maxPoints = aPlayers.get(aCurrentPlayerIndex).getPoints() + 1;
+        for (Player player : aPlayers){
+            if (player.getPoints() >= maxPoints){
+                maxPoints = player.getPoints();
+            }
+        }
+        for (Player player : aPlayers){
+            if (player.getPoints() >= maxPoints){
+                bestPlayers.add(player);
+            }
+        }
+        return bestPlayers;
     }
 }

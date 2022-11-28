@@ -3,11 +3,11 @@ package Cards;
 public class StubCard extends Card{
     private int stops = 0;
     public StubCard(){
-        roll = new StubRoll();
+        aRoll = new StubRoll();
     }
     public String toString(){return "StandardCard";}
-    public void setStubNr(String command){((StubRoll) roll).setCommand(command);}
-    public String getStubNr(){return ((StubRoll) roll).getCommand();}
+    public void setStubNr(String command){((StubRoll) aRoll).setCommand(command);}
+    public String getStubNr(){return ((StubRoll) aRoll).getCommand();}
 
     @Override
     public boolean stopOrRoll() {

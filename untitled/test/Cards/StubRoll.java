@@ -14,34 +14,38 @@ public class StubRoll extends Roll {
     public String getCommand(){return command;}
     @Override
     public void rollDices(){
-        rolledDices = new ArrayList<>(){};
+        aRolledDices = new ArrayList<>(){};
         if (command == null || command == "invalid"){
             List<DiceValues> invalid = Arrays.asList(DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-            for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%3));}
+            for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(invalid.get(i%3));}
         }
         if (command == "validNotTutto"){
             List<DiceValues> invalid;
             invalid = Arrays.asList(DiceValues.ONE, DiceValues.TWO, DiceValues.THREE, DiceValues.FOUR, DiceValues.SIX);
-            for (int i=0;i<dicesLeft;i++){rolledDices.add(invalid.get(i%5));}
+            for (int i = 0; i< aDicesLeft; i++){aRolledDices.add(invalid.get(i%5));}
         }
         if (command == "tuttoOnes") {
-            for (int i = 0; i < dicesLeft; i++) {
-                rolledDices.add(DiceValues.ONE);
+            for (int i = 0; i < aDicesLeft; i++) {
+                aRolledDices.add(DiceValues.ONE);
             }
         }
+<<<<<<< HEAD
         rollFreq = calcFreq();
     }
 
     @Override
     public void whichToPutAside(){
         userFreq = new int[6];
-        for(int i=0; i<userFreq.length; i++){userFreq[i] = rollFreq[i];}
+        for(int i=0; i<userFreq.length; i++){userFreq[i] = aFrequencyOfValues[i];}
+=======
+        aFrequencyOfValues = calculateFrequencies();
+>>>>>>> main
     }
 
     @Override
     public void startOverRoll(){
-        dicesLeft = DiceValues.values().length;
-        points = 0;
+        aDicesLeft = DiceValues.values().length;
+        aPoints = 0;
         this.rollDices();
     }
 }
