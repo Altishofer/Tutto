@@ -3,9 +3,9 @@ package Roll;
 import Board.Board;
 import Dice.Dice;
 import Dice.DiceValues;
-import Utils.InputOutputUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Roll{
@@ -19,6 +19,20 @@ public class Roll{
         aPoints = 0;
         aDicesLeft = 6;
         rollDices();
+    }
+
+    public int[] cleanUpUserInput(String input) {
+        ArrayList<String> values;
+        int[] clean = new int[6];
+        for (int i=0; i<clean.length; i++){clean[i] = 0;}
+        if (input == null || input.isEmpty()){return clean;}
+        input = input.replaceAll("\\s+","");
+        values = new ArrayList<String>(List.of(input.split(",")));
+        for (String str : values){
+            if (str.length() > 1 || !str.matches("[1-6]")){return clean;}
+        }
+        for (String str : values){clean[Integer.valueOf(str) - 1]++;}
+        return clean;
     }
 
     public int getPoints(){
@@ -36,7 +50,7 @@ public class Roll{
             System.out.print("Which dice-values do you want to put aside (comma separated): ");
             String answer = scanner.nextLine();
             Board.printDelimiter();
-            userFreq = InputOutputUtils.cleanUpUserInput(answer);
+            userFreq = cleanUpUserInput(answer);
             for (int i=0; i<userFreq.length; i++){
                 if (userFreq[i] != 0){allZero = false;}
                 if (userFreq[i] > aFrequencyOfValues[i]){valid = false;}

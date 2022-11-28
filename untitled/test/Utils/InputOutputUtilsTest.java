@@ -1,5 +1,6 @@
 package Utils;
 
+import Roll.Roll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,10 +9,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 class InputOutputUtilsTest {
-
-    @Test
-    void doSleep() {
-    }
 
     @Test
     void getIntegerInputValid() {
