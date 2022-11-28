@@ -13,7 +13,7 @@ public class Firework extends Card {
 
     @Override
     public Tuple makeMove() {
-        aRoll = new Roll();
+        aRoll.startOverRoll();
         while (true){
             printRoll();
             if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}

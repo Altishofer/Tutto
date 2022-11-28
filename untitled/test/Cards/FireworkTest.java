@@ -13,7 +13,7 @@ class FireworkTest {
 
     StubFirework card = new StubFirework();
     Class<Roll> roll = Roll.class;
-    Roll Roll = new Roll();
+    Roll Roll = new StubRoll();
     //TODO: Cedric
 
     @Test
@@ -24,6 +24,7 @@ class FireworkTest {
 
     @Test
     void testRollNotValid() {
+        card.setStubNr("invalid");
         int result = card.rollNotValid();
         int inter = card.aIntermediatePoints;
 
@@ -48,6 +49,7 @@ class FireworkTest {
 
     @Test
     void testMakeMoveNotValid(){
+        card.setStubNr("invalid");
         Tuple result = card.makeMove();
         int check = card.rollNotValid();
         assertEquals(check,result.getFirst());

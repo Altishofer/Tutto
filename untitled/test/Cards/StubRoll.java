@@ -1,5 +1,6 @@
 package Cards;
 
+import Dice.Dice;
 import Dice.DiceValues;
 import Roll.Roll;
 
