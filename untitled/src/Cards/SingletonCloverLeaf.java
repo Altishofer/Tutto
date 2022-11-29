@@ -27,7 +27,7 @@ public class SingletonCloverLeaf extends Card {
 
     @Override
     public Tuple rollIsTutto(){
-        System.out.println("TUTTO!! -> you are one step closer to the WIN!");
+        System.out.print("TUTTO!! -> you are one step closer to the WIN!\n");
         Board.printDelimiter();
         aAlreadyTutto = true;
         return new Tuple(makeMove().getFirst(), false);
@@ -35,7 +35,7 @@ public class SingletonCloverLeaf extends Card {
 
     @Override
     public int rollNotValid(){
-        System.out.println("You had no luck, the Cloverleaf is gone");
+        System.out.print("You had no luck, the Cloverleaf is gone\n");
         Board.printDelimiter();
         return 0;
     }

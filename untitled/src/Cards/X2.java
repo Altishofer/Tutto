@@ -12,7 +12,7 @@ public class X2 extends Card {
     @Override
     protected Tuple rollIsTutto(){
         int finalSum = (aIntermediatePoints + aRoll.getPoints())*2;
-        System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
+        System.out.print("TUTTO!! -> you earned already " + finalSum + " points \n");
         Board.printDelimiter();
         aIntermediatePoints = finalSum;
         return new Tuple(finalSum, !stopOrRoll());

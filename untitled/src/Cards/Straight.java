@@ -12,7 +12,7 @@ public class Straight extends Card {
 
     @Override
     protected Tuple rollIsTutto(){
-        System.out.println("TUTTO!! -> you earned " + 2000 + " points ");
+        System.out.print("TUTTO!! -> you earned " + 2000 + " points \n");
         Board.printDelimiter();
         aIntermediatePoints += 2000;
         return new Tuple(aIntermediatePoints, !stopOrRoll());

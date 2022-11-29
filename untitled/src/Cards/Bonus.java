@@ -18,7 +18,7 @@ public class Bonus extends Card {
     @Override
     protected Tuple rollIsTutto(){
         int finalSum = aIntermediatePoints + aRoll.getPoints() + BONUS_VALUE;
-        System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
+        System.out.print("TUTTO!! -> you earned already " + finalSum + " points \n");
         Board.printDelimiter();
         aIntermediatePoints = finalSum;
         return new Tuple(finalSum, !stopOrRoll());

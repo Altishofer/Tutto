@@ -59,7 +59,7 @@ public class Roll{
                 }
             }
             if (valid & !allZero){return;}
-            System.out.println("The given input is not valid for the current roll");
+            System.out.print("The given input is not valid for the current roll\n");
             Board.printDelimiter();
         }
     }
