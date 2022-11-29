@@ -3,16 +3,63 @@ package Utils;
 import Cards.StubCardStraight;
 import Roll.Roll;
 import Roll.RollStraight;
+import Roll.StubStraightRoll2;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RollStraightTest {
 
-
-
     StubCardStraight.StubStraightRoll stubRoll = new StubCardStraight.StubStraightRoll();
 
+    @Test
+    void rollDice(){
+        StubStraightRoll2 roll = new StubStraightRoll2();
+        roll.setUserInput(new int[]{0,0,0,0,0,0});
+        roll.startOverRoll();
+        int sum=0;
+        for (int i=0; i<roll.getFrequencyOfvalues().length; i++){
+            sum += roll.getFrequencyOfvalues()[i];
+        }
+        assertEquals(sum, 6);
+    }
+
+    @Test
+    void rollStartOver(){
+        StubStraightRoll2 roll = new StubStraightRoll2();
+        roll.setUserInput(new int[]{0,0,0,0,0,0});
+        roll.rollDices();
+        int sum=0;
+        for (int i=0; i<roll.getFrequencyOfvalues().length; i++){
+            sum += roll.getFrequencyOfvalues()[i];
+        }
+        assertEquals(sum, 6);
+    }
+
+    @Test
+    void validityAllZero(){
+        StubStraightRoll2 roll = new StubStraightRoll2();
+        roll.setUserInput(new int[]{0, 0, 0, 0, 0});
+        roll.setFreqOfValues(new int[]{0, 0, 0, 0, 0});
+        assertFalse(roll.validUserInput());
+    }
+
+    @Test
+    void validityNotAllZero(){
+        StubStraightRoll2 roll = new StubStraightRoll2();
+        roll.setUserInput(new int[]{1, 0, 0, 0, 0});
+        roll.setFreqOfValues(new int[]{0, 0, 0, 0, 0});
+        assertFalse(roll.validUserInput());
+    }
+
+    @Test
+    void validityToBig(){
+        StubStraightRoll2 roll = new StubStraightRoll2();
+        roll.setUserInput(new int[]{3, 0, 0, 0, 0});
+        roll.setFreqOfValues(new int[]{0, 0, 0, 0, 0});
+        assertFalse(roll.validUserInput());
+    }
+    
     @Test
     void cleanEmptyInput(){
         Roll roll = new RollStraight();
