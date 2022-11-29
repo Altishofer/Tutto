@@ -17,7 +17,7 @@ public class InputOutputUtils {
         try{
             TimeUnit.SECONDS.sleep(this.aSecond);
         }catch (InterruptedException e){
-            System.out.println("Please do not interrupt!");
+            System.out.print("Please do not interrupt!\n");
         }
     }
 
