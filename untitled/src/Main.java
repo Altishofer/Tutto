@@ -15,7 +15,7 @@ public class Main {
         Board board = new Board(countPoints, countPlayer);
 
         while (!board.playerWon()){
-            board.nextPlayerMove(0);
+            board.nextPlayerMove(0, false);
         }
         board.displayChart();
         Board.printDelimiter();
