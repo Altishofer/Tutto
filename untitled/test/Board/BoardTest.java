@@ -188,8 +188,7 @@ class BoardTest {
 
         Board board = new Board(2000, 2);
 
-        String expected = "Player 0 set your name: Welcome, PLAYER1!\n" +
-                "Player 1 set your name: Welcome, PLAYER2!\n";
+        String expected = "Player 0 set your name: Player 1 set your name: ";
         assertEquals(expected, outContent.toString());
     }
 
