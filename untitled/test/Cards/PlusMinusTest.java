@@ -25,7 +25,7 @@ class PlusMinusTest{
     }
 
     @Test
-    void stopOrRollStop() {
+    void stopOrRollStop(){
         card = new PlusMinus();
         String input = "e\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
@@ -33,4 +33,15 @@ class PlusMinusTest{
 
         assertEquals(true, card.stopOrRoll());
     }
+
+    @Test
+    void stopOrRollRoll(){
+        card = new PlusMinus();
+        String input = "r\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        assertEquals(false, card.stopOrRoll());
+    }
+
 }
