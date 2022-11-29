@@ -17,7 +17,7 @@ public class FlyWeightDeck {
 
     private void prepareCardsNew(){
         aCardFlyWeightStore = new ArrayList<Card>();
-        //aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
+        aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
         for (int i=0; i<5; i++){
             aCardFlyWeightStore.add(new Straight());
             aCardFlyWeightStore.add(new Firework());
