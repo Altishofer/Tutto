@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
+    //TODO: Pädi, Cedi
+    Class<Board> boardClass = Board.class;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;

@@ -8,8 +8,6 @@ class PlusMinusTest{
 
     PlusMinus card = new StubCardPlusMinus();
 
-
-
     @Test
     void makeMoveTuttoOnesOnce() {
         ((StubCardPlusMinus)card).setStubNr("tuttoOnes");

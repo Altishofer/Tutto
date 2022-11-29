@@ -1,7 +1,6 @@
 package Roll;
 
 import Board.Board;
-
 import java.util.Scanner;
 
 public class RollStraight extends Roll {

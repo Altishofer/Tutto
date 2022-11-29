@@ -1,5 +1,8 @@
 package Board;
 
+import Cards.Card;
+import Cards.FlyWeightDeck;
+import Cards.Stop;
 import Cards.*;
 
 public class StubFlyWeightDeck extends FlyWeightDeck{

@@ -1,7 +1,6 @@
 package Cards;
 
 import Board.Board;
-import Roll.Roll;
 import Utils.Tuple;
 
 public class Firework extends Card {
@@ -26,7 +25,7 @@ public class Firework extends Card {
     @Override
     protected int rollNotValid(){
         int finalSum = aIntermediatePoints + aRoll.getPoints();
-        System.out.println("The combination is invalid but you get " + finalSum + " points ");
+        System.out.print("The combination is invalid but you get " + finalSum + " points \n");
         Board.printDelimiter();
         return finalSum;
     }

@@ -30,7 +30,7 @@ class SingletonCloverLeafTest {
         assertFalse(SingletonCloverLeaf.getInstance().rollIsTutto().getSecond());
     }
 
-    @Test // made CloverLeaf.rollNotValid() public: bad design?
+    @Test
     void rollNotValid() {
         assertEquals(0, SingletonCloverLeaf.getInstance().rollNotValid());
     }
