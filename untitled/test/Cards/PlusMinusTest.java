@@ -14,7 +14,7 @@ class PlusMinusTest{
     void makeMoveTuttoOnesOnce() {
         ((StubCardPlusMinus)card).setStubNr("tuttoOnes");
         int result = card.makeMove().getFirst();
-        assertEquals(2000, result);
+        assertEquals(1000, result);
     }
 
     @Test
