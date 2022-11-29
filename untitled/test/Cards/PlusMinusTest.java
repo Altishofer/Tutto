@@ -2,6 +2,8 @@ package Cards;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlusMinusTest{
@@ -21,4 +23,25 @@ class PlusMinusTest{
         int result = card.makeMove().getFirst();
         assertEquals(0, result);
     }
+
+    @Test
+    void stopOrRollStop(){
+        card = new PlusMinus();
+        String input = "e\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        assertEquals(true, card.stopOrRoll());
+    }
+
+    @Test
+    void stopOrRollRoll(){
+        card = new PlusMinus();
+        String input = "r\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        assertEquals(false, card.stopOrRoll());
+    }
+
 }
