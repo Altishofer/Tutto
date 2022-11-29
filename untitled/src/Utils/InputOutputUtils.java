@@ -53,6 +53,7 @@ public class InputOutputUtils {
         ArrayList<String> values;
         int[] clean = new int[6];
         for (int i=0; i<clean.length; i++){clean[i] = 0;}
+
         if (input == null || input.isEmpty()){return clean;}
         input = input.replaceAll("\\s+","");
         values = new ArrayList<String>(List.of(input.split(",")));
