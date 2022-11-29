@@ -1,6 +1,5 @@
 package Roll;
 
-import Cards.StubRoll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -102,5 +101,4 @@ class RollStraightTest {
         stubRoll.putAsideDice();
         assertEquals(stubRoll.getPoints(), 2000);
     }
-
 }

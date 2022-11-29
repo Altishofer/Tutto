@@ -1,6 +1,7 @@
 package Cards;
 
 import Roll.Roll;
+import Roll.StubRoll;
 import Utils.Tuple;
 import org.junit.jupiter.api.Test;
 

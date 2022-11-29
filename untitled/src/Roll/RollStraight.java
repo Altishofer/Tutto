@@ -22,28 +22,15 @@ public class RollStraight extends Roll {
         return false;
     }
 
-    @Override
-    public void whichToPutAside(){
-        Scanner scanner = new Scanner(System.in);
-        boolean valid;
-        boolean allZero;
-        while (true) {
-            valid = true;
-            allZero = true;
-            calculateFrequencies();
-            System.out.print("Which dice-values do you want to put aside (comma separated): ");
-            String answer = scanner.nextLine();
-            Board.printDelimiter();
-            userFreq = cleanUpUserInput(answer);
-            for (int i=0; i<userFreq.length; i++){
-                if (userFreq[i] != 0){allZero = false;}
-                if (userFreq[i] > aFrequencyOfValues[i] || userFreq[i] >= 2){valid = false;}
-                if (userFreq[i]!=0 && aAsideDices[i]){valid = false;}
-            }
-            if (valid & !allZero){return;}
-            System.out.println("The given input is not valid for the current roll");
-            Board.printDelimiter();
+    public boolean validUserInput(){
+        boolean valid = true;
+        boolean allZero = true;
+        for (int i=0; i<userFreq.length; i++){
+            if (userFreq[i] != 0){allZero = false;}
+            if (userFreq[i] > aFrequencyOfValues[i] || userFreq[i] >= 2){valid = false;}
+            if (userFreq[i]!=0 && aAsideDices[i]){valid = false;}
         }
+        return valid && !allZero;
     }
 
     @Override

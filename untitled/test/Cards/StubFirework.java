@@ -1,6 +1,8 @@
 package Cards;
 
 
+import Roll.StubRoll;
+
 public class StubFirework extends Firework{
 
     public StubFirework(){

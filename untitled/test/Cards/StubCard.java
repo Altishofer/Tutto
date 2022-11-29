@@ -1,5 +1,7 @@
 package Cards;
 
+import Roll.StubRoll;
+
 public class StubCard extends Card{
     private int stops = 0;
     public StubCard(){
