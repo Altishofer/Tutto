@@ -1,6 +1,7 @@
 package Cards;
 
 import Board.Board;
+import Roll.StubRoll;
 import Utils.Tuple;
 
 public class StubCloverLeafOneTutto extends SingletonCloverLeaf {

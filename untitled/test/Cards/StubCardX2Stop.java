@@ -1,5 +1,7 @@
 package Cards;
 
+import Roll.StubRoll;
+
 public class StubCardX2Stop extends X2 {
     public StubCardX2Stop() {
         aRoll = new StubRoll();

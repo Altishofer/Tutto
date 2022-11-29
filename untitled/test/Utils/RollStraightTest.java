@@ -1,7 +1,6 @@
 package Utils;
 
 import Cards.StubCardStraight;
-import Cards.StubRoll;
 import Roll.Roll;
 import Roll.RollStraight;
 import org.junit.jupiter.api.Test;
