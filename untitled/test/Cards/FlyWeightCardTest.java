@@ -64,10 +64,10 @@ class FlyWeightCardTest {
         assertEquals(25, getCardCount(Bonus.class));
     }
 
-    /*@Test
+    @Test
     void numberOfCloverleaf() {
-        assertEquals(1, getCardCount(Cloverleaf.class));
-    }*/
+        assertEquals(1, getCardCount(SingletonCloverLeaf.class));
+    }
 
     @Test
     void numberOfFirework() {

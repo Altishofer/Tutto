@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class X2Test {
     X2 aX2 = new X2();
-    //TODO: Adrian
 
     @Test
     void testToString() { assertEquals("X2-Card", aX2.toString()); }

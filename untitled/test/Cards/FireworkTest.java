@@ -14,7 +14,6 @@ class FireworkTest {
     StubFirework card = new StubFirework();
     Class<Roll> roll = Roll.class;
     Roll Roll = new StubRoll();
-    //TODO: Cedric
 
     @Test
     void testToString() {
@@ -37,14 +36,13 @@ class FireworkTest {
             e.printStackTrace();
         }
     }
-    //TODO: very hard
-    //@Test
+
+    @Test
     void testMakeMoveTutto() {
+        card.setStubNr("tuttoOnes");
         Tuple result = card.makeMove();
-        Tuple check = card.rollIsTutto();
         System.out.println(result);
-        System.out.println(check);
-        assertEquals(result,check);
+        assertEquals(new Tuple(2000,true),result);
     }
 
     @Test
