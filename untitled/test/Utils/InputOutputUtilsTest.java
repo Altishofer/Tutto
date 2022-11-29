@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class InputOutputUtilsTest {
 
@@ -59,5 +62,55 @@ class InputOutputUtilsTest {
         String expected = "consoleTextconsoleText";
         assertEquals(expected, outContent.toString());
         assertEquals(12, out);
+    }
+
+    @Test
+    void cleanUpUserInputNull() {
+        int[] expected = new int[6];
+        int[] actual = InputOutputUtils.cleanUpUserInput(null);
+
+        assertEquals(true, Arrays.equals(expected, actual));
+    }
+
+    @Test
+    void cleanUpUserInputNotInt() {
+        int[] expected = new int[6];
+        int[] actual = InputOutputUtils.cleanUpUserInput("a,b,c,d");
+
+        assertEquals(true, Arrays.equals(expected, actual));
+    }
+
+    @Test
+    void cleanUpUserInputInvalidInt() {
+        int[] expected = new int[6];
+        int[] actual = InputOutputUtils.cleanUpUserInput("1,2,3,7");
+
+        assertEquals(true, Arrays.equals(expected, actual));
+    }
+
+    @Test
+    void cleanUpUserInputInvalidSplit() {
+        int[] expected = new int[6];
+        int[] actual = InputOutputUtils.cleanUpUserInput("12,3,4");
+
+        assertEquals(true, Arrays.equals(expected, actual));
+    }
+
+    @Test
+    void cleanUpUserInputInvalidMixed() {
+        int[] expected = new int[6];
+        int[] actual = InputOutputUtils.cleanUpUserInput("1,2,b,4");
+
+        assertEquals(true, Arrays.equals(expected, actual));
+    }
+
+    @Test
+    void cleanUpUserInputValid() {
+        int[] expected = new int[6];
+        expected[0] = 3;
+        expected[3] = 1;
+        int[] actual = InputOutputUtils.cleanUpUserInput("1,1,1,4");
+
+        assertEquals(true, Arrays.equals(expected, actual));
     }
 }
