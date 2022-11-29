@@ -178,6 +178,22 @@ class BoardTest {
     }
 
     @Test
+    void testSetUpPlayers() {
+        String input = "player1\nplayer2\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Board board = new Board(2000, 2);
+
+        String expected = "Player 0 set your name: Welcome, PLAYER1!\n" +
+                "Player 1 set your name: Welcome, PLAYER2!\n";
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
     void testPrintDelimiter() {
         Board.printDelimiter();
         assertEquals(outContent.toString(),"-------------------------------------------------\n");
