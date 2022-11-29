@@ -1,16 +1,18 @@
 package Board;
 
-import Cards.Card;
-import Cards.FlyWeightDeck;
-import Cards.PlusMinus;
-import Cards.Stop;
+import Cards.*;
 
 public class StubFlyWeightDeck extends FlyWeightDeck{
 
     private String command;
+    private final Card plusMinus = new StubCardPlusMinus();
 
     public void setCommand(String command){
         this.command = command;
+    }
+
+    public void setStubNr(String command) {
+        ((StubCardPlusMinus) plusMinus).setStubNr(command);
     }
 
     @Override
@@ -19,7 +21,7 @@ public class StubFlyWeightDeck extends FlyWeightDeck{
             return new Stop();
         }
         if(this.command == "plusminus"){
-            return new PlusMinus();
+            return plusMinus;
         }
         return new Stop();
     }

@@ -16,6 +16,9 @@ public class StubBoard extends Board{
     public void setCommand(String command) {
         ((StubFlyWeightDeck) aRandomCardFactory).setCommand(command);
     }
+    public void setStubNr(String command) {
+        ((StubFlyWeightDeck) aRandomCardFactory).setStubNr(command);
+    }
 
     public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers) {
         super(pMaxPoints,pNumberOfPlayers);

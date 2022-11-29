@@ -140,7 +140,7 @@ class BoardTest {
 
     //@Test
     void testNextPlayerMovePlusMinus() {
-        String input = "r\n";
+        String input = "r\nr\ne\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -148,6 +148,7 @@ class BoardTest {
 
         StubBoard board = new StubBoard(5000,1, inputStream);
         board.setCommand("plusminus");
+        board.setStubNr("tuttoOnes");
 
         board.nextPlayerMove(0);
 
@@ -155,9 +156,23 @@ class BoardTest {
                 "\n" +
                 "#################### current player: PLAYER1 ####################\n" +
                 "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
-                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "PLAYER1 -> you have drawn a Plus/Minus-Card\n" +
                 "-------------------------------------------------\n" +
-                "PLAYER1 -> you currently have a score of 1500 points\n";
+                "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
+                "-------------------------------------------------\n" +
+                "TUTTO!! -> you earned already 2000 points \n" +
+                "-------------------------------------------------\n" +
+                "-------------------------------------------------\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Plus/Minus-Card\n" +
+                "-------------------------------------------------\n" +
+                "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
+                "-------------------------------------------------\n" +
+                "TUTTO!! -> you earned already 4000 points \n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 5500 points\n";
 
         assertEquals(expected, outContent.toString());
     }
