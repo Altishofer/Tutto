@@ -75,7 +75,7 @@ class BoardTest {
 
         StubBoard board = new StubBoard(1000,1, inputStream);
 
-        board.nextPlayerMove(0);
+        board.nextPlayerMove(0, false);
 
         String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
                 "\n" +
@@ -98,7 +98,7 @@ class BoardTest {
 
         StubBoard board = new StubBoard(2000,2, inputStream);
         board.setCommand("bonus");
-        board.nextPlayerMove(0);
+        board.nextPlayerMove(0, false);
 
         String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
                 "PLAYER2 -> you currently have a score of 1500 points\n" +
@@ -122,7 +122,7 @@ class BoardTest {
 
         StubBoard board = new StubBoard(1000,1, inputStream);
 
-        board.nextPlayerMove(0);
+        board.nextPlayerMove(0, false);
 
         String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
                 "\n" +
@@ -149,7 +149,7 @@ class BoardTest {
 
         StubBoard board = new StubBoard(5000,1, inputStream);
 
-        board.nextPlayerMove(500);
+        board.nextPlayerMove(500, false);
 
         String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
                 "\n" +
@@ -172,7 +172,7 @@ class BoardTest {
         board.setCommand("plusminus");
         board.setStubNr("tuttoOnes");
 
-        board.nextPlayerMove(0);
+        board.nextPlayerMove(0, true);
 
         String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
                 "\n" +

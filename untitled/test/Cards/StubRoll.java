@@ -30,6 +30,11 @@ public class StubRoll extends Roll {
                 aRolledDices.add(DiceValues.ONE);
             }
         }
+        if (command == "straight") {
+            for (int i = 0; i < aDicesLeft; i++) {
+                aRolledDices.add(DiceValues.values()[i]);
+            }
+        }
         aFrequencyOfValues = calculateFrequencies();
     }
 

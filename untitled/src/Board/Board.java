@@ -51,10 +51,10 @@ public class Board {
         }
     }
 
-    public void nextPlayerMove(int intermediatePoints){
+    public void nextPlayerMove(int intermediatePoints, boolean plusMinus){
         Card card = aRandomCardFactory.getRandomCard();
         Player player;
-        if (intermediatePoints > 0){
+        if (intermediatePoints > 0  || plusMinus){
             if (aCurrentPlayerIndex == 0){
                 player = aPlayers.get(aPlayers.size()-1);
             }
@@ -82,14 +82,20 @@ public class Board {
                 card.addIntermediatePoints(intermediatePoints);
                 Tuple result = card.makeMove();
                 if (card.getClass() == PlusMinus.class && result.getFirst() > 0){
-                    ArrayList<Player> bestPlayers = getBestPlayer();
+                    ArrayList<Player> bestPlayers = getBestPlayer(player);
                     for (Player bestPlayer : bestPlayers){
                         bestPlayer.addPoints(-1000);
                     }
+                    player.addPoints(1000);
                 }
                 if (result.getSecond()){
                     printDelimiter();
-                    nextPlayerMove(result.getFirst());
+                    if (card.getClass() == PlusMinus.class){
+                        nextPlayerMove(0, true);
+                    }
+                    else {
+                        nextPlayerMove(result.getFirst(), false);
+                    }
                     return;
                 }
                 player.addPoints(result.getFirst());
@@ -111,16 +117,16 @@ public class Board {
         System.out.print("\n#################### current player: " + player.getPlayerName().toUpperCase() + " ####################\n");
     }
 
-    private ArrayList<Player> getBestPlayer(){
+    private ArrayList<Player> getBestPlayer(Player currentPlayer){
         ArrayList<Player> bestPlayers = new ArrayList<>();
-        int maxPoints = aPlayers.get(aCurrentPlayerIndex).getPoints() + 1;
+        int maxPoints = 0;
         for (Player player : aPlayers){
-            if (player.getPoints() >= maxPoints){
+            if (player.getPoints() > maxPoints){
                 maxPoints = player.getPoints();
             }
         }
         for (Player player : aPlayers){
-            if (player.getPoints() >= maxPoints){
+            if (player.getPoints() >= maxPoints && player.getPlayerName() != currentPlayer.getPlayerName() ){
                 bestPlayers.add(player);
             }
         }

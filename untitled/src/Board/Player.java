@@ -32,4 +32,9 @@ public class Player implements Comparable{
         if (this.getPlayerInitial() > otherPlayer.getPlayerInitial()){return 1;}
         return 0;
     }
+
+    @Override
+    public int hashCode(){
+        return PLAYER_NAME.length();
+    }
 }

@@ -1,22 +1,17 @@
-package Utils;
+package Roll;
 
-import Cards.StubCardStraight;
 import Cards.StubRoll;
-import Roll.Roll;
-import Roll.RollStraight;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RollStraightTest {
+class RollTest {
 
-
-
-    StubCardStraight.StubStraightRoll stubRoll = new StubCardStraight.StubStraightRoll();
+    StubRoll stubRoll = new StubRoll();
 
     @Test
     void cleanEmptyInput(){
-        Roll roll = new RollStraight();
+        Roll roll = new Roll();
         String input = "";
         int[] result = roll.cleanUpUserInput(input);
         int[] expected = new int[6];
@@ -28,7 +23,7 @@ class RollStraightTest {
 
     @Test
     void cleanValidInput(){
-        Roll roll = new RollStraight();
+        Roll roll = new Roll();
         String input = "1, 2";
         int[] result = roll.cleanUpUserInput(input);
         int[] expected = {1, 1, 0, 0, 0, 0};
@@ -39,7 +34,7 @@ class RollStraightTest {
 
     @Test
     void cleanInvalidInput(){
-        Roll roll = new RollStraight();
+        Roll roll = new Roll();
         String input = "7, 211";
         int[] result = roll.cleanUpUserInput(input);
         int[] expected = {0, 0, 0, 0, 0, 0};
@@ -50,7 +45,7 @@ class RollStraightTest {
 
     @Test
     void cleanInvalidInput_2(){
-        Roll roll = new RollStraight();
+        Roll roll = new Roll();
         String input = "1, 211";
         int[] result = roll.cleanUpUserInput(input);
         int[] expected = {0, 0, 0, 0, 0, 0};
@@ -61,7 +56,7 @@ class RollStraightTest {
 
     @Test
     void cleanInvalidInput_3(){
-        Roll roll = new RollStraight();
+        Roll roll = new Roll();
         String input = "7, 1";
         int[] result = roll.cleanUpUserInput(input);
         int[] expected = {0, 0, 0, 0, 0, 0};
@@ -72,7 +67,7 @@ class RollStraightTest {
 
     @Test
     void cleanNullInput(){
-        Roll roll = new RollStraight();
+        Roll roll = new Roll();
         String input = new String();
         int[] result = roll.cleanUpUserInput(input);
         int[] expected = {0, 0, 0, 0, 0, 0};
@@ -87,7 +82,7 @@ class RollStraightTest {
         stubRoll.rollDices();
         stubRoll.whichToPutAside();
         stubRoll.putAsideDice();
-        assertEquals(stubRoll.getPoints(), 0);
+        assertEquals(stubRoll.getPoints(), 200);
     }
 
     @Test
@@ -105,13 +100,7 @@ class RollStraightTest {
         stubRoll.rollDices();
         stubRoll.whichToPutAside();
         stubRoll.putAsideDice();
-        assertEquals(stubRoll.getPoints(), 0);
+        assertEquals(stubRoll.getPoints(), 2000);
     }
 
-    @Test
-    void testNotValid() {
-        stubRoll.setCommand("invalid");
-        stubRoll.rollDices();
-        assertEquals(stubRoll.getPoints(), 0);
-    }
 }
