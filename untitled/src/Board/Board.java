@@ -103,7 +103,9 @@ public class Board {
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
             System.out.print("Player " + i + " set your name: ");
-            aPlayers.add(new Player(scanner.nextLine()));
+            String playerName = scanner.nextLine();
+            aPlayers.add(new Player(playerName));
+            System.out.print("Welcome, " + playerName.toUpperCase() + "!\n");
         }
         Collections.sort(aPlayers);
     }
