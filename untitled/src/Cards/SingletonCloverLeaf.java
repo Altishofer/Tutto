@@ -3,8 +3,10 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
+
 public class SingletonCloverLeaf extends Card {
     public boolean aAlreadyTutto;
+
     protected static SingletonCloverLeaf INSTANCE;
 
     protected SingletonCloverLeaf() {
