@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -46,4 +48,19 @@ public class InputOutputUtils {
         return true;
     }
 
+    public static int[] cleanUpUserInput(String input) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> values;
+        int[] clean = new int[6];
+        for (int i=0; i<clean.length; i++){clean[i] = 0;}
+
+        if (input == null || input.isEmpty()){return clean;}
+        input = input.replaceAll("\\s+","");
+        values = new ArrayList<String>(List.of(input.split(",")));
+        for (String str : values){
+            if (str.length() > 1 || !str.matches("[1-6]")){return clean;}
+        }
+        for (String str : values){clean[Integer.valueOf(str) - 1]++;}
+        return clean;
+    }
 }
