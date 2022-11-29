@@ -16,12 +16,15 @@ public class StubFlyWeightDeck extends FlyWeightDeck{
     }
 
     @Override
-    public Card getRandomCard(){
-        if(this.command == null || this.command == "stop"){
+    public Card getRandomCard() {
+        if (this.command == null || this.command == "stop") {
             return new Stop();
         }
-        if(this.command == "plusminus"){
+        if (this.command == "plusminus") {
             return plusMinus;
+        }
+        if (this.command == "bonus") {
+            return new Bonus(100);
         }
         return new Stop();
     }

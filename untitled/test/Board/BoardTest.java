@@ -12,13 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
-    //TODO: Pädi, Cedi
-    Class<Board> boardClass = Board.class;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
-
 
     @BeforeEach
     public void setUpStreams() {
@@ -88,6 +83,30 @@ class BoardTest {
         assertEquals(expected, outContent.toString());
     }
 
+    //@Test
+    void testNextPlayerMoveSecond() {
+        String input = "r\nd\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        StubBoard board = new StubBoard(2000,2, inputStream);
+        board.setCommand("bonus");
+        board.nextPlayerMove(0);
+
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "PLAYER2 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 1500 points\n";
+
+        assertEquals(expected, outContent.toString());
+    }
+
     @Test
     void testNextPlayerMoveIntermediateDisplay() {
         String input = "d\nr\n";
@@ -138,15 +157,13 @@ class BoardTest {
         assertEquals(expected, outContent.toString());
     }
 
-    //@Test
+
+    @Test
     void testNextPlayerMovePlusMinus() {
         String input = "r\nr\ne\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        StubBoard board = new StubBoard(5000,1, inputStream);
+        StubBoard board = new StubBoard(5000, 1, inputStream);
         board.setCommand("plusminus");
         board.setStubNr("tuttoOnes");
 
@@ -176,6 +193,22 @@ class BoardTest {
 
         assertEquals(expected, outContent.toString());
     }
+
+
+    //@Test
+    void testSetUpPlayer(){
+        String input = "player1\nplayer2\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        int aNumberOfPlayers = 2;
+        Board board = new Board(2000,aNumberOfPlayers);
+
+        String expected = "Player 0 set your name: Player 1 set your name: ";
+        assertEquals(expected, outContent.toString());
+        }
 
     @Test
     void testPrintDelimiter() {
