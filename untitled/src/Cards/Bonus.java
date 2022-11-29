@@ -25,19 +25,4 @@ public class Bonus extends Card {
         aIntermediatePoints += BONUS_VALUE;
         return new Tuple(finalSum, !stopOrRoll());
     }
-
-    @Override
-    protected boolean stopOrRoll(){
-        Scanner scanner;
-        while (true){
-            aSleeper.doSleep();
-            int sum = aIntermediatePoints + aRoll.getPoints();
-            System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
-            scanner = new Scanner(System.in);
-            String playOrStop = scanner.nextLine();
-            Board.printDelimiter();
-            if (playOrStop.equalsIgnoreCase("e")){return true;}
-            if (playOrStop.equalsIgnoreCase("r")){return false;}
-        }
-    }
 }
