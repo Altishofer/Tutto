@@ -1,10 +1,9 @@
 package Cards;
 
 import Board.Board;
-import Utils.Roll;
 import Utils.Tuple;
 
-public class Firework extends AbstractCard {
+public class Firework extends Card {
 
     @Override
     public String toString(){
@@ -12,22 +11,22 @@ public class Firework extends AbstractCard {
     }
 
     @Override
-    protected int rollNotValid(){
-        int finalSum = intermediatePoints + roll.getPoints();
-        System.out.println("The combination is invalid but you get " + finalSum + " points ");
-        Board.printDelimiter();
-        return finalSum;
+    public Tuple makeMove() {
+        aRoll.startOverRoll();
+        while (true){
+            printRoll();
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){return rollIsTutto();}
+            aRoll.rollDices();
+        }
     }
 
     @Override
-    public Tuple makeMove() {
-        roll = new Roll();
-        while (true){
-            printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){return rollIsTutto();}
-            roll.rollDices();
-        }
+    protected int rollNotValid(){
+        int finalSum = aIntermediatePoints + aRoll.getPoints();
+        System.out.println("The combination is invalid but you get " + finalSum + " points ");
+        Board.printDelimiter();
+        return finalSum;
     }
 }

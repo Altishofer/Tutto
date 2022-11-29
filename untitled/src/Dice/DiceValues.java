@@ -1,4 +1,4 @@
-package Utils;
+package Dice;
 
 public enum DiceValues {
     SIX(6),
@@ -8,15 +8,15 @@ public enum DiceValues {
     TWO(2),
     ONE(1);
 
-    public final int value;
+    public final int aValue;
     DiceValues(int value){
-        this.value = value;
+        this.aValue = value;
     }
 
     @Override
     public String toString(){return this.name().toLowerCase();}
 
     public int getInteger(){
-        return this.value;
+        return this.aValue;
     }
 }

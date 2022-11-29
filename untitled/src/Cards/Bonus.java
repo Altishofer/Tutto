@@ -3,7 +3,7 @@ package Cards;
 import Board.Board;
 import Utils.Tuple;
 
-public class Bonus extends AbstractCard {
+public class Bonus extends Card {
     private final int BONUS_VALUE;
 
     public Bonus(Integer bonus){
@@ -17,10 +17,10 @@ public class Bonus extends AbstractCard {
 
     @Override
     protected Tuple rollIsTutto(){
-        int finalSum = intermediatePoints + roll.getPoints() + BONUS_VALUE;
+        int finalSum = aIntermediatePoints + aRoll.getPoints() + BONUS_VALUE;
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
-        intermediatePoints = finalSum;
+        aIntermediatePoints = finalSum;
         return new Tuple(finalSum, !stopOrRoll());
     }
 }

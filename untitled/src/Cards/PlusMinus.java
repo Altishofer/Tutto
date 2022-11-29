@@ -2,7 +2,7 @@ package Cards;
 
 import Utils.Tuple;
 
-public class PlusMinus extends AbstractCard {
+public class PlusMinus extends Card {
 
     @Override
     public String toString(){
@@ -10,13 +10,14 @@ public class PlusMinus extends AbstractCard {
     }
 
     public Tuple makeMove() {
-        roll.startOverRoll();
+        aRoll.startOverRoll();
         while (true){
             printRoll();
-            if (!roll.isValid()){return new Tuple(rollNotValid(), false);}
-            roll.putAside();
-            if (roll.isTutto()){return rollIsTutto();}
-            else {roll.rollDices();}
+            if (!aRoll.isValid()){return new Tuple(rollNotValid(), false);}
+            aRoll.putAside();
+            if (aRoll.isTutto()){return rollIsTutto();}
+            else {
+                aRoll.rollDices();}
         }
     }
 }

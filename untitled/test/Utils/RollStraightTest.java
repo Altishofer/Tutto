@@ -3,10 +3,6 @@ package Utils;
 import Cards.StubCardStraight;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class RollStraightTest {
@@ -18,17 +14,5 @@ class RollStraightTest {
         ((StubCardStraight.StubStraightRoll) roll).setCommand("invalid");
         roll.rollDices();
         assertEquals(roll.getPoints(), 0);
-    }
-
-    @Test
-    void putAsideDices() {
-    }
-
-    @Test
-    void isValid() {
-    }
-
-    @Test
-    void testPutAsideDices() {
     }
 }

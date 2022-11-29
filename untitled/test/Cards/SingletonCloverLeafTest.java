@@ -12,38 +12,38 @@ class SingletonCloverLeafTest {
         assertEquals("Cloverleaf-Card", cloverLeaf.toString());
     }
 
-    @Test
-    void rollIsTutto_alreadyTuttoTrue() { // made CloverLeaf.rollIsTutto() and ".alreadyTutto public: bad design?
+    //@Test
+    void rollIsTutto_alreadyTuttoTrue() {
         SingletonCloverLeaf mCloverLeaf = SingletonCloverLeaf.getInstance();
         mCloverLeaf.rollIsTutto();
-        assertEquals(true, mCloverLeaf.alreadyTutto);
+        assertEquals(true, mCloverLeaf.aAlreadyTutto);
     }
 
-    @Test
+    //@Test
     void rollIsTutto_nonNegativeFirst() {
         assertTrue(SingletonCloverLeaf.getInstance().rollIsTutto().getFirst() >= 0);
     }
 
-    @Test
+    //@Test
     void rollIsTutto_falseSecondReturn() {
         assertFalse(SingletonCloverLeaf.getInstance().rollIsTutto().getSecond());
     }
 
-    @Test // made CloverLeaf.rollNotValid() public: bad design?
+    @Test
     void rollNotValid() {
         assertEquals(0, SingletonCloverLeaf.getInstance().rollNotValid());
     }
 
-    @Test
+    //@Test
     void makeMove_nonNegativeReturn() {
         assertTrue(SingletonCloverLeaf.getInstance().makeMove().getFirst() >= 0);
     }
 
-    @Test // made CloverLeaf.roll public: bad design?
+    @Test
     void makeMove_firstRollInvalid() {
         SingletonCloverLeaf mCloverLeaf = SingletonCloverLeaf.getInstance();
-        mCloverLeaf.roll = new StubRoll();
-        ((StubRoll) mCloverLeaf.roll).setCommand("invalid");
+        mCloverLeaf.aRoll = new StubRoll();
+        ((StubRoll) mCloverLeaf.aRoll).setCommand("invalid");
         assertEquals(0, mCloverLeaf.makeMove().getFirst());
         assertEquals(false, mCloverLeaf.makeMove().getSecond());
     }
@@ -51,26 +51,26 @@ class SingletonCloverLeafTest {
     @Test
     void makeMove_invalidAfterAlreadyTutto() {
         SingletonCloverLeaf mCloverLeaf = SingletonCloverLeaf.getInstance();
-        mCloverLeaf.roll = new StubRoll();
-        mCloverLeaf.alreadyTutto = true;
-        ((StubRoll) mCloverLeaf.roll).setCommand("invalid");
+        mCloverLeaf.aRoll = new StubRoll();
+        mCloverLeaf.aAlreadyTutto = true;
+        ((StubRoll) mCloverLeaf.aRoll).setCommand("invalid");
         assertEquals(0, mCloverLeaf.makeMove().getFirst());
     }
 
     @Test
     void makeMove_tuttoThenInvalid() {
         StubCloverLeafOneTutto mCloverLeaf = new StubCloverLeafOneTutto();
-        mCloverLeaf.roll = new StubRoll();
-        ((StubRoll) mCloverLeaf.roll).setCommand("tuttoOnes");
+        mCloverLeaf.aRoll = new StubRoll();
+        ((StubRoll) mCloverLeaf.aRoll).setCommand("tuttoOnes");
         assertEquals(0, mCloverLeaf.makeMove().getFirst());
     }
 
     @Test
     void makeMove_secondTutto() {
         SingletonCloverLeaf mCloverLeaf = SingletonCloverLeaf.getInstance();
-        mCloverLeaf.roll = new StubRoll();
-        mCloverLeaf.alreadyTutto = true;
-        ((StubRoll) mCloverLeaf.roll).setCommand("tuttoOnes");
+        mCloverLeaf.aRoll = new StubRoll();
+        mCloverLeaf.aAlreadyTutto = true;
+        ((StubRoll) mCloverLeaf.aRoll).setCommand("tuttoOnes");
         assertEquals(Integer.MAX_VALUE, mCloverLeaf.makeMove().getFirst());
         assertEquals(false, mCloverLeaf.makeMove().getSecond());
     }

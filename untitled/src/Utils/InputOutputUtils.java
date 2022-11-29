@@ -5,16 +5,14 @@ import java.util.concurrent.TimeUnit;
 
 public class InputOutputUtils {
 
-    // TODO: pädi -> check user inputs mainly used by player
-    private final int seconds;
-    
+    private final int aSecond;
     public InputOutputUtils(){
-        seconds = 0;
+        aSecond = 0;
     }
 
     public void doSleep(){
         try{
-            TimeUnit.SECONDS.sleep(this.seconds);
+            TimeUnit.SECONDS.sleep(this.aSecond);
         }catch (InterruptedException e){
             System.out.println("Please do not interrupt!");
         }
@@ -34,6 +32,7 @@ public class InputOutputUtils {
                     return count;
                 }
             }
+            System.out.print("Please enter an integer number greater than 0.");
         }
     }
 
@@ -46,4 +45,5 @@ public class InputOutputUtils {
         }
         return true;
     }
+
 }

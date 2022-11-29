@@ -6,20 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
-    //TODO: Pädi, Cedi
-    Class<Board> boardClass = Board.class;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
+    private final PrintStream originalErr = System.out;
 
 
     @BeforeEach
@@ -32,13 +28,6 @@ class BoardTest {
     public void restoreStreams() {
         System.setOut(originalOut);
         System.setErr(originalErr);
-    }
-
-    // TODO: to reach enought coverage test also private
-    @Test
-    void testGetBestPlayer(){
-        StubBoard board = new StubBoard(1000,1);
-
     }
 
     @Test
@@ -78,8 +67,6 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediatePointsZero() {
-
-
         String input = "r\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
@@ -101,10 +88,32 @@ class BoardTest {
         assertEquals(expected, outContent.toString());
     }
 
+    //@Test
+    void testNextPlayerMoveSecond() {
+        String input = "r\nd\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        StubBoard board = new StubBoard(2000,2, inputStream);
+        board.setCommand("bonus");
+        board.nextPlayerMove(0);
+
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "PLAYER2 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 1500 points\n";
+
+        assertEquals(expected, outContent.toString());
+    }
+
     @Test
     void testNextPlayerMoveIntermediateDisplay() {
-
-
         String input = "d\nr\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
@@ -132,8 +141,6 @@ class BoardTest {
 
     @Test
     void testNextPlayerMoveIntermediatePoints() {
-
-
         String input = "r\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
@@ -152,6 +159,58 @@ class BoardTest {
                 "-------------------------------------------------\n" +
                 "PLAYER1 -> you currently have a score of 1500 points\n";
 
+        assertEquals(expected, outContent.toString());
+    }
+
+
+    //@Test
+    void testNextPlayerMovePlusMinus() {
+        String input = "r\nr\ne\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+
+        StubBoard board = new StubBoard(5000, 1, inputStream);
+        board.setCommand("plusminus");
+        board.setStubNr("tuttoOnes");
+
+        board.nextPlayerMove(0);
+
+        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Plus/Minus-Card\n" +
+                "-------------------------------------------------\n" +
+                "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
+                "-------------------------------------------------\n" +
+                "TUTTO!! -> you earned already 2000 points \n" +
+                "-------------------------------------------------\n" +
+                "-------------------------------------------------\n" +
+                "\n" +
+                "#################### current player: PLAYER1 ####################\n" +
+                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
+                "PLAYER1 -> you have drawn a Plus/Minus-Card\n" +
+                "-------------------------------------------------\n" +
+                "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
+                "-------------------------------------------------\n" +
+                "TUTTO!! -> you earned already 4000 points \n" +
+                "-------------------------------------------------\n" +
+                "PLAYER1 -> you currently have a score of 5500 points\n";
+
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    void testSetUpPlayers() {
+        String input = "player1\nplayer2\n";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Board board = new Board(2000, 2);
+
+        String expected = "Player 0 set your name: Player 1 set your name: ";
         assertEquals(expected, outContent.toString());
     }
 

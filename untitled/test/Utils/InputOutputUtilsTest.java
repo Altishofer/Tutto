@@ -10,10 +10,6 @@ import java.io.PrintStream;
 class InputOutputUtilsTest {
 
     @Test
-    void doSleep() {
-    }
-
-    @Test
     void getIntegerInputValid() {
         String input = "12";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -32,7 +28,7 @@ class InputOutputUtilsTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         int out = InputOutputUtils.getIntegerInput("consoleText");
-        String expected = "consoleTextconsoleText";
+        String expected = "consoleTextPlease enter an integer number greater than 0.consoleText";
         assertEquals(expected, outContent.toString());
         assertEquals(12, out);
     }
@@ -44,7 +40,7 @@ class InputOutputUtilsTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         int out = InputOutputUtils.getIntegerInput("consoleText");
-        String expected = "consoleTextconsoleTextconsoleText";
+        String expected = "consoleTextPlease enter an integer number greater than 0.consoleTextPlease enter an integer number greater than 0.consoleText";
         assertEquals(expected, outContent.toString());
         assertEquals(12, out);
     }
@@ -56,7 +52,7 @@ class InputOutputUtilsTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         int out = InputOutputUtils.getIntegerInput("consoleText");
-        String expected = "consoleTextconsoleText";
+        String expected = "consoleTextPlease enter an integer number greater than 0.consoleText";
         assertEquals(expected, outContent.toString());
         assertEquals(12, out);
     }

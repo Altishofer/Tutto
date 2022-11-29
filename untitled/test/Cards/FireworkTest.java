@@ -1,11 +1,9 @@
 package Cards;
 
-import Utils.Roll;
+import Roll.Roll;
 import Utils.Tuple;
 import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,8 +12,7 @@ class FireworkTest {
 
     StubFirework card = new StubFirework();
     Class<Roll> roll = Roll.class;
-    Roll Roll = new Roll();
-    //TODO: Cedric
+    Roll Roll = new StubRoll();
 
     @Test
     void testToString() {
@@ -25,11 +22,12 @@ class FireworkTest {
 
     @Test
     void testRollNotValid() {
+        card.setStubNr("invalid");
         int result = card.rollNotValid();
-        int inter = card.intermediatePoints;
+        int inter = card.aIntermediatePoints;
 
         try{
-            Field field = roll.getDeclaredField("points");
+            Field field = roll.getDeclaredField("aPoints");
             field.setAccessible(true);
             int check = field.getInt(Roll);
             assertEquals(result,check+inter);
@@ -37,20 +35,20 @@ class FireworkTest {
             e.printStackTrace();
         }
     }
-    //TODO: very hard
-    //@Test
-    //void testMakeMoveTutto() {
-      //Tuple result = card.makeMove();
-        //Tuple check = card.rollIsTutto();
-        //System.out.println(result);
-        //System.out.println(check);
-        //assertEquals(result,check);
-    //}
+
+    @Test
+    void testMakeMoveTutto() {
+        card.setStubNr("tuttoOnes");
+        Tuple result = card.makeMove();
+        System.out.println(result);
+        assertEquals(new Tuple(2000,true),result);
+    }
 
     @Test
     void testMakeMoveNotValid(){
+        card.setStubNr("invalid");
         Tuple result = card.makeMove();
         int check = card.rollNotValid();
-        assertEquals(new Tuple(check,false),result);
+        assertEquals(check,result.getFirst());
     }
 }

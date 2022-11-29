@@ -1,10 +1,6 @@
 package Cards;
 
-import Utils.Roll;
 import org.junit.jupiter.api.Test;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,11 +12,10 @@ class BonusTest {
         private int stops = 0;
         public StubCardBonus(Integer bonus) {
             super(bonus);
-            roll = new StubRoll();
+            aRoll = new StubRoll();
         }
 
-        public void setStubNr(String command){((StubRoll) roll).setCommand(command);}
-        public String getStubNr(){return ((StubRoll) roll).getCommand();}
+        public void setStubNr(String command){((StubRoll) aRoll).setCommand(command);}
 
         @Override
         public boolean stopOrRoll() {
@@ -43,6 +38,4 @@ class BonusTest {
         int result = card.makeMove().getFirst();
         assertEquals(0, result);
     }
-
-
 }
