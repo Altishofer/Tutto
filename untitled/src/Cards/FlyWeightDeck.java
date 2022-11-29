@@ -17,17 +17,17 @@ public class FlyWeightDeck {
 
     private void prepareCardsNew(){
         aCardFlyWeightStore = new ArrayList<Card>();
-        //aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
+        aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
         for (int i=0; i<5; i++){
-            //aCardFlyWeightStore.add(new Straight());
-            //aCardFlyWeightStore.add(new Firework());
-            //aCardFlyWeightStore.add(new PlusMinus());
-            //aCardFlyWeightStore.add(new X2());
+            aCardFlyWeightStore.add(new Straight());
+            aCardFlyWeightStore.add(new Firework());
+            aCardFlyWeightStore.add(new PlusMinus());
+            aCardFlyWeightStore.add(new X2());
             for (int j=2; j<7; j++){
                 aCardFlyWeightStore.add(new Bonus(j*100));
             }
             for (int j=0; j<2; j++){
-                //aCardFlyWeightStore.add(new Stop());
+                aCardFlyWeightStore.add(new Stop());
             }
         }
         Collections.shuffle(aCardFlyWeightStore);
