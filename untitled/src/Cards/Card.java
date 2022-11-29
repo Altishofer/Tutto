@@ -40,14 +40,14 @@ public abstract class Card {
     protected Tuple rollIsTutto(){
         aSleeper.doSleep();
         int finalSum = aIntermediatePoints + aRoll.getPoints();
-        System.out.print("TUTTO!! -> you earned already " + finalSum + " points \n");
+        System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
         return new Tuple(finalSum, !stopOrRoll());
     }
 
     protected int rollNotValid(){
         aSleeper.doSleep();
-        System.out.print("The combination is invalid and results in 0 points\n");
+        System.out.println("The combination is invalid and results in 0 points");
         Board.printDelimiter();
         return 0;
     }
@@ -69,7 +69,7 @@ public abstract class Card {
     protected void printRoll(){
         aSleeper.doSleep();
         String listString = String.join(", ", String.valueOf(aRoll.getRolledDices()));
-        System.out.print("You have rolled the combination: " + listString + "\n");
+        System.out.println("You have rolled the combination: " + listString);
         Board.printDelimiter();
     }
 }
