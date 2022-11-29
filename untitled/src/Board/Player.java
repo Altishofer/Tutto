@@ -2,8 +2,6 @@ package Board;
 
 public class Player implements Comparable{
 
-    // TODO: adrian
-
     private final String PLAYER_NAME;
     private int aPoints;
 

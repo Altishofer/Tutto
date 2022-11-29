@@ -1,9 +1,6 @@
 package Board;
 
-import Cards.Card;
-import Cards.FlyWeightDeck;
-import Cards.PlusMinus;
-import Cards.Stop;
+import Cards.*;
 
 public class StubFlyWeightDeck extends FlyWeightDeck{
 
@@ -18,8 +15,8 @@ public class StubFlyWeightDeck extends FlyWeightDeck{
         if(this.command == null || this.command == "stop"){
             return new Stop();
         }
-        if(this.command == "plusminus"){
-            return new PlusMinus();
+        if(this.command == "bonus"){
+            return new Bonus(100);
         }
         return new Stop();
     }

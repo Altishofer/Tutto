@@ -5,15 +5,13 @@ import Cards.FlyWeightDeck;
 import Cards.PlusMinus;
 import Utils.Tuple;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Board { //TODO: removed abstract
+public class Board {
 
-    // TODO: Cedi (1.prio), Pädi
-
-    // TODO: new card after tutto
     private int aCurrentPlayerIndex;
     protected ArrayList<Player> aPlayers;
     protected static Integer MAX_POINTS;
@@ -27,6 +25,15 @@ public class Board { //TODO: removed abstract
         setUpPlayers(pNumberOfPlayers);
         aRandomCardFactory = new FlyWeightDeck();
         aScanner = new Scanner(System.in);
+    }
+
+    public Board(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream){
+        MAX_POINTS = pMaxPoints;
+        aCurrentPlayerIndex = 0;
+        aPlayers = new ArrayList<Player>();
+        aScanner = new Scanner(inputStream);
+        setUpPlayers(pNumberOfPlayers);
+        aRandomCardFactory = new FlyWeightDeck();
     }
 
     public boolean playerWon(){
@@ -105,7 +112,7 @@ public class Board { //TODO: removed abstract
         Scanner scanner = new Scanner(System.in);
         for (int i=0; i<numberOfPlayer; i++){
             System.out.print("Player " + i + " set your name: ");
-            aPlayers.add(new Player(scanner.nextLine()));
+            aPlayers.add(new Player(aScanner.nextLine()));
         }
         Collections.sort(aPlayers);
     }
