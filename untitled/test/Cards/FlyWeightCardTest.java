@@ -66,7 +66,7 @@ class FlyWeightCardTest {
 
     @Test
     void numberOfCloverleaf() {
-        assertEquals(1, getCardCount(CloverLeaf.class));
+        assertEquals(1, getCardCount(SingletonCloverLeaf.class));
     }
 
     @Test

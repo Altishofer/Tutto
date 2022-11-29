@@ -35,6 +35,7 @@ public class InputOutputUtils {
                     return count;
                 }
             }
+            System.out.print("Please enter an integer number greater than 0.");
         }
     }
 
