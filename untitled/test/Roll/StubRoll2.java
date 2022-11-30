@@ -10,7 +10,6 @@ public class StubRoll2 extends Roll {
 
     private String command;
     public void setCommand(String pCommand){command = pCommand;}
-    public String getCommand(){return command;}
     @Override
     public void rollDices(){
         aRolledDices = new ArrayList<>(){};

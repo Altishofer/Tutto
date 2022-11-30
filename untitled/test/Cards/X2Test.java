@@ -13,13 +13,12 @@ class X2Test {
 
     @Test
     void rollIsTutto_checkDoubling() {
-        // Card.intermediatePoints = 0 at initialization
         StubCardX2Stop mX2 = new StubCardX2Stop();
         int rollPoints = mX2.aRoll.getPoints();
         assertEquals(rollPoints * 2, mX2.rollIsTutto().getFirst());
     }
 
-    @Test // made intermediatePoints public for this
+    @Test
     void rollIsTutto_intermediatePointsIncrease() {
         StubCardX2Stop mX2 = new StubCardX2Stop();
         int intermediatePointsbefore = mX2.aIntermediatePoints;
@@ -31,19 +30,19 @@ class X2Test {
     void rollIsTutto_stop() {
         StubCardX2Stop mX2 = new StubCardX2Stop();
         ((StubRoll) mX2.aRoll).setCommand("tuttoOnes");
-        ((StubRoll) mX2.aRoll).startOverRoll();
-        ((StubRoll) mX2.aRoll).putAside();
-        assertTrue(((X2) mX2).rollIsTutto().getFirst() > 0);
-        assertTrue(((X2) mX2).rollIsTutto().getSecond() == false);
+         mX2.aRoll.startOverRoll();
+         mX2.aRoll.putAside();
+        assertTrue((mX2).rollIsTutto().getFirst() > 0);
+        assertTrue((mX2).rollIsTutto().getSecond() == false);
     }
 
-    @Test // StubCardX2Roll should inherit from StubCard for setCommand
+    @Test
     void rollIsTutto_roll() {
         StubCardX2Roll mX2 = new StubCardX2Roll();
         ((StubRoll) mX2.aRoll).setCommand("tuttoOnes");
-        ((StubRoll) mX2.aRoll).startOverRoll();
-        ((StubRoll) mX2.aRoll).putAside();
-        assertTrue(((X2) mX2).rollIsTutto().getFirst() > 0);
-        assertTrue(((X2) mX2).rollIsTutto().getSecond() == true);
+        mX2.aRoll.startOverRoll();
+        mX2.aRoll.putAside();
+        assertTrue((mX2).rollIsTutto().getFirst() > 0);
+        assertTrue((mX2).rollIsTutto().getSecond() == true);
     }
 }
