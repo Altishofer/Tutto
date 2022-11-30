@@ -45,7 +45,12 @@ public class Board {
         Board.printDelimiter();
         System.out.print("Player" + "\t\t" + "Points\n");
         for (Player playerIter : aPlayers) {
-            System.out.print(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints()+"\n");
+            if (playerIter.getPoints() == Integer.MAX_VALUE){
+                System.out.print(playerIter.getPlayerName() + "\t\t\t" + "Maximum" +"\n");
+            }
+            else {
+                System.out.print(playerIter.getPlayerName() + "\t\t\t" + playerIter.getPoints()+"\n");
+            }
         }
     }
 

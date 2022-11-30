@@ -16,7 +16,12 @@ public class Player implements Comparable{
 
     public void addPoints(int pPoints){
         aPoints += pPoints;
-        System.out.print(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + " points\n");
+        if (aPoints == Integer.MAX_VALUE){
+            System.out.print(PLAYER_NAME.toUpperCase() + " -> you have reached the maximum of points\n");
+        }
+        else {
+            System.out.print(PLAYER_NAME.toUpperCase() + " -> you currently have a score of "  + aPoints + " points\n");
+        }
     }
 
     public int getPoints(){
