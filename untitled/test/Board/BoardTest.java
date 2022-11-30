@@ -165,7 +165,7 @@ class BoardTest {
     }
 
 
-    //@Test
+    @Test
     void testNextPlayerMovePlusMinus() {
         String input = "r\nr\ne\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
@@ -184,7 +184,7 @@ class BoardTest {
                 "-------------------------------------------------\n" +
                 "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
                 "-------------------------------------------------\n" +
-                "TUTTO!! -> you earned already 2000 points \n" +
+                "TUTTO!! -> you earned already 1000 points \n" +
                 "-------------------------------------------------\n" +
                 "-------------------------------------------------\n" +
                 "\n" +
@@ -194,9 +194,9 @@ class BoardTest {
                 "-------------------------------------------------\n" +
                 "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
                 "-------------------------------------------------\n" +
-                "TUTTO!! -> you earned already 4000 points \n" +
+                "TUTTO!! -> you earned already 2000 points \n" +
                 "-------------------------------------------------\n" +
-                "PLAYER1 -> you currently have a score of 5500 points\n";
+                "PLAYER1 -> you currently have a score of 3500 points\n";
 
         assertEquals(expected, outContent.toString());
     }
