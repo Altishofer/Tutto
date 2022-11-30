@@ -165,7 +165,7 @@ class BoardTest {
     }
 
 
-    //@Test
+    @Test
     void testNextPlayerMovePlusMinus() {
         String input = "r\nr\ne\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
