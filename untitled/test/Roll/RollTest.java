@@ -11,7 +11,7 @@ class RollTest {
     @Test
     void rollDice(){
         StubRoll roll = new StubRoll();
-        roll.userFreq = new int[]{0,0,0,0,0,0};
+        roll.aUserFreq = new int[]{0,0,0,0,0,0};
         roll.startOverRoll();
         int sum=0;
         for (int i=0; i<roll.aFrequencyOfValues.length; i++){
@@ -23,7 +23,7 @@ class RollTest {
     @Test
     void rollStartOver(){
         StubRoll2 roll = new StubRoll2();
-        roll.userFreq = new int[]{0,0,0,0,0,0};
+        roll.aUserFreq = new int[]{0,0,0,0,0,0};
         roll.rollDices();
         int sum=0;
         for (int i=0; i<roll.aFrequencyOfValues.length; i++){
@@ -35,7 +35,7 @@ class RollTest {
     @Test
     void validityAllZero(){
         Roll roll = new StubRoll2();
-        roll.userFreq = new int[]{0, 0, 0, 0, 0};
+        roll.aUserFreq = new int[]{0, 0, 0, 0, 0};
         roll.aFrequencyOfValues = new int[]{0, 0, 0, 0, 0};
         assertFalse(roll.validUserInput());
     }
@@ -43,7 +43,7 @@ class RollTest {
     @Test
     void validityNotAllZero(){
         Roll roll = new StubRoll2();
-        roll.userFreq = new int[]{1, 0, 0, 0, 0};
+        roll.aUserFreq = new int[]{1, 0, 0, 0, 0};
         roll.aFrequencyOfValues = new int[]{0, 0, 0, 0, 0};
         assertFalse(roll.validUserInput());
     }
@@ -51,7 +51,7 @@ class RollTest {
     @Test
     void validityToBig(){
         Roll roll = new StubRoll2();
-        roll.userFreq = new int[]{3, 0, 0, 0, 0};
+        roll.aUserFreq = new int[]{3, 0, 0, 0, 0};
         roll.aFrequencyOfValues = new int[]{0, 0, 0, 0, 0};
         assertFalse(roll.validUserInput());
     }
@@ -59,7 +59,7 @@ class RollTest {
     @Test
     void validityTriplets(){
         Roll roll = new StubRoll2();
-        roll.userFreq = new int[]{3, 0, 3, 0, 0};
+        roll.aUserFreq = new int[]{3, 0, 3, 0, 0};
         roll.aFrequencyOfValues = new int[]{3, 0, 3, 0, 0};
         assertTrue(roll.validUserInput());
     }
@@ -67,7 +67,7 @@ class RollTest {
     @Test
     void validityNotTriplets(){
         Roll roll = new StubRoll2();
-        roll.userFreq = new int[]{0, 0, 0, 0, 1};
+        roll.aUserFreq = new int[]{0, 0, 0, 0, 1};
         roll.aFrequencyOfValues = new int[]{0, 0, 0, 1, 0};
         assertFalse(roll.validUserInput());
     }
@@ -75,7 +75,7 @@ class RollTest {
     @Test
     void validityNotSixlets(){
         Roll roll = new StubRoll2();
-        roll.userFreq = new int[]{0, 0, 0, 0, 6};
+        roll.aUserFreq = new int[]{0, 0, 0, 0, 6};
         roll.aFrequencyOfValues = new int[]{0, 0, 0, 0, 6};
         assertTrue(roll.validUserInput());
     }
