@@ -39,8 +39,9 @@ public class StubRoll extends Roll {
     @Override
     public void whichToPutAside(){
         aFrequencyOfValues = calculateFrequencies();
-        userFreq = new int[6];
-        for(int i=0; i<userFreq.length; i++){userFreq[i] = aFrequencyOfValues[i];}
+        aUserFreq = new int[6];
+        for(int i = 0; i< aUserFreq.length; i++){
+            aUserFreq[i] = aFrequencyOfValues[i];}
     }
 
     @Override

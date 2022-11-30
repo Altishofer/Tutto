@@ -3,7 +3,6 @@ package Roll;
 import Board.Board;
 import Dice.Dice;
 import Dice.DiceValues;
-import Utils.Tuple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ public class Roll{
     protected ArrayList<DiceValues> aRolledDices;
     protected int[] aFrequencyOfValues;
     protected int aDicesLeft;
-    protected int[] userFreq;
+    protected int[] aUserFreq;
 
     public Roll(){
         aPoints = 0;
@@ -43,11 +42,11 @@ public class Roll{
     public boolean validUserInput(){
         boolean valid = true;
         boolean allZero = true;
-        for (int i=0; i<userFreq.length; i++){
-            if (userFreq[i] != 0){allZero = false;}
-            if (userFreq[i] > aFrequencyOfValues[i]){valid = false;}
+        for (int i = 0; i< aUserFreq.length; i++){
+            if (aUserFreq[i] != 0){allZero = false;}
+            if (aUserFreq[i] > aFrequencyOfValues[i]){valid = false;}
             if (i==1 || i==2 || i==3 || i==5){
-                if (userFreq[i]!=0 && userFreq[i] != 3 && userFreq[i] != 6){valid = false;}
+                if (aUserFreq[i]!=0 && aUserFreq[i] != 3 && aUserFreq[i] != 6){valid = false;}
             }
         }
         return valid && !allZero;
@@ -60,7 +59,7 @@ public class Roll{
             System.out.print("Which dice-values do you want to put aside (comma separated): ");
             String answer = scanner.nextLine();
             Board.printDelimiter();
-            userFreq = cleanUpUserInput(answer);
+            aUserFreq = cleanUpUserInput(answer);
             if (validUserInput()){return;}
             System.out.print("The given input is not valid for the current roll\n");
             Board.printDelimiter();
@@ -122,26 +121,26 @@ public class Roll{
     }
 
     public void putAsideDice(){
-        for(int i = 0; i< userFreq.length; i++){
-            if (userFreq[i] >= 3){
+        for(int i = 0; i< aUserFreq.length; i++){
+            if (aUserFreq[i] >= 3){
                 // We assume we can take out 3 OR 6, but not 4 or 5 dices of a value
                 if (i+1 == 1){
-                    aPoints += (userFreq[i]/3) * 1000;
+                    aPoints += (aUserFreq[i]/3) * 1000;
                 }
                 else {
-                    aPoints += (userFreq[i]/3) * (i+1) * 100;
+                    aPoints += (aUserFreq[i]/3) * (i+1) * 100;
                 }
-                aDicesLeft -= (userFreq[i]/3) * 3;
-                userFreq[i] -= (userFreq[i]/3) * 3;
+                aDicesLeft -= (aUserFreq[i]/3) * 3;
+                aUserFreq[i] -= (aUserFreq[i]/3) * 3;
             }
         }
-        aDicesLeft -= userFreq[4];
-        aPoints += userFreq[4] * 50;
-        userFreq[4] = 0;
+        aDicesLeft -= aUserFreq[4];
+        aPoints += aUserFreq[4] * 50;
+        aUserFreq[4] = 0;
 
-        aDicesLeft -= userFreq[0];
-        aPoints += userFreq[0] * 100;
-        userFreq[0] = 0;
+        aDicesLeft -= aUserFreq[0];
+        aPoints += aUserFreq[0] * 100;
+        aUserFreq[0] = 0;
     }
 }
 
