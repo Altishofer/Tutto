@@ -1,7 +1,5 @@
 package Roll;
 
-import java.util.ArrayList;
-
 public class StubStraightRoll2 extends RollStraight{
 
     public void setUserInput(int[] user){userFreq = user;}

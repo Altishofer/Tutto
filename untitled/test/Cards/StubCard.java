@@ -10,7 +10,6 @@ public class StubCard extends Card {
     }
     public String toString(){return "StandardCard";}
     public void setStubNr(String command){((StubRoll) aRoll).setCommand(command);}
-    public String getStubNr(){return ((StubRoll) aRoll).getCommand();}
 
     @Override
     public boolean stopOrRoll() {
