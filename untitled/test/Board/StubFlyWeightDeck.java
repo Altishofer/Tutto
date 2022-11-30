@@ -7,27 +7,25 @@ import Cards.*;
 
 public class StubFlyWeightDeck extends FlyWeightDeck{
 
-    private String command;
-    private final Card plusMinus = new StubCardPlusMinus();
+    private static String command;
+    private static final Card plusMinus = new StubCardPlusMinus();
 
-    public void setCommand(String command){
-        this.command = command;
-    }
+    public static void setCommand(String pCommand){command = pCommand;}
 
-    public void setStubNr(String command) {
+    public static void setStubNr(String command) {
         ((StubCardPlusMinus) plusMinus).setStubNr(command);
     }
 
-    @Override
-    public Card getRandomCard() {
-        if (this.command == null || this.command == "stop") {
+
+    public static Card getRandomCard() {
+        if (command == null || command == "stop") {
             return new Stop();
         }
-        if (this.command == "plusminus") {
+        if (command == "plusminus") {
             return plusMinus;
         }
-        if (this.command == "bonus") {
-            return new Bonus(100);
+        if (command == "bonus") {
+            return new BonusTest.StubCardBonus(100);
         }
         return new Stop();
     }

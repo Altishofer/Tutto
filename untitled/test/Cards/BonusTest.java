@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BonusTest {
+public class BonusTest {
     Bonus card = new StubCardBonus(100);
 
     public static class StubCardBonus extends Bonus{

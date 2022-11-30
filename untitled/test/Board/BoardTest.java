@@ -12,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
-    //TODO: Pädi, Cedi
-    Class<Board> boardClass = Board.class;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -90,11 +88,11 @@ class BoardTest {
         assertEquals(expected, outContent.toString());
     }
 
-    //@Test
+    @Test
     void testNextPlayerMoveSecond() {
         String input = "r\nd\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
-
+        System.setIn(inputStream);
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -107,16 +105,22 @@ class BoardTest {
                 "\n" +
                 "#################### current player: PLAYER1 ####################\n" +
                 "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
-                "PLAYER1 -> you have drawn a Stop-Card\n" +
+                "PLAYER1 -> you have drawn a 100 Points Bonus Card\n" +
+                "-------------------------------------------------\n" +
+                "You have rolled the combination: [2, 3, 4, 2, 3, 4]\n" +
+                "-------------------------------------------------\n" +
+                "The combination is invalid and results in 0 points\n" +
                 "-------------------------------------------------\n" +
                 "PLAYER1 -> you currently have a score of 1500 points\n";
 
-        assertEquals(expected, outContent.toString());
+        String out = outContent.toString();
+        out = out.replaceAll("\\s+", "");
+        assertEquals(expected.replaceAll("\\s+", ""), out);
     }
 
     @Test
     void testNextPlayerMoveIntermediateDisplay() {
-        String input = "d\nr\n";
+        String input = "d\nr\nr\nr\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -198,7 +202,9 @@ class BoardTest {
                 "-------------------------------------------------\n" +
                 "PLAYER1 -> you currently have a score of 3500 points\n";
 
-        assertEquals(expected, outContent.toString());
+        String out = outContent.toString();
+        out = out.replaceAll("\\s+", "");
+        assertEquals(expected.replaceAll("\\s+", ""), out);
     }
 
     @Test

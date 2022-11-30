@@ -4,32 +4,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FlyWeightDeck {
-    private ArrayList<Card> aCardFlyWeightStore;
+    private final static ArrayList<Card> CARD_FLY_WEIGHT_STORE = new ArrayList<Card>();
 
-    public FlyWeightDeck(){
-        prepareCardsNew();
+    protected FlyWeightDeck(){prepareCardsNew();}
+
+    public static Card getRandomCard(){
+        if (CARD_FLY_WEIGHT_STORE.isEmpty()){prepareCardsNew();}
+        return CARD_FLY_WEIGHT_STORE.remove(0);
     }
 
-    public Card getRandomCard(){
-        if (aCardFlyWeightStore.isEmpty()){prepareCardsNew();}
-        return aCardFlyWeightStore.remove(0);
-    }
-
-    private void prepareCardsNew(){
-        aCardFlyWeightStore = new ArrayList<Card>();
-        aCardFlyWeightStore.add(SingletonCloverLeaf.getInstance());
+    private static void prepareCardsNew(){
+        CARD_FLY_WEIGHT_STORE.add(SingletonCloverLeaf.getInstance());
         for (int i=0; i<5; i++){
-            aCardFlyWeightStore.add(new Straight());
-            aCardFlyWeightStore.add(new Firework());
-            aCardFlyWeightStore.add(new PlusMinus());
-            aCardFlyWeightStore.add(new X2());
+            CARD_FLY_WEIGHT_STORE.add(new Straight());
+            CARD_FLY_WEIGHT_STORE.add(new Firework());
+            CARD_FLY_WEIGHT_STORE.add(new PlusMinus());
+            CARD_FLY_WEIGHT_STORE.add(new X2());
             for (int j=2; j<7; j++){
-                aCardFlyWeightStore.add(new Bonus(j*100));
+                CARD_FLY_WEIGHT_STORE.add(new Bonus(j*100));
             }
             for (int j=0; j<2; j++){
-                aCardFlyWeightStore.add(new Stop());
+                CARD_FLY_WEIGHT_STORE.add(new Stop());
             }
         }
-        Collections.shuffle(aCardFlyWeightStore);
+        Collections.shuffle(CARD_FLY_WEIGHT_STORE);
     }
 }

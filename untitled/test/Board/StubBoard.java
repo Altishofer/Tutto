@@ -1,5 +1,7 @@
 package Board;
 
+import Cards.Card;
+
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -7,15 +9,20 @@ public class StubBoard extends Board{
 
     public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers, InputStream inputStream) {
         super(pMaxPoints,pNumberOfPlayers);
-        super.aRandomCardFactory = new StubFlyWeightDeck();
         super.aScanner = new Scanner(inputStream);
     }
 
     public void setCommand(String command) {
-        ((StubFlyWeightDeck) aRandomCardFactory).setCommand(command);
+        StubFlyWeightDeck.setCommand(command);
     }
+
+    @Override
+    protected Card getRandomCard() {
+        return StubFlyWeightDeck.getRandomCard();
+    }
+
     public void setStubNr(String command) {
-        ((StubFlyWeightDeck) aRandomCardFactory).setStubNr(command);
+        StubFlyWeightDeck.setStubNr(command);
     }
 
     public StubBoard(Integer pMaxPoints, Integer pNumberOfPlayers) {

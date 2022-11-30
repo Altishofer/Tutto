@@ -14,7 +14,6 @@ public class Board {
     private int aCurrentPlayerIndex;
     protected ArrayList<Player> aPlayers;
     protected static Integer MAX_POINTS;
-    protected FlyWeightDeck aRandomCardFactory;
     protected Scanner aScanner;
 
     public Board(Integer pMaxPoints, Integer pNumberOfPlayers){
@@ -22,7 +21,6 @@ public class Board {
         aCurrentPlayerIndex = 0;
         aPlayers = new ArrayList<Player>();
         setUpPlayers(pNumberOfPlayers);
-        aRandomCardFactory = new FlyWeightDeck();
         aScanner = new Scanner(System.in);
     }
 
@@ -51,8 +49,12 @@ public class Board {
         }
     }
 
+    protected Card getRandomCard(){
+        return FlyWeightDeck.getRandomCard();
+    }
+
     public void nextPlayerMove(int intermediatePoints, boolean plusMinus){
-        Card card = aRandomCardFactory.getRandomCard();
+        Card card = getRandomCard();
         Player player;
         if (intermediatePoints > 0  || plusMinus){
             if (aCurrentPlayerIndex == 0){
