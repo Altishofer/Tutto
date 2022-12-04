@@ -37,6 +37,7 @@ public class SingletonCloverLeaf extends Card {
     public int rollNotValid(){
         System.out.print("You had no luck, the Cloverleaf is gone\n");
         Board.printDelimiter();
+        aAlreadyTutto = false;
         return 0;
     }
 

@@ -1,9 +1,14 @@
 package Cards;
 
 import Board.Board;
+import Roll.RollFirework;
 import Utils.Tuple;
 
 public class Firework extends Card {
+
+    public Firework(){
+        aRoll = new RollFirework();
+    }
 
     @Override
     public String toString(){
