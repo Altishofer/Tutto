@@ -25,7 +25,7 @@ public class PlusMinus extends Card {
 
     protected Tuple rollIsTutto(){
         aSleeper.doSleep();
-        System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
+        System.out.println("TUTTO!! -> you just earned 1000 points");
         Board.printDelimiter();
         return new Tuple(1000, false);
     }
