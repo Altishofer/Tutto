@@ -9,7 +9,7 @@ public class InputOutputUtils {
 
     private final int aSecond;
     public InputOutputUtils(){
-        aSecond = 0;
+        aSecond = 1;
     }
 
     public void doSleep(){
