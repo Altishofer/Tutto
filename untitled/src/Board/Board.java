@@ -93,7 +93,6 @@ public class Board {
                     for (Player bestPlayer : bestPlayers){
                         bestPlayer.addPoints(-1000);
                     }
-                    player.addPoints(1000);
                 }
                 if (result.getSecond()){
                     printDelimiter();
