@@ -14,7 +14,7 @@ public class X2 extends Card {
         int finalSum = (aIntermediatePoints + aRoll.getPoints())*2;
         System.out.print("TUTTO!! -> you earned already " + finalSum + " points \n");
         Board.printDelimiter();
-        aIntermediatePoints = finalSum;
+        aIntermediatePoints = finalSum - aRoll.getPoints(); // "- aRoll.getPoints()"
         return new Tuple(finalSum, !stopOrRoll());
     }
 }
