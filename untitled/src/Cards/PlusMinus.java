@@ -25,24 +25,8 @@ public class PlusMinus extends Card {
 
     protected Tuple rollIsTutto(){
         aSleeper.doSleep();
-        int finalSum = aIntermediatePoints + 1000;
         System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
         Board.printDelimiter();
-        return new Tuple(finalSum, !stopOrRoll());
-    }
-
-    @Override
-    protected boolean stopOrRoll(){
-        Scanner scanner;
-        while (true){
-            aSleeper.doSleep();
-            int sum = aIntermediatePoints + 1000;
-            System.out.print("Do you want to roll again (R) or end the move (E) and earn the " + sum +" points? ");
-            scanner = new Scanner(System.in);
-            String playOrStop = scanner.nextLine();
-            Board.printDelimiter();
-            if (playOrStop.equalsIgnoreCase("e")){return true;}
-            if (playOrStop.equalsIgnoreCase("r")){return false;}
-        }
+        return new Tuple(1000, false);
     }
 }
