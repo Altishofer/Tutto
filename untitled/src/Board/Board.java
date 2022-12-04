@@ -126,7 +126,7 @@ public class Board {
 
     private ArrayList<Player> getBestPlayer(Player currentPlayer){
         ArrayList<Player> bestPlayers = new ArrayList<>();
-        int maxPoints = 0;
+        int maxPoints = Integer.MIN_VALUE;
         for (Player player : aPlayers){
             if (player.getPoints() > maxPoints){
                 maxPoints = player.getPoints();
