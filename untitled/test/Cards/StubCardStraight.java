@@ -2,6 +2,7 @@ package Cards;
 
 import Dice.DiceValues;
 import Roll.RollStraight;
+import Utils.InputOutputUtils;
 
 import java.util.ArrayList;
 
@@ -50,6 +51,7 @@ public class StubCardStraight extends Straight{
     private int stops = 0;
     public StubCardStraight(){
         aRoll = new StubStraightRoll();
+        aSleeper = new InputOutputUtils(0);
     }
     public void setStubNr(String command){((StubStraightRoll) aRoll).setCommand(command);}
 

@@ -14,7 +14,7 @@ public abstract class Card {
     protected InputOutputUtils aSleeper;
 
     protected Card(){
-        aSleeper = new InputOutputUtils();
+        aSleeper = new InputOutputUtils(1);
         aRoll = new Roll();
     }
 

@@ -2,12 +2,14 @@ package Cards;
 
 import Board.Board;
 import Roll.StubRoll;
+import Utils.InputOutputUtils;
 import Utils.Tuple;
 
 public class StubCloverLeafOneTutto extends SingletonCloverLeaf {
 
     public StubCloverLeafOneTutto(){
         INSTANCE = SingletonCloverLeaf.getInstance();
+        aSleeper = new InputOutputUtils(0);
     }
 
     @Override

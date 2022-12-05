@@ -13,31 +13,9 @@ class SingletonCloverLeafTest {
         assertEquals("Cloverleaf-Card", cloverLeaf.toString());
     }
 
-    //@Test
-    void rollIsTutto_alreadyTuttoTrue() {
-        SingletonCloverLeaf mCloverLeaf = SingletonCloverLeaf.getInstance();
-        mCloverLeaf.rollIsTutto();
-        assertEquals(true, mCloverLeaf.aAlreadyTutto);
-    }
-
-    //@Test
-    void rollIsTutto_nonNegativeFirst() {
-        assertTrue(SingletonCloverLeaf.getInstance().rollIsTutto().getFirst() >= 0);
-    }
-
-    //@Test
-    void rollIsTutto_falseSecondReturn() {
-        assertFalse(SingletonCloverLeaf.getInstance().rollIsTutto().getSecond());
-    }
-
     @Test
     void rollNotValid() {
         assertEquals(0, SingletonCloverLeaf.getInstance().rollNotValid());
-    }
-
-    //@Test
-    void makeMove_nonNegativeReturn() {
-        assertTrue(SingletonCloverLeaf.getInstance().makeMove().getFirst() >= 0);
     }
 
     @Test

@@ -180,27 +180,7 @@ class BoardTest {
 
         board.nextPlayerMove(0, true);
 
-        String expected = "PLAYER1 -> you currently have a score of 1500 points\n" +
-                "\n" +
-                "#################### current player: PLAYER1 ####################\n" +
-                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
-                "PLAYER1 -> you have drawn a Plus/Minus-Card\n" +
-                "-------------------------------------------------\n" +
-                "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
-                "-------------------------------------------------\n" +
-                "TUTTO!! -> you earned already 1000 points \n" +
-                "-------------------------------------------------\n" +
-                "-------------------------------------------------\n" +
-                "\n" +
-                "#################### current player: PLAYER1 ####################\n" +
-                "Do you want to display the charts (D) or roll (R) the dice? -------------------------------------------------\n" +
-                "PLAYER1 -> you have drawn a Plus/Minus-Card\n" +
-                "-------------------------------------------------\n" +
-                "You have rolled the combination: [1, 1, 1, 1, 1, 1]\n" +
-                "-------------------------------------------------\n" +
-                "TUTTO!! -> you earned already 2000 points \n" +
-                "-------------------------------------------------\n" +
-                "PLAYER1 -> you currently have a score of 3500 points\n";
+        String expected = "PLAYER1->youcurrentlyhaveascoreof1500points####################currentplayer:PLAYER1####################Doyouwanttodisplaythecharts(D)orroll(R)thedice?-------------------------------------------------PLAYER1->youhavedrawnaPlus/Minus-Card-------------------------------------------------Youhaverolledthecombination:[1,1,1,1,1,1]-------------------------------------------------TUTTO!!->youjustearned1000points-------------------------------------------------PLAYER1->youcurrentlyhaveascoreof2500points";
 
         String out = outContent.toString();
         out = out.replaceAll("\\s+", "");

@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 public class InputOutputUtils {
 
     private final int aSecond;
-    public InputOutputUtils(){
-        aSecond = 1;
+    public InputOutputUtils(int sleep){
+        aSecond = sleep;
     }
 
     public void doSleep(){
