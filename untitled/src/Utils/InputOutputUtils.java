@@ -1,7 +1,5 @@
 package Utils;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +8,11 @@ public class InputOutputUtils {
     private final int aSecond;
     public InputOutputUtils(int sleep){
         aSecond = sleep;
+    }
+
+    public static boolean cleanString(String string){
+        if (string == null || string.isEmpty() || string.contains(" ")){return false;}
+        return true;
     }
 
     public void doSleep(){

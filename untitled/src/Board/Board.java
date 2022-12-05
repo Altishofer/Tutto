@@ -3,6 +3,7 @@ package Board;
 import Cards.Card;
 import Cards.FlyWeightDeck;
 import Cards.PlusMinus;
+import Utils.InputOutputUtils;
 import Utils.Tuple;
 
 import java.util.ArrayList;
@@ -120,12 +121,12 @@ public class Board {
             while (alreadyExists){
                 System.out.print("Player " + i + " set your name: ");
                 line = scanner.nextLine();
-                if (!playerAlreadyExists(line)){
+                if (InputOutputUtils.cleanString(line) && !playerAlreadyExists(line)){
                     aPlayers.add(new Player(line));
                     alreadyExists = false;
                 }
                 else {
-                    System.out.print("Name '" + line + "' is already being used -> ");
+                    System.out.print("Name '" + line + "' is already being used or invalid -> ");
                 }
             }
         }
