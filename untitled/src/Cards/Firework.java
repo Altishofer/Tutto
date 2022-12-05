@@ -38,9 +38,9 @@ public class Firework extends Card {
     @Override
     protected Tuple rollIsTutto(){
         aSleeper.doSleep();
-        int finalSum = aIntermediatePoints + aRoll.getPoints();
-        System.out.println("TUTTO!! -> you earned already " + finalSum + " points ");
+        aIntermediatePoints += aRoll.getPoints();
+        System.out.println("TUTTO!! -> you earned already " + aIntermediatePoints + " points ");
         Board.printDelimiter();
-        return new Tuple(finalSum, true);
+        return new Tuple(makeMove().getFirst(), false);
     }
 }
