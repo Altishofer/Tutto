@@ -38,14 +38,6 @@ class FireworkTest {
     }
 
     @Test
-    void testMakeMoveTutto() {
-        card.setStubNr("tuttoOnes");
-        Tuple result = card.makeMove();
-        System.out.println(result);
-        assertEquals(new Tuple(2000,true),result);
-    }
-
-    @Test
     void testMakeMoveNotValid(){
         card.setStubNr("invalid");
         Tuple result = card.makeMove();
