@@ -113,11 +113,30 @@ public class Board {
 
     protected void setUpPlayers(Integer numberOfPlayer){
         Scanner scanner = new Scanner(System.in);
+        String line;
+        boolean alreadyExists;
         for (int i=0; i<numberOfPlayer; i++){
-            System.out.print("Player " + i + " set your name: ");
-            aPlayers.add(new Player(scanner.nextLine()));
+            alreadyExists = true;
+            while (alreadyExists){
+                System.out.print("Player " + i + " set your name: ");
+                line = scanner.nextLine();
+                if (!playerAlreadyExists(line)){
+                    aPlayers.add(new Player(line));
+                    alreadyExists = false;
+                }
+                else {
+                    System.out.print("Name '" + line + "' is already being used -> ");
+                }
+            }
         }
         Collections.sort(aPlayers);
+    }
+
+    private boolean playerAlreadyExists(String name){
+        for (Player player : aPlayers){
+            if(player.getPlayerName().equals(name)){return true;}
+        }
+        return false;
     }
 
     private static void printNameDelimiter(Player player) {
